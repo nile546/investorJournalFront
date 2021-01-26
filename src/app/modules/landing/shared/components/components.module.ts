@@ -4,14 +4,15 @@ import { CommonModule } from '@angular/common';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 
 
-
 @NgModule({
-  declarations: [MainMenuComponent],
+  declarations: [
+    MainMenuComponent,
+  ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   exports: [
-    MainMenuComponent
+    MainMenuComponent,
   ]
 })
 export class ComponentsModule { }
