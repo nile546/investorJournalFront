@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { ComponentsModule } from "src/app/modules/landing/shared/components/components.module";
 import { ComponentsModule as RootComponentsModule } from "src/app/shared/components/components.module";
 import { SectionPresintationComponent } from './section-presintation/section-presintation.component';
+import { SectionFeaturesComponent } from './section-features/section-features.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { SectionPresintationComponent } from './section-presintation/section-pre
         LandingComponent,
         HeaderComponent,
         SectionPresintationComponent,
+        SectionFeaturesComponent,
     ],
     imports:[
         LandingRoutingModule,
