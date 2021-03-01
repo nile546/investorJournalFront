@@ -5,16 +5,24 @@ import { LandingComponent } from "./landing.component";
 import { HeaderComponent } from './header/header.component';
 import { ComponentsModule } from "src/app/modules/landing/shared/components/components.module";
 import { ComponentsModule as RootComponentsModule } from "src/app/shared/components/components.module";
-import { SectionPresintationComponent } from './section-presintation/section-presintation.component';
 import { SectionFeaturesComponent } from './section-features/section-features.component';
+import { SectionInterfaceComponent } from './section-interface/section-interface.component';
+import { SectionSliderComponent } from './section-slider/section-slider.component';
+import { Slide1Component } from './section-slider/slide1/slide1.component';
+import { Slide2Component } from './section-slider/slide2/slide2.component';
+import { Slide3Component } from './section-slider/slide3/slide3.component';
 
 
 @NgModule({
     declarations:[
         LandingComponent,
         HeaderComponent,
-        SectionPresintationComponent,
         SectionFeaturesComponent,
+        SectionInterfaceComponent,
+        SectionSliderComponent,
+        Slide1Component,
+        Slide2Component,
+        Slide3Component,
     ],
     imports:[
         LandingRoutingModule,
