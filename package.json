@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "build-prod":"ng build --prod && rm -rf ./../diplom/web/ && cp -r ./dist/diplom-frontend/ ./../diplom/web/" 
-    },
+    "build-prod": "ng build --prod && rm -rf ./../diplom/web/ && cp -r ./dist/diplom-frontend/ ./../diplom/web/"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.5",
