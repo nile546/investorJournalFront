@@ -1,12 +1,17 @@
+@import 'variables';
+
 .profile {
-    &__icon{
-        margin-left: 0.25rem;
-        font-size: 2rem;
-        opacity: 0.3;
-    }
-    &__wrapper{
+    &__wrapper {
         display: flex;
         align-items: center;
         height: 100%;
+        margin-top: 0.5rem;
+        color: $white;
+    }
+
+    &__icon {
+        margin-left: 0.25rem;
+        font-size: 2rem;
+        opacity: 0.5;
     }
 }

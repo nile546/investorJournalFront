@@ -1,9 +1,13 @@
+@import 'variables';
+
 .header {
     &__wrapper {
         display: flex;
         justify-content: space-between;
+        background-color: $primary;
     }
+
     &__menu {
-        flex:1;
+        flex: 1;
     }
 }

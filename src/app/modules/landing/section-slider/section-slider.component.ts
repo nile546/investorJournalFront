@@ -27,7 +27,7 @@ export class SectionSliderComponent implements OnInit {
     this.slides.push(Slide1Component, Slide2Component, Slide3Component);
 
     from(this.slides).pipe(
-      concatMap(slide => of(slide).pipe(delay(5000)))
+      concatMap(slide => of(slide).pipe(delay(50000)))
     )
       .subscribe(slide => {
         if (!this.slide) {
