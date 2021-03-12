@@ -1,18 +1,23 @@
 .slide {
 
-    &__icon {        
-    }
+    &__icon {}
 
-    &__title {        
+    &__title {
         line-height: 2.5625rem;
         font-size: 2rem;
         font-weight: 300;
         margin-bottom: 0.652rem;
     }
 
-    &__description {        
+    &__description {
         font-size: 1.125rem;
         line-height: 1.625rem;
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 
 }
