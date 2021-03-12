@@ -5,6 +5,7 @@
     display: flex;
     width: 33%;
     padding: 1rem 2rem;
+    align-items: flex-start;
 
     &__wrapper {
         background-color: $secondary;
@@ -27,6 +28,6 @@
     }
 
     &__icon {
-        margin-right: 1rem;
+        margin-right: 1.5rem;
     }
 }
