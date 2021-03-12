@@ -26,10 +26,10 @@ export class SectionSliderComponent implements OnInit {
 
     this.slides.push(Slide1Component, Slide2Component, Slide3Component);
 
-    timer(0, 50000).pipe(
+    timer(0, 5000).pipe(
       map((value: number) => this.slides[value % this.slides.length]),
     )
-      .subscribe(slide => {
+      .subscribe((slide: any) => {
         if (!this.slide) {
           return;
         }
