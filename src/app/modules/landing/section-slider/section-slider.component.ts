@@ -29,7 +29,7 @@ export class SectionSliderComponent implements OnInit {
     timer(0, 5000).pipe(
       map((value: number) => this.slides[value % this.slides.length]),
     )
-      .subscribe(slide => {
+      .subscribe((slide: any) => {
         if (!this.slide) {
           return;
         }
