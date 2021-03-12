@@ -1,28 +1,32 @@
 @import "variables";
 
 
-.feature{
-    display:flex;
+.feature {
+    display: flex;
     width: 33%;
     padding: 1rem 2rem;
-    
-    &__row{
+
+    &__wrapper {
+        background-color: $secondary;
+    }
+
+    &__row {
         display: flex;
     }
 
     &__title {
         font-size: 1.375rem;
         font-weight: 500;
-        color: $primary;
+        color: $white;
         margin-bottom: 1rem;
     }
 
     &__discription {
         font-size: 1rem;
+        color: $white;
     }
 
     &__icon {
-        margin-right: 1rem;     
+        margin-right: 1rem;
     }
 }
-

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { from, of } from 'rxjs';
-import { concatMap, delay } from 'rxjs/operators';
+import { from, of, timer } from 'rxjs';
+import { concatMap, delay, map } from 'rxjs/operators';
 import { Slide1Component } from './slide1/slide1.component';
 import { Slide2Component } from './slide2/slide2.component';
 import { Slide3Component } from './slide3/slide3.component';
@@ -26,8 +26,8 @@ export class SectionSliderComponent implements OnInit {
 
     this.slides.push(Slide1Component, Slide2Component, Slide3Component);
 
-    from(this.slides).pipe(
-      concatMap(slide => of(slide).pipe(delay(50000)))
+    timer(0, 5000).pipe(
+      map((value: number) => this.slides[value % this.slides.length]),
     )
       .subscribe(slide => {
         if (!this.slide) {
