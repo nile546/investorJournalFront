@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingModule } from './modules/landing/landing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
+import { ComponentsModule } from './shared/components/components.module';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { DashboardModule } from './modules/dashboard/dashboard.module';
     AppRoutingModule,
     LandingModule,
     DashboardModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
