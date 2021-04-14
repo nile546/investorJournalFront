@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
+import { StoreService } from '../../services/store/store.service';
 
 @Component({
   selector: 'tr-modal',
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss']
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor(
+    public storeService: StoreService
+  ) { }
+  
 }
