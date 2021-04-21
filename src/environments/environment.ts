@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  sliderDuration: 5000,
+  sliderDuration: 10000,
 };
 
 /*
