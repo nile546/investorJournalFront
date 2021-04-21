@@ -1,21 +1,40 @@
 @import 'variables';
 
 .modal {
-    
-    &__content{
+
+    &__window {
         position: absolute;
-        background-color: white;                
         right: 50%;
-        top: 50%;
+        top: 30%;
+        transform: translateX(50%),;
+        border-radius: $modalBorderRadius;
+        background-color: $lightGray;
+        padding: 15px;
     }
 
-    &__backdrop{
+    &__title {
+        border-top-left-radius: $modalBorderRadius;
+        border-top-right-radius: $modalBorderRadius;
+        background-color: $lightGray;
+    }
+
+    &__spacer {
+        height: 3px;
+        background-color: transparent;
+    }
+
+    &__content {
+        background-color: $lightGray;
+        border-bottom-left-radius: $modalBorderRadius;
+        border-bottom-right-radius: $modalBorderRadius;
+    }
+
+    &__backdrop {
         position: fixed;
-        top:0;
+        top: 0;
         bottom: 0;
         left: 0;
-        right: 0;                    
-        background-color: rgba($black, 0.3);                
+        right: 0;
+        background-color: rgba($black, 0.6);
     }
-        
 }
