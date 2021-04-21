@@ -2,11 +2,31 @@
 
 .modal {
 
-    &__content {
+    &__window {
         position: absolute;
-        background-color: white;
         right: 50%;
-        top: 50%;
+        top: 30%;
+        transform: translateX(50%),;
+        border-radius: $modalBorderRadius;
+        background-color: $lightGray;
+        padding: 15px;
+    }
+
+    &__title {
+        border-top-left-radius: $modalBorderRadius;
+        border-top-right-radius: $modalBorderRadius;
+        background-color: $lightGray;
+    }
+
+    &__spacer {
+        height: 3px;
+        background-color: transparent;
+    }
+
+    &__content {
+        background-color: $lightGray;
+        border-bottom-left-radius: $modalBorderRadius;
+        border-bottom-right-radius: $modalBorderRadius;
     }
 
     &__backdrop {
