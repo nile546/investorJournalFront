@@ -1,21 +1,20 @@
 @import 'variables';
 
 .modal {
-    
-    &__content{
+
+    &__content {
         position: absolute;
-        background-color: white;                
+        background-color: white;
         right: 50%;
         top: 50%;
     }
 
-    &__backdrop{
+    &__backdrop {
         position: fixed;
-        top:0;
+        top: 0;
         bottom: 0;
         left: 0;
-        right: 0;                    
-        background-color: rgba($black, 0.3);                
+        right: 0;
+        background-color: rgba($black, 0.6);
     }
-        
 }

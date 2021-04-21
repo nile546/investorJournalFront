@@ -1,9 +1,12 @@
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { from, of, timer } from 'rxjs';
-import { concatMap, delay, map } from 'rxjs/operators';
+import { timer } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
+
 import { Slide1Component } from './slide1/slide1.component';
 import { Slide2Component } from './slide2/slide2.component';
 import { Slide3Component } from './slide3/slide3.component';
+
 
 @Component({
   selector: 'tr-section-slider',
@@ -26,7 +29,7 @@ export class SectionSliderComponent implements OnInit {
 
     this.slides.push(Slide1Component, Slide2Component, Slide3Component);
 
-    timer(0, 5000).pipe(
+    timer(0, environment.sliderDuration).pipe(
       map((value: number) => this.slides[value % this.slides.length]),
     )
       .subscribe((slide: any) => {

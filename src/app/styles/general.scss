@@ -11,5 +11,7 @@ body {
 }
 
 a {
-    color: $white;    
+    color: $white;
+    cursor: pointer;
+    text-decoration: underline;
 }
