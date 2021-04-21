@@ -11,5 +11,6 @@ export class ModalComponent {
   constructor(
     public storeService: StoreService
   ) { }
+
   
 }
