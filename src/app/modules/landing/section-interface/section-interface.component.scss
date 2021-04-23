@@ -3,21 +3,21 @@
 .interface {
 
     &__container{
-        background-image: url(/assets/img/presentation2.jpg);    
-        background-size:cover;  
-        display: flex;      
-        height: 45rem;
-        justify-content: center;
-        align-items: flex-end;
-        position: relative;
+        background: linear-gradient($secondary 0%, $primary 100%);
     }
 
-    &__info{
-        width: 65rem;
-        height: 10rem;
-        background-color:white;
-        position: absolute;
-        bottom: -7rem;
+    &__row{
+        margin-bottom: 2rem;
+        display: flex;
+        }
+
+    &__col{
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        }
+
+    &__image{
     }
 
 }

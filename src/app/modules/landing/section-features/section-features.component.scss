@@ -8,7 +8,7 @@
     align-items: flex-start;
 
     &__wrapper {
-        background-color: $secondary;
+        background: linear-gradient(0deg, #5a4997 0%,lighten( #50099a, 10%) 100%);
     }
 
     &__row {
