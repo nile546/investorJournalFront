@@ -12,22 +12,6 @@
         padding: 15px;
     }
 
-    &__title {
-        border-top-left-radius: $modalBorderRadius;
-        border-top-right-radius: $modalBorderRadius;
-        background-color: $lightGray;
-    }
-
-    &__spacer {
-        height: 3px;
-        background-color: transparent;
-    }
-
-    &__content {
-        background-color: $lightGray;
-        border-bottom-left-radius: $modalBorderRadius;
-        border-bottom-right-radius: $modalBorderRadius;
-    }
 
     &__backdrop {
         position: fixed;
@@ -36,5 +20,22 @@
         left: 0;
         right: 0;
         background-color: rgba($black, 0.6);
+    }
+
+    &__btn-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+
+        &:hover {
+            background-color: lighten($lightGray, 15%);
+        }
     }
 }
