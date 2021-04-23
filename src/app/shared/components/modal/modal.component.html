@@ -1,8 +1,10 @@
 <div class="modal__backdrop"
-    *ngIf="storeService.isModalOpen | async">
+    *ngIf="isModalOpen | async">
     <div class="modal__window"
         style="height: 150px; width: 200px;">
-        <button class="btn__round">х</button>
-        zzzzzzzz
+
+        <ng-container #content></ng-container>
+
+        <button class="modal__btn-close"><img src="assets/img/close.svg"></button>
     </div>
 </div>

@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
-import { StoreService } from '../../services/store/store.service';
+import { ModalActions } from 'src/app/store/modal/modal.actions';
+import { ModalState } from 'src/app/store/modal/modal.reducer';
 
 
 @Component({
@@ -12,13 +14,13 @@ import { StoreService } from '../../services/store/store.service';
 export class ProfileComponent implements OnInit {
 
   constructor(
-    private _storeService: StoreService,
+    private _store: Store<ModalState>
   ) { }
 
   ngOnInit(): void {
   }
 
   public registration(): void {
-    this._storeService.isModalOpen.next(true);
+    this._store.dispatch(ModalActions.show());
   }
 }
