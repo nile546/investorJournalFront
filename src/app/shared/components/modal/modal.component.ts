@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
 
 
@@ -22,5 +23,10 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.isModalOpen = this._store.select(ModalSelectors.isModalOpen);
+  }
+
+
+  public close(): void {
+    this._store.dispatch(ModalActions.hide());
   }
 }
