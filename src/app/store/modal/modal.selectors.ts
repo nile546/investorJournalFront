@@ -1,9 +1,10 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
-import { ModalState } from "./modal.reducer";
+import { ModalReducer } from "./modal.reducer";
 
 
 export namespace ModalSelectors {
-    export const modalState = createFeatureSelector<ModalState>('modal');
-    export const isModalOpen = createSelector(modalState, (state: ModalState) => state.isModalOpen);
+    export const modalState = createFeatureSelector<ModalReducer.State>(ModalReducer.MODAL);
+
+    export const isModalOpen = createSelector(modalState, (state: ModalReducer.State) => state.isModalOpen);
 }

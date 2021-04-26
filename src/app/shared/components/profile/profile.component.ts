@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
-import { ModalState } from 'src/app/store/modal/modal.reducer';
+import { State } from 'src/app/store/root.reducer';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { ModalState } from 'src/app/store/modal/modal.reducer';
 export class ProfileComponent implements OnInit {
 
   constructor(
-    private _store: Store<ModalState>
+    private _store: Store<State>
   ) { }
 
   ngOnInit(): void {

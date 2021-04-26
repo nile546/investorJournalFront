@@ -7,9 +7,9 @@ import { LandingModule } from './modules/landing/landing.module';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { ComponentsModule } from './shared/components/components.module';
 import { StoreModule } from '@ngrx/store';
-import { modalReducer } from './store/modal/modal.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { rootReducers } from 'src/app/store/root.reducer';
 
 
 
@@ -23,7 +23,16 @@ import { environment } from '../environments/environment';
     LandingModule,
     DashboardModule,
     ComponentsModule,
-    StoreModule.forRoot({ modal: modalReducer }, {}),
+    StoreModule.forRoot(
+      rootReducers,
+      {
+        metaReducers: [],
+        runtimeChecks: {
+          strictActionImmutability: true,
+          strictStateImmutability: true
+        }
+      }
+    ),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [],

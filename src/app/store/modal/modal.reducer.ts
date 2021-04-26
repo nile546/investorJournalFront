@@ -3,34 +3,34 @@ import { createReducer, on } from "@ngrx/store"
 
 import { ModalActions } from "./modal.actions";
 
+export namespace ModalReducer {
 
-export interface ModalState {
-    isModalOpen: boolean;
-}
-
-
-const initialModalState: ModalState = {
-    isModalOpen: false,
-}
+    export const MODAL = 'modal';
 
 
-const _modalReducer = createReducer(
+    export interface State {
+        isModalOpen: boolean;
+    }
 
-    initialModalState,
 
-    on(ModalActions.show, (state: ModalState) => ({
-        ...state,
-        isModalOpen: true,
-    })),
-
-    on(ModalActions.hide, (state: ModalState) => ({
-        ...state,
+    const initialState: State = {
         isModalOpen: false,
-    }))
-
-);
+    }
 
 
-export function modalReducer(state: ModalState | undefined, action: Action) {
-    return _modalReducer(state, action);
+    export const reducer = createReducer(
+
+        initialState,
+
+        on(ModalActions.show, (state: State) => ({
+            ...state,
+            isModalOpen: true,
+        })),
+
+        on(ModalActions.hide, (state: State) => ({
+            ...state,
+            isModalOpen: false,
+        }))
+
+    );
 }
