@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistrationComponent } from './registration/registration.component';
 
+import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
 
 
 @NgModule({
-  declarations: [RegistrationComponent],
+  declarations: [
+    RegistrationModalComponent
+  ],
   imports: [
     CommonModule
   ]
