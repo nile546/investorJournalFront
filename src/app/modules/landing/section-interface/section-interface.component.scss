@@ -7,17 +7,31 @@
     }
 
     &__row{
-        margin-bottom: 2rem;
         display: flex;
+        
         }
 
     &__col{
+        margin-top: 2rem;
         width: 50%;
         display: flex;
+        //flex-direction: column;
+        justify-content: space-around;
+        //align-items: center;
+        }
+    
+        &__col_left{
+            display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         }
 
-    &__image{
+    &__title{
+        margin-top: 1.325rem;
+        margin-bottom: 1.325rem;
+        color: $white;
+        text-align: center;
     }
 
 }
