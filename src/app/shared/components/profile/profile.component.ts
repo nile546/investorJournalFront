@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { RegistrationComponent } from 'src/app/modules/profile/registration/registration.component';
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { State } from 'src/app/store/root.reducer';
@@ -21,6 +22,6 @@ export class ProfileComponent implements OnInit {
   }
 
   public registration(): void {
-    this._store.dispatch(ModalActions.show());
+    this._store.dispatch(ModalActions.open({ modalComponent: RegistrationComponent }));
   }
 }

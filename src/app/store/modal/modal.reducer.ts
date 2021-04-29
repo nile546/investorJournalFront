@@ -22,12 +22,12 @@ export namespace ModalReducer {
 
         initialState,
 
-        on(ModalActions.show, (state: State) => ({
+        on(ModalActions.open, (state: State) => ({
             ...state,
             isModalOpen: true,
         })),
 
-        on(ModalActions.hide, (state: State) => ({
+        on(ModalActions.close, (state: State) => ({
             ...state,
             isModalOpen: false,
         }))

@@ -48,6 +48,6 @@ export class ModalComponent implements OnInit {
 
 
   public close(): void {
-    this._store.dispatch(ModalActions.hide());
+    this._store.dispatch(ModalActions.close());
   }
 }
