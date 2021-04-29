@@ -76,11 +76,14 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   public close(): void {
     this._store.dispatch(ModalActions.close());
+<<<<<<< HEAD
   }
 
 
   ngOnDestroy(): void {
     this._unsubsribe.next(true);
     this._unsubsribe.unsubscribe();
+=======
+>>>>>>> dae99ed7681ba091e8b4a5161ee769fbc352187a
   }
 }
