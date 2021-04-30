@@ -29,7 +29,7 @@ import { rootReducers } from 'src/app/store/root.reducer';
         metaReducers: [],
         runtimeChecks: {
           strictActionImmutability: true,
-          strictStateImmutability: true
+          strictStateImmutability: true,
         }
       }
     ),

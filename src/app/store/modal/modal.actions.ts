@@ -1,10 +1,10 @@
 import { createAction, props } from "@ngrx/store";
 
-import { Modal } from "src/app/shared/components/abstract/modal/modal";
+import { ModalComponents } from "src/app/shared/components/modal/modal.component";
 
 
 export namespace ModalActions {
-    export const open = createAction('[Modal Component] Open', props<{ modalComponent: Modal }>());
+    export const open = createAction('[Modal Component] Open', props<{ modalComponent: ModalComponents }>());
     export const close = createAction('[Modal Component] Close');
 }
 

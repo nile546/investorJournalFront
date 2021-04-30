@@ -2,12 +2,23 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectorRef, Type } from '@angular/core';
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { RegistrationModalComponent } from 'src/app/modules/profile/registration-modal/registration-modal.component';
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
 import { Modal } from '../abstract/modal/modal';
+
+
+export enum ModalComponents {
+  Registration = 1,
+}
+
+
+const allowedModalComponents = new Map<ModalComponents, Type<Modal>>([
+  [ModalComponents.Registration, RegistrationModalComponent]
+])
 
 
 @Component({
@@ -18,11 +29,9 @@ import { Modal } from '../abstract/modal/modal';
 })
 export class ModalComponent implements OnInit, OnDestroy {
 
-  @ViewChild('content', { static: true, read: ViewContainerRef }) public content: ViewContainerRef | undefined;
+  @ViewChild('content', { read: ViewContainerRef }) public content: ViewContainerRef | undefined;
 
-  public isModalOpen: Observable<boolean> | undefined;
-
-  private _modalComponent: Observable<Type<Modal> | null> | undefined;
+  public isModalOpen: boolean = false;
   private _unsubsribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(
@@ -35,38 +44,39 @@ export class ModalComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.isModalOpen = this._store.select(ModalSelectors.isModalOpen);
-    this._modalComponent = this._store.select(ModalSelectors.modalComponent)
 
+    this._store.select(ModalSelectors.isModalOpen).pipe(
+      tap((status: boolean) => {
 
-    // Overflow is hidden for body when modal opened.
-    this.isModalOpen.pipe(
-      takeUntil(this._unsubsribe)
-    )
-      .subscribe((status: boolean) => {
-        if (status) {
-          this._renderer.setStyle(this._document.body, 'overflow', 'hidden');
-          return;
-        }
+        this.isModalOpen = status;
+        this._changeDetectorRef.detectChanges();
 
-        this._renderer.setStyle(this._document.body, 'overflow', 'auto');
-      });
+        /**
+         *  Overflow is hidden for body when modal opened.
+         */
+        const value = status ? 'hidden' : 'auto';
+        this._renderer.setStyle(this._document.body, 'overflow', value);
 
-
-    this._modalComponent.pipe(
+      }),
+      switchMap((_: boolean) => {
+        return this._store.select(ModalSelectors.modalComponent);
+      }),
       takeUntil(this._unsubsribe),
     )
-      .subscribe((modalComponent: Type<Modal> | null) => {
+      .subscribe((modalComponent: any) => {
         if (!modalComponent) {
           this.content?.clear();
           return;
         }
 
+        const component = allowedModalComponents.get(modalComponent);
+        if (!component) {
+          return;
+        }
 
-        const factory = this._componentFactoryResolver.resolveComponentFactory<Modal>(modalComponent);
-        const instance = this.content?.createComponent(factory);
+        const factory = this._componentFactoryResolver.resolveComponentFactory(component);
+        this.content?.createComponent(factory);
         this._changeDetectorRef.detectChanges();
-
       });
   }
 

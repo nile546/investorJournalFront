@@ -1,9 +1,8 @@
-import { Type } from "@angular/core";
-import { Action, createReducer, on } from "@ngrx/store"
-import { Modal } from "src/app/shared/components/abstract/modal/modal";
+import { createReducer, on } from "@ngrx/store"
 
-
+import { ModalComponents } from "src/app/shared/components/modal/modal.component";
 import { ModalActions } from "./modal.actions";
+
 
 export namespace ModalReducer {
 
@@ -12,7 +11,7 @@ export namespace ModalReducer {
 
     export interface State {
         isModalOpen: boolean;
-        modalComponent: Type<Modal> | null;
+        modalComponent: ModalComponents | null;
     }
 
 
@@ -26,7 +25,7 @@ export namespace ModalReducer {
 
         initialState,
 
-        on(ModalActions.open, (state: State, action: any) => {
+        on(ModalActions.open, (state: State, action: any): State => {
             return {
                 ...state,
                 isModalOpen: true,
@@ -34,7 +33,7 @@ export namespace ModalReducer {
             }
         }),
 
-        on(ModalActions.close, (state: State) => ({
+        on(ModalActions.close, (state: State): State => ({
             ...state,
             isModalOpen: false,
             modalComponent: null

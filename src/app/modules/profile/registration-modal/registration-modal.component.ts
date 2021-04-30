@@ -9,10 +9,10 @@ import { Modal } from 'src/app/shared/components/abstract/modal/modal';
   styleUrls: ['./registration-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegistrationModalComponent extends Modal implements OnInit {
+export class RegistrationModalComponent implements OnInit {
 
   constructor() {
-    super();
+    // super();
   }
 
   ngOnInit(): void {
