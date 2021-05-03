@@ -1,0 +1,17 @@
+.btn {
+    &__primary {
+        background-color: $primary;
+        border: none;
+        border-radius: $controlRadius;
+        color: $white;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        font-size: 1rem;
+        font-weight: 500;
+
+        &:disabled {
+            background-color: lighten($primary, 20%);
+            cursor: not-allowed;
+        }
+    }
+}

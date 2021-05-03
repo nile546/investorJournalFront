@@ -6,10 +6,11 @@
         position: absolute;
         right: 50%;
         top: 30%;
-        transform: translateX(50%),;
+        transform: translateX(50%);
         border-radius: $modalBorderRadius;
         background-color: $lightGray;
-        padding: 15px;
+        border: 1px solid $white;
+        min-width: 25%;
     }
 
 
@@ -33,9 +34,10 @@
         position: absolute;
         right: 10px;
         top: 10px;
+        background-color: $white;
 
         &:hover {
-            background-color: lighten($lightGray, 15%);
+            background-color: darken($lightGray, 10%);
         }
     }
 }

@@ -1,0 +1,16 @@
+.modal {
+    &__header {
+        padding: 1rem;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    &__footer {
+        padding: 1rem;
+    }
+}
