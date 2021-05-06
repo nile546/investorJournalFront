@@ -11,6 +11,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { rootReducers } from 'src/app/store/root.reducer';
 import { UserModule } from './modules/user/user.module';
+import { EffectsModule } from '@ngrx/effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 
 
 
@@ -35,9 +38,12 @@ import { UserModule } from './modules/user/user.module';
         }
       }
     ),
+    EffectsModule.forRoot(),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

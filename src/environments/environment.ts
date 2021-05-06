@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   sliderDuration: 10000,
+  apiServerPath: 'http://localhost:4001/api/',
 };
 
 /*
