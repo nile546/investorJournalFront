@@ -1,6 +1,6 @@
 .modal {
     &__header {
-        padding: 1rem;
+        padding: 1.75rem;
     }
 
     &__content {
@@ -12,5 +12,6 @@
 
     &__footer {
         padding: 1rem;
+        text-align: center;
     }
 }

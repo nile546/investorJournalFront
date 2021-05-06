@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { User } from 'src/app/shared/models/user/user.model';
+import { UserActions } from 'src/app/store/user/user.actions';
 
 
 export interface RegistrationFormValues {
@@ -47,6 +48,8 @@ export class RegistrationModalComponent extends Modal implements OnInit {
     currentUser.login = formValues.login;
     currentUser.email = formValues.email;
     currentUser.password = formValues.password;
+
+    this._store.dispatch(UserActions.createUser({ user: currentUser }));
   }
 
 

@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, O
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import { RegistrationModalComponent } from 'src/app/modules/profile/registration-modal/registration-modal.component';
+import { RegistrationModalComponent } from 'src/app/modules/user/registration-modal/registration-modal.component';
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';

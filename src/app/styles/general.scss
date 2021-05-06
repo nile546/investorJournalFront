@@ -14,7 +14,12 @@ body {
 }
 
 a {
-    color: $white;
     cursor: pointer;
     text-decoration: underline;
+}
+
+h1,
+h2,
+b {
+    font-weight: 700;
 }

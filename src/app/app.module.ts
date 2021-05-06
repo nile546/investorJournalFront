@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { rootReducers } from 'src/app/store/root.reducer';
+import { UserModule } from './modules/user/user.module';
 
 
 
@@ -23,6 +24,7 @@ import { rootReducers } from 'src/app/store/root.reducer';
     LandingModule,
     DashboardModule,
     ComponentsModule,
+    UserModule,
     StoreModule.forRoot(
       rootReducers,
       {
