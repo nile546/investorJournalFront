@@ -7,31 +7,40 @@
     }
 
     &__row{
-        display: flex;
-        
+        display: flex;        
         }
 
-    &__col{
+    &__media{
         margin-top: 2rem;
         width: 50%;
         display: flex;
-        //flex-direction: column;
-        justify-content: space-around;
-        //align-items: center;
-        }
+        justify-content: flex-end;
+    }
     
-        &__col_left{
-            display: flex;
+    &__text{
+        display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
-        }
+        width: 50%;
+    }
+        
+    &__image{
+        margin-right: 5rem;
+    }
+    
 
-    &__title{
-        margin-top: 1.325rem;
+    &__title{        
+        font-size: 2rem;
+        margin-top: 5rem;
         margin-bottom: 1.325rem;
         color: $white;
         text-align: center;
+        line-height: 2.5rem;
+    }
+
+    &__description{
+        font-size: 2rem;
+        font-weight: 300;
     }
 
 }
