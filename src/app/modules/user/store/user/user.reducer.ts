@@ -22,7 +22,7 @@ export namespace UserReducer {
 
         initialState,
 
-        on(UserActions.createUser, (state: State, action: any): State => {
+        on(UserActions.signup, (state: State, action: any): State => {
             return {
                 ...state,
                 user: action.user

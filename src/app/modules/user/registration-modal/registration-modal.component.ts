@@ -1,10 +1,10 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { User } from 'src/app/shared/models/user/user.model';
-import { UserActions } from 'src/app/store/user/user.actions';
+import { UserActions } from '../store/user/user.actions';
 
 
 export interface RegistrationFormValues {
@@ -21,7 +21,7 @@ export interface RegistrationFormValues {
   styleUrls: ['./registration-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegistrationModalComponent extends Modal implements OnInit {
+export class RegistrationModalComponent extends Modal {
 
   public registrationForm: FormGroup = this.registrationFormInit();
 
@@ -29,11 +29,6 @@ export class RegistrationModalComponent extends Modal implements OnInit {
     private _store: Store
   ) {
     super();
-  }
-
-
-  ngOnInit(): void {
-
   }
 
 
@@ -49,7 +44,7 @@ export class RegistrationModalComponent extends Modal implements OnInit {
     currentUser.email = formValues.email;
     currentUser.password = formValues.password;
 
-    this._store.dispatch(UserActions.createUser({ user: currentUser }));
+    this._store.dispatch(UserActions.signup({ user: currentUser }));
   }
 
 

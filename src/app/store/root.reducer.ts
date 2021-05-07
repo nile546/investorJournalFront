@@ -1,7 +1,7 @@
 import { ActionReducerMap } from '@ngrx/store';
 
+import { UserReducer } from '../modules/user/store/user/user.reducer';
 import { ModalReducer } from './modal/modal.reducer';
-import { UserReducer } from './user/user.reducer';
 
 
 export interface State {
