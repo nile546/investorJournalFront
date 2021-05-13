@@ -1,0 +1,29 @@
+<div class="modal__header">
+    <h2>Вход</h2>
+</div>
+
+<div class="spacer"></div>
+
+<form [formGroup]="signinForm">
+    <div class="modal__content">
+        <input class="control__input"
+            type="text"
+            placeholder="Электронная почта"
+            formControlName="email">
+
+        <input class="control__input"
+            placeholder="Пароль"
+            type="password"
+            formControlName="password">
+
+        <button class="btn__primary"
+            (click)="signin()"
+            [disabled]="signinForm.invalid">Войти</button>
+    </div>
+</form>
+
+<div class="spacer"></div>
+
+<div class="modal__footer">
+    Забыли пароль? <a>Восстановить</a>
+</div>

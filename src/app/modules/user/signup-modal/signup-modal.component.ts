@@ -7,7 +7,7 @@ import { User } from 'src/app/shared/models/user/user.model';
 import { UserActions } from '../store/user/user.actions';
 
 
-export interface RegistrationFormValues {
+export interface SignupFormValues {
   login: string;
   email: string;
   password: string;
@@ -16,14 +16,14 @@ export interface RegistrationFormValues {
 
 
 @Component({
-  selector: 'tr-registration-modal',
-  templateUrl: './registration-modal.component.html',
-  styleUrls: ['./registration-modal.component.scss'],
+  selector: 'tr-signup-modal',
+  templateUrl: './signup-modal.component.html',
+  styleUrls: ['./signup-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegistrationModalComponent extends Modal {
+export class SignupModalComponent extends Modal {
 
-  public registrationForm: FormGroup = this.registrationFormInit();
+  public signupForm: FormGroup = this.signupFormInit();
 
   constructor(
     private _store: Store
@@ -33,11 +33,11 @@ export class RegistrationModalComponent extends Modal {
 
 
   public create(): void {
-    if (this.registrationForm.invalid) {
+    if (this.signupForm.invalid) {
       return;
     }
 
-    const formValues: RegistrationFormValues = this.registrationForm.value;
+    const formValues: SignupFormValues = this.signupForm.value;
 
     const currentUser = new User();
     currentUser.login = formValues.login;
@@ -48,7 +48,7 @@ export class RegistrationModalComponent extends Modal {
   }
 
 
-  private registrationFormInit(): FormGroup {
+  private signupFormInit(): FormGroup {
     return new FormGroup({
 
       login: new FormControl('', [

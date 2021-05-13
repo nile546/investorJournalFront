@@ -1,4 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
+import { Creditials } from "src/app/shared/models/creditials/creditials.models";
 import { User } from "src/app/shared/models/user/user.model";
 import { UserActions } from "./user.actions";
 
@@ -10,11 +11,13 @@ export namespace UserReducer {
 
     export interface State {
         user: User | null;
+        creditials: Creditials | null;
     }
 
 
     const initialState: State = {
-        user: null
+        user: null,
+        creditials: null,
     }
 
 
@@ -26,6 +29,13 @@ export namespace UserReducer {
             return {
                 ...state,
                 user: action.user
+            }
+        }),
+
+        on(UserActions.signin, (state: State, action: any): State => {
+            return {
+                ...state,
+                creditials: action.creditials
             }
         }),
     );

@@ -21,7 +21,13 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public registration(): void {
-    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.Registration }));
+
+  public signin(): void {
+    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.Signin }));
+  }
+
+
+  public signup(): void {
+    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.Signup }));
   }
 }

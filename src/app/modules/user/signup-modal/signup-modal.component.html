@@ -4,7 +4,7 @@
 
 <div class="spacer"></div>
 
-<form [formGroup]="registrationForm">
+<form [formGroup]="signupForm">
     <div class="modal__content">
         <input class="control__input"
             type="text"
@@ -30,7 +30,7 @@
 
         <button class="btn__primary"
             (click)="create()"
-            [disabled]="registrationForm.invalid">Зарегистрироваться</button>
+            [disabled]="signupForm.invalid">Зарегистрироваться</button>
     </div>
 </form>
 

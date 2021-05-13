@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, O
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import { RegistrationModalComponent } from 'src/app/modules/user/registration-modal/registration-modal.component';
+import { SigninModalComponent } from 'src/app/modules/user/signin-modal/signin-modal.component';
+import { SignupModalComponent } from 'src/app/modules/user/signup-modal/signup-modal.component';
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
@@ -12,12 +13,14 @@ import { Modal } from '../abstract/modal/modal';
 
 
 export enum ModalComponents {
-  Registration = 1,
+  Signup = 1,
+  Signin,
 }
 
 
 const allowedModalComponents = new Map<ModalComponents, Type<Modal>>([
-  [ModalComponents.Registration, RegistrationModalComponent]
+  [ModalComponents.Signup, SignupModalComponent],
+  [ModalComponents.Signin, SigninModalComponent]
 ])
 
 

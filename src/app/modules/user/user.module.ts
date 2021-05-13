@@ -4,9 +4,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
-import { RegistrationModalComponent } from './registration-modal/registration-modal.component';
+import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { UserService } from './shared/services/user/user.service';
 import { UserEffects } from './store/user/user.effects';
+import { SigninModalComponent } from './signin-modal/signin-modal.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { UserEffects } from './store/user/user.effects';
     EffectsModule.forFeature([UserEffects]),
   ],
   declarations: [
-    RegistrationModalComponent,
+    SignupModalComponent,
+    SigninModalComponent,
   ],
   providers: [
     UserService,
