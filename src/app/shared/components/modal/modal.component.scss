@@ -8,8 +8,9 @@
         top: 15%;
         transform: translateX(50%);
         border-radius: $modalBorderRadius;
-        background-color: $lightGray;
-        border: 1px solid $white;
+        background-color: $white;
+        border: 5px solid $white;
+        box-shadow: inset 0 0 40px 2px rgba($primary, 0.25);
         min-width: 25%;
     }
 
@@ -35,9 +36,12 @@
         right: 1.5rem;
         top: 1.5rem;
         background-color: $white;
+        box-shadow: 0 0 8px 5px rgba($primary, 0.20);
 
         &:hover {
-            background-color: darken($lightGray, 10%);
+            background-color: lighten($primary, 40%);
+            box-shadow: none;
+
         }
     }
 }
