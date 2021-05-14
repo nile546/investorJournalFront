@@ -3,7 +3,7 @@
 .interface {
 
     &__container{
-        background: linear-gradient($secondary 0%, $primary 100%);
+        background: linear-gradient($primary 0%, $secondary 100%);
     }
 
     &__row{
