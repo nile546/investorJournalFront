@@ -13,5 +13,11 @@
             background-color: lighten($primary, 20%);
             cursor: not-allowed;
         }
+
+        &:hover {
+            &:enabled {
+                background-color: darken($primary, 5%);
+            }
+        }
     }
 }
