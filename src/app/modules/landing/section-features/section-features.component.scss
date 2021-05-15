@@ -3,31 +3,52 @@
 
 .feature {
     display: flex;
-    width: 33%;
-    padding: 1rem 2rem;
-    align-items: flex-start;
-
+    width: 25%;
+    flex-direction: column;
+    padding: 2rem 4rem;  
     &__wrapper {
         background-color: $secondary;
+        background: linear-gradient($secondary 0%, #5f367f 100%);        
     }
 
     &__row {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         display: flex;
+        justify-content: space-between;
+    }
+    
+
+    &__logo_row {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__top{
+        margin-top: -5rem;        
+    }
+
+    &__bottom{
+        margin-top: 5rem;        
     }
 
     &__title {
         font-size: 1.375rem;
         font-weight: 500;
-        color: $white;
-        margin-bottom: 1rem;
+        color: $white;        
+        text-align: center;
     }
 
     &__discription {
         font-size: 1rem;
         color: $white;
+        text-align: center;
     }
 
     &__icon {
         margin-right: 1.5rem;
+        margin-left: 1.5rem;
+        
     }
+
 }
