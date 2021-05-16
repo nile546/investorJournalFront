@@ -9,11 +9,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    data-name="Слой 1"
    id="Слой_1"
-   viewBox="0 0 150 150"
+   viewBox="0 0 150 85"
    version="1.1"
    sodipodi:docname="feature51.svg"
    width="150"
-   height="150"
+   height="85"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)">
   <metadata
      id="metadata4129">
@@ -48,35 +48,36 @@
      inkscape:window-x="72"
      inkscape:window-y="22"
      inkscape:window-maximized="1"
-     inkscape:current-layer="Слой_1" />
+     inkscape:current-layer="Слой_1"
+     inkscape:document-rotation="0" />
   <circle
      cx="119.53125"
-     cy="57.309998"
+     cy="29.309998"
      r="15.210938"
      id="circle4112"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
   <circle
      cx="30.46875"
-     cy="57.309998"
+     cy="29.309998"
      r="15.210938"
      id="circle4114"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
   <path
-     d="m 40.546875,88.024844 v 0 q -0.503906,0.714844 -0.984375,1.453125 v 0 a 41.976562,41.976562 0 0 0 -6.75,22.886721 h 84.375 a 41.976562,41.976562 0 0 0 -6.69141,-22.781252 v 0 q -0.48046,-0.738281 -0.98437,-1.453126 v 0 a 42.1875,42.1875 0 0 0 -68.906252,0 z"
+     d="m 40.546875,60.024844 v 0 q -0.503906,0.714844 -0.984375,1.453125 v 0 a 41.976562,41.976562 0 0 0 -6.75,22.886721 h 84.375 a 41.976562,41.976562 0 0 0 -6.69141,-22.781252 v 0 q -0.48046,-0.738281 -0.98437,-1.453126 v 0 a 42.1875,42.1875 0 0 0 -68.906252,0 z"
      id="path4116"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
   <path
-     d="M 0,102.98969 H 24.304688 A 51.562501,51.562501 0 0 1 40.382813,74.185001 30.46875,30.46875 0 0 0 0,102.98969 Z"
+     d="M 0,74.98969 H 24.304688 A 51.562501,51.562501 0 0 1 40.382813,46.185001 30.46875,30.46875 0 0 0 0,74.98969 Z"
      id="path4118"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
   <circle
      cx="75"
-     cy="49.118591"
+     cy="21.118591"
      r="21.058592"
      id="circle4120"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
   <path
-     d="m 119.53125,72.520938 a 30.46875,30.46875 0 0 0 -9.91407,1.664063 51.562501,51.562501 0 0 1 16.07813,28.804689 H 150 A 30.46875,30.46875 0 0 0 119.53125,72.520938 Z"
+     d="m 119.53125,44.520938 a 30.46875,30.46875 0 0 0 -9.91407,1.664063 51.562501,51.562501 0 0 1 16.07813,28.804689 H 150 A 30.46875,30.46875 0 0 0 119.53125,44.520938 Z"
      id="path4122"
-     style="stroke-width:1.17187;fill:#ffffff" />
+     style="opacity:0.99;fill:#ffffff;stroke-width:1.17187" />
 </svg>

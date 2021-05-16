@@ -8,18 +8,21 @@
     padding: 2rem 4rem;  
     &__wrapper {
         background-color: $secondary;
-        background: linear-gradient($secondary 0%, #5f367f 100%);        
+        background: linear-gradient(#5f367f 0%, $secondary 100%);   
+        background-attachment: fixed;  
+        box-shadow: 0 0 10px rgba(0,0,0,0.5); 
     }
 
     &__row {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 2rem;
+        margin-bottom: -3rem;
         display: flex;
         justify-content: space-between;
     }
-    
 
-    &__logo_row {
+    &__logo_row {        
+        margin-top: 2rem;
+        margin-bottom: -3rem;
         display: flex;
         justify-content: center;
     }
@@ -29,7 +32,7 @@
     }
 
     &__bottom{
-        margin-top: 5rem;        
+        margin-top: 8rem;        
     }
 
     &__title {
@@ -37,9 +40,11 @@
         font-weight: 500;
         color: $white;        
         text-align: center;
+        margin-top: 0.5rem;
     }
 
     &__discription {
+        margin-top: 1rem;
         font-size: 1rem;
         color: $white;
         text-align: center;
