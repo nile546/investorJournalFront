@@ -6,6 +6,7 @@
     width: 25%;
     flex-direction: column;
     padding: 2rem 4rem;  
+    align-items: center;
     &__wrapper {
         background-color: $secondary;
         background: linear-gradient(#5f367f 0%, $secondary 100%);   
@@ -14,15 +15,16 @@
     }
 
     &__row {
-        margin-top: 2rem;
-        margin-bottom: -3rem;
+        margin-top: 3rem;
+        margin-bottom: -2rem;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        padding: 2rem 3rem;
     }
 
     &__logo_row {        
-        margin-top: 2rem;
-        margin-bottom: -3rem;
+        margin-top: -3rem;
+        margin-bottom: -7rem;
         display: flex;
         justify-content: center;
     }
@@ -53,7 +55,7 @@
     &__icon {
         margin-right: 1.5rem;
         margin-left: 1.5rem;
-        
+        max-width: 9.375rem;
     }
 
 }
