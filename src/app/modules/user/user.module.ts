@@ -8,6 +8,7 @@ import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { UserService } from './shared/services/user/user.service';
 import { UserEffects } from './store/user/user.effects';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
+import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-signup-modal.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { SigninModalComponent } from './signin-modal/signin-modal.component';
   declarations: [
     SignupModalComponent,
     SigninModalComponent,
+    ConfirmSignupModalComponent,
   ],
   providers: [
     UserService,
