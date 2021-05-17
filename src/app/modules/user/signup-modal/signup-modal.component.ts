@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
@@ -69,6 +69,11 @@ export class SignupModalComponent extends Modal {
         Validators.required,
         Validators.minLength(5),
       ]),
-    });
+    }, this.comparePasswordsValidator);
+  }
+
+
+  private comparePasswordsValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    return control.value.password !== control.value.checkPassword ? { comparePasswordsValidator: true } : null;
   }
 }
