@@ -8,6 +8,8 @@ import { SignupModalComponent } from './signup-modal/signup-modal.component';
 import { UserService } from './shared/services/user/user.service';
 import { UserEffects } from './store/user/user.effects';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
+import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-signup-modal.component';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 
 @NgModule({
@@ -16,10 +18,12 @@ import { SigninModalComponent } from './signin-modal/signin-modal.component';
     ReactiveFormsModule,
     HttpClientModule,
     EffectsModule.forFeature([UserEffects]),
+    ComponentsModule
   ],
   declarations: [
     SignupModalComponent,
     SigninModalComponent,
+    ConfirmSignupModalComponent,
   ],
   providers: [
     UserService,

@@ -2,36 +2,47 @@
     <h2>Регистрация</h2>
 </div>
 
-<form [formGroup]="signupForm">
-    <div class="modal__content">
-        <input class="control__input"
-            type="text"
-            placeholder="Логин"
-            formControlName="login">
-        <span class="control__description">Минимум 3 латинских символа.</span>
+<div class="modal__content">
+    <ng-container *ngIf="!result; else message">
+        <form [formGroup]="signupForm">
+            <input class="control__input"
+                type="text"
+                placeholder="Логин"
+                formControlName="login">
+            <span class="control__description">Минимум 3 латинских символа.</span>
 
-        <input class="control__input"
-            type="text"
-            placeholder="Электронная почта"
-            formControlName="email">
+            <input class="control__input"
+                type="text"
+                placeholder="Электронная почта"
+                formControlName="email">
 
-        <input class="control__input"
-            placeholder="Пароль"
-            type="password"
-            formControlName="password">
-        <span class="control__description">Минимум 5 символов.</span>
+            <input class="control__input"
+                placeholder="Пароль"
+                type="password"
+                formControlName="password">
+            <span class="control__description">Минимум 5 символов.</span>
 
-        <input class="control__input"
-            placeholder="Подтверждение пароля"
-            type="password"
-            formControlName="checkPassword">
+            <input class="control__input"
+                placeholder="Подтверждение пароля"
+                type="password"
+                formControlName="checkPassword">
+        </form>
 
         <button class="btn__primary"
             (click)="create()"
+            type="button"
             [disabled]="signupForm.invalid">Зарегистрироваться</button>
-    </div>
-</form>
+    </ng-container>
+
+</div>
 
 <div class="modal__footer">
     Уже зарегистрированы? <a>Войти</a>
 </div>
+
+<tr-spinner [loading]="loading | async"></tr-spinner>
+
+<ng-template #message>
+    <span>Спасибо за регистрацмю! <br> На указанный электронный адрес отправили письмо с 
+    инструкцией по активации аккаунта.</span>
+</ng-template>

@@ -12,6 +12,7 @@ import { Slide1Component } from './section-slider/slide1/slide1.component';
 import { Slide2Component } from './section-slider/slide2/slide2.component';
 import { Slide3Component } from './section-slider/slide3/slide3.component';
 import { FooterComponent } from "./footer/footer.component";
+import { ConfirmSignupComponent } from './confirm-signup/confirm-signup.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FooterComponent } from "./footer/footer.component";
         Slide2Component,
         Slide3Component,
         FooterComponent,
+        ConfirmSignupComponent,
     ],
     imports:[
         LandingRoutingModule,

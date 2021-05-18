@@ -1,10 +1,16 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { finalize, take, takeUntil } from 'rxjs/operators';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
+import { Result } from 'src/app/shared/models/result/result.model';
 import { User } from 'src/app/shared/models/user/user.model';
+import { ModalActions } from 'src/app/store/modal/modal.actions';
+import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
 import { UserActions } from '../store/user/user.actions';
+import { UserSelectors } from '../store/user/user.selectors';
 
 
 export interface SignupFormValues {
@@ -21,14 +27,23 @@ export interface SignupFormValues {
   styleUrls: ['./signup-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupModalComponent extends Modal {
+export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
 
   public signupForm: FormGroup = this.signupFormInit();
+  public result: Result | null = null;
+
+  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private _store: Store
+    private _store: Store,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) {
     super();
+  }
+
+
+  ngOnInit(): void {
+    this.loading = this._store.select(ModalSelectors.showSpinner);
   }
 
 
@@ -44,7 +59,20 @@ export class SignupModalComponent extends Modal {
     currentUser.email = formValues.email;
     currentUser.password = formValues.password;
 
+    this._store.dispatch(ModalActions.showSpinner({ status: true }));
     this._store.dispatch(UserActions.signup({ user: currentUser }));
+
+    this._store.select(UserSelectors.signupResult).pipe(
+      take(1),
+      finalize(() => {
+        this._store.dispatch(ModalActions.showSpinner({ status: false }));
+      }),
+      takeUntil(this._unsubscribe),
+    )
+      .subscribe((result: Result | null) => {
+        this.result = result;
+        this._changeDetectorRef.detectChanges();
+      })
   }
 
 
@@ -69,6 +97,17 @@ export class SignupModalComponent extends Modal {
         Validators.required,
         Validators.minLength(5),
       ]),
-    });
+    }, this.comparePasswordsValidator);
+  }
+
+
+  private comparePasswordsValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    return control.value.password !== control.value.checkPassword ? { comparePasswordsValidator: true } : null;
+  }
+
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.unsubscribe();
   }
 }
