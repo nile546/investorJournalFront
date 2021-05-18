@@ -9,6 +9,8 @@
         font-size: 0.875rem;
         font-weight: 300;
         outline: none;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     &__description {

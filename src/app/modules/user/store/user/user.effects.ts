@@ -17,13 +17,7 @@ export class UserEffects {
             exhaustMap(action => {
                 return this._userService.signup(action.user).pipe(
                     map((result: Result) => {
-                        if (result.status === ResultStatuses.Ok) {
-                            return UserActions.signupSuccess();
-                        }
-
-                        return UserActions.signupFailure(
-                            { errorMessage: result.errorMessage || COMMON_ERROR_MESSAGE }
-                        );
+                        return UserActions.signupResult({ result });
                     })
                 );
             })

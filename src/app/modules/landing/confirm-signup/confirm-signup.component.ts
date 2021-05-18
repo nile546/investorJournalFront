@@ -22,7 +22,7 @@ export class ConfirmSignupComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.CoonfirmSignup }))
+    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.ConfirmSignup }))
 
     const token = this._activatedRoute.snapshot.queryParams.token;
     console.log('zzzzzzzzzzzzzzzz', token);

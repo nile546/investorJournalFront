@@ -8,4 +8,5 @@ export namespace ModalSelectors {
 
     export const isModalOpen = createSelector(modalState, (state: ModalReducer.State) => state.isModalOpen);
     export const modalComponent = createSelector(modalState, (state: ModalReducer.State) => state.modalComponent);
+    export const showSpinner = createSelector(modalState, (state: ModalReducer.State) => state.showSpinner);
 }

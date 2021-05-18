@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 
 @Component({
@@ -14,6 +14,7 @@ export class ConfirmSignupModalComponent extends Modal {
   }
 
   ngOnInit(): void {
+    
   }
 
 }

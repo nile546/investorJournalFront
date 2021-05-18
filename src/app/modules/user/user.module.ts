@@ -9,6 +9,7 @@ import { UserService } from './shared/services/user/user.service';
 import { UserEffects } from './store/user/user.effects';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
 import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-signup-modal.component';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-sign
     ReactiveFormsModule,
     HttpClientModule,
     EffectsModule.forFeature([UserEffects]),
+    ComponentsModule
   ],
   declarations: [
     SignupModalComponent,

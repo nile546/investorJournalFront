@@ -12,12 +12,14 @@ export namespace ModalReducer {
     export interface State {
         isModalOpen: boolean;
         modalComponent: ModalComponents | null;
+        showSpinner: boolean;
     }
 
 
     const initialState: State = {
         isModalOpen: false,
         modalComponent: null,
+        showSpinner: false,
     }
 
 
@@ -33,11 +35,20 @@ export namespace ModalReducer {
             }
         }),
 
-        on(ModalActions.close, (state: State): State => ({
-            ...state,
-            isModalOpen: false,
-            modalComponent: null
-        }))
+        on(ModalActions.close, (state: State): State => {
+            return {
+                ...state,
+                isModalOpen: false,
+                modalComponent: null
+            }
+        }),
+
+        on(ModalActions.showSpinner, (state: State, action: any): State => {
+            return {
+                ...state,
+                showSpinner: action.status
+            }
+        })
 
     );
 }

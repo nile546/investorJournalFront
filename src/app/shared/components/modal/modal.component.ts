@@ -8,23 +8,23 @@ import { ConfirmSignupModalComponent } from 'src/app/modules/user/confirm-signup
 import { SigninModalComponent } from 'src/app/modules/user/signin-modal/signin-modal.component';
 import { SignupModalComponent } from 'src/app/modules/user/signup-modal/signup-modal.component';
 
+
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
-import { Modal } from '../abstract/modal/modal';
 
 
 export enum ModalComponents {
   Signup = 1,
   Signin,
-  CoonfirmSignup,
+  ConfirmSignup,
+  SignupResult,
 }
 
 
-const allowedModalComponents = new Map<ModalComponents, Type<Modal>>([
+const allowedModalComponents = new Map<ModalComponents, any>([
   [ModalComponents.Signup, SignupModalComponent],
   [ModalComponents.Signin, SigninModalComponent],
-  [ModalComponents.CoonfirmSignup, ConfirmSignupModalComponent]
-
+  [ModalComponents.ConfirmSignup, ConfirmSignupModalComponent],
 ])
 
 

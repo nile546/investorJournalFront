@@ -1,9 +1,14 @@
-import { Directive } from "@angular/core";
+import { ChangeDetectorRef, Directive } from "@angular/core";
+import { Observable } from "rxjs";
 
 @Directive()
 export abstract class Modal {
 
-    constructor() {
+    public loading: Observable<boolean> | undefined;
+
+    constructor(
+        
+    ) {
 
     }
 
