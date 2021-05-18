@@ -11,6 +11,7 @@ import { SectionSliderComponent } from './section-slider/section-slider.componen
 import { Slide1Component } from './section-slider/slide1/slide1.component';
 import { Slide2Component } from './section-slider/slide2/slide2.component';
 import { Slide3Component } from './section-slider/slide3/slide3.component';
+import { FooterComponent } from "./footer/footer.component";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { Slide3Component } from './section-slider/slide3/slide3.component';
         Slide1Component,
         Slide2Component,
         Slide3Component,
+        FooterComponent,
     ],
     imports:[
         LandingRoutingModule,
