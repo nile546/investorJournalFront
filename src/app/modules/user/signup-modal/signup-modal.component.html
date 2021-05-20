@@ -43,6 +43,9 @@
 <tr-spinner [loading]="loading | async"></tr-spinner>
 
 <ng-template #message>
-    <span>Спасибо за регистрацмю! <br> На указанный электронный адрес отправили письмо с 
-    инструкцией по активации аккаунта.</span>
+    <div class="modal__description">Спасибо за регистрацмю! <br> На указанный при регистрации электронный адрес
+        отправили письмо с инструкцией по активации вашего аккаунта.</div>
+    <button class="btn__primary"
+        (click)="close()"
+        type="button">Закрыть</button>
 </ng-template>

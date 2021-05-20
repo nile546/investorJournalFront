@@ -17,7 +17,6 @@ export enum ModalComponents {
   Signup = 1,
   Signin,
   ConfirmSignup,
-  SignupResult,
 }
 
 

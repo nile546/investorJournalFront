@@ -60,19 +60,24 @@ export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
     currentUser.password = formValues.password;
 
     this._store.dispatch(ModalActions.showSpinner({ status: true }));
-    this._store.dispatch(UserActions.signup({ user: currentUser }));
-
     this._store.select(UserSelectors.signupResult).pipe(
       take(1),
       finalize(() => {
         this._store.dispatch(ModalActions.showSpinner({ status: false }));
+        this._changeDetectorRef.detectChanges();
       }),
       takeUntil(this._unsubscribe),
-    )
+      )
       .subscribe((result: Result | null) => {
         this.result = result;
-        this._changeDetectorRef.detectChanges();
-      })
+      });
+
+    this._store.dispatch(UserActions.signup({ user: currentUser }));    
+  }
+
+
+  public close(): void {
+    this._store.dispatch(ModalActions.close());
   }
 
 
