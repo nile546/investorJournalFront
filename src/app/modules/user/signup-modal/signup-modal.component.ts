@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { result } from 'lodash';
 import { Subject } from 'rxjs';
-import { finalize, take, takeUntil } from 'rxjs/operators';
+import { filter, finalize, take, takeUntil } from 'rxjs/operators';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Result } from 'src/app/shared/models/result/result.model';
@@ -61,18 +62,16 @@ export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
 
     this._store.dispatch(ModalActions.showSpinner({ status: true }));
     this._store.select(UserSelectors.signupResult).pipe(
-      take(1),
-      finalize(() => {
-        this._store.dispatch(ModalActions.showSpinner({ status: false }));
-        this._changeDetectorRef.detectChanges();
-      }),
+      filter(result => !!result),
       takeUntil(this._unsubscribe),
-      )
+    )
       .subscribe((result: Result | null) => {
+        this._store.dispatch(ModalActions.showSpinner({ status: false }));
         this.result = result;
+        this._changeDetectorRef.detectChanges();
       });
 
-    this._store.dispatch(UserActions.signup({ user: currentUser }));    
+    this._store.dispatch(UserActions.signup({ user: currentUser }));
   }
 
 
