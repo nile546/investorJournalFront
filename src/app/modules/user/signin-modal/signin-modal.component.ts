@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Injector } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Creditials } from 'src/app/shared/models/creditials/creditials.models';
 import { UserActions } from '../store/user/user.actions';
 
@@ -11,13 +12,15 @@ import { UserActions } from '../store/user/user.actions';
   styleUrls: ['./signin-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SigninModalComponent implements OnInit {
+export class SigninModalComponent extends Modal implements OnInit {
 
   public signinForm: FormGroup = this.signinFormInit();
 
   constructor(
-    private _store: Store
-  ) { }
+    _injector: Injector,
+  ) {
+    super(_injector);
+  }
 
   ngOnInit(): void {
   }
@@ -34,7 +37,7 @@ export class SigninModalComponent implements OnInit {
     creditials.password = this.signinForm.value.password;
 
 
-    this._store.dispatch(UserActions.signin({ creditials }));
+    this.store.dispatch(UserActions.signin({ creditials }));
   }
 
 

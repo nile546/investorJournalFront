@@ -15,6 +15,8 @@ export namespace UserReducer {
         user: User | null;
         creditials: Creditials | null;
         signupResult: Result | null;
+        signupToken: string | null;
+        confirmSignupResult: Result | null;
     }
 
 
@@ -22,6 +24,8 @@ export namespace UserReducer {
         user: null,
         creditials: null,
         signupResult: null,
+        signupToken: null,
+        confirmSignupResult: null,
     }
 
 
@@ -32,21 +36,35 @@ export namespace UserReducer {
         on(UserActions.signupResult, (state: State, action: any): State => {
             return {
                 ...state,
-                signupResult: action.result
+                signupResult: action.result,
+            }
+        }),
+
+        on(UserActions.confirmSignup, (state: State, action: any): State => {
+            return {
+                ...state,
+                signupToken: action.token,
             }
         }),
 
         on(UserActions.signin, (state: State, action: any): State => {
             return {
                 ...state,
-                creditials: action.creditials
+                creditials: action.creditials,
             }
         }),
 
         on(UserActions.signin, (state: State, action: any): State => {
             return {
                 ...state,
-                creditials: action.creditials
+                creditials: action.creditials,
+            }
+        }),
+
+        on(UserActions.confirmSignupResult, (state: State, action: any): State => {
+            return {
+                ...state,
+                confirmSignupResult: action.result,
             }
         }),
     );

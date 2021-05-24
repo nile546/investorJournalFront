@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { result } from 'lodash';
@@ -28,23 +28,19 @@ export interface SignupFormValues {
   styleUrls: ['./signup-modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
+export class SignupModalComponent extends Modal implements OnInit {
 
   public signupForm: FormGroup = this.signupFormInit();
-  public result: Result | null = null;
-
-  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(
-    private _store: Store,
-    private _changeDetectorRef: ChangeDetectorRef,
+    _injector: Injector,
   ) {
-    super();
+    super(_injector);
   }
 
 
   ngOnInit(): void {
-    this.loading = this._store.select(ModalSelectors.showSpinner);
+    this.loading = this.store.select(ModalSelectors.showSpinner);
   }
 
 
@@ -60,23 +56,18 @@ export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
     currentUser.email = formValues.email;
     currentUser.password = formValues.password;
 
-    this._store.dispatch(ModalActions.showSpinner({ status: true }));
-    this._store.select(UserSelectors.signupResult).pipe(
+    this.store.dispatch(ModalActions.showSpinner({ status: true }));
+    this.store.select(UserSelectors.signupResult).pipe(
       filter(result => !!result),
-      takeUntil(this._unsubscribe),
+      takeUntil(this.unsubscribe),
     )
       .subscribe((result: Result | null) => {
-        this._store.dispatch(ModalActions.showSpinner({ status: false }));
+        this.store.dispatch(ModalActions.showSpinner({ status: false }));
         this.result = result;
-        this._changeDetectorRef.detectChanges();
+        this.changeDetectorRef.detectChanges();
       });
 
-    this._store.dispatch(UserActions.signup({ user: currentUser }));
-  }
-
-
-  public close(): void {
-    this._store.dispatch(ModalActions.close());
+    this.store.dispatch(UserActions.signup({ user: currentUser }));
   }
 
 
@@ -107,11 +98,5 @@ export class SignupModalComponent extends Modal implements OnInit, OnDestroy {
 
   private comparePasswordsValidator(control: AbstractControl): { [key: string]: boolean } | null {
     return control.value.password !== control.value.checkPassword ? { comparePasswordsValidator: true } : null;
-  }
-
-
-  ngOnDestroy(): void {
-    this._unsubscribe.next(true);
-    this._unsubscribe.unsubscribe();
   }
 }

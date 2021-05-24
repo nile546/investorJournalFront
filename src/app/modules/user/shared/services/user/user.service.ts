@@ -36,4 +36,12 @@ export class UserService {
       }
     )
   }
+
+
+  public confirmSignup(token: string): Observable<Result> {
+    return this._httpClient.post<Result>(
+      'users/confirm-signup',
+      { token },
+    )
+  }
 }

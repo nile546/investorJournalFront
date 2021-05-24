@@ -6,6 +6,6 @@ export enum ResultStatuses {
 
 export class Result {
     public status: ResultStatuses | undefined;
-    public payload: any;
-    public errorMessage: string | undefined;
+    public payload?: unknown;
+    public errorMessage?: string | undefined | null;
 }

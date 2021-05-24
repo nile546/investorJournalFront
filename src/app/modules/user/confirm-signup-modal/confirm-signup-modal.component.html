@@ -2,10 +2,32 @@
     <h2>Активация</h2>
 </div>
 
-    <div class="modal__content">
-        Подождите ...
+<div class="modal__content">
+    <div class="modal__description">
+        <ng-container *ngIf="!result; else resultMessage">
+            <p>Подождите ...</p>
+            <p>Производится активация вашего аккаунта на сервере, это может занять некоторое время.</p>
+        </ng-container>
     </div>
 
-<div class="modal__footer">
-    Забыли пароль? <a>Восстановить</a>
+    <button class="btn__primary"
+        (click)="close()"
+        type="button">Закрыть</button>
 </div>
+
+<tr-spinner [loading]="loading | async"></tr-spinner>
+
+<ng-template #resultMessage>
+    <ng-container [ngSwitch]="result.status">
+        <ng-container *ngSwitchCase="resultStatuses.Ok">
+            <p class="strong">Ваш аккаунт успешно активирован!</p>
+            <p>Для продолжения работы под созданным и активированным аккаунтом войдите в систему.</p>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="resultStatuses.Error">
+            <p class="strong">Ошибка активации аккаунта.</p>
+            <p>Для устранения ошибки свяжитесь со службой поддержки или повторите регистрацию позже.</p>
+        </ng-container>
+
+    </ng-container>
+</ng-template>

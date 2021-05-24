@@ -25,6 +25,20 @@ export class UserEffects {
     })
 
 
+    public confirmSignup = createEffect(() => {
+        return this._actions.pipe(
+            ofType(UserActions.confirmSignup),
+            exhaustMap(action => {
+                return this._userService.confirmSignup(action.token).pipe(
+                    map((result: Result) => {
+                        return UserActions.confirmSignupResult({ result });
+                    })
+                );
+            })
+        )
+    })
+
+
     public signin = createEffect(() => {
         return this._actions.pipe(
             ofType(UserActions.signin),

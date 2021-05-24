@@ -13,6 +13,7 @@ export namespace ModalReducer {
         isModalOpen: boolean;
         modalComponent: ModalComponents | null;
         showSpinner: boolean;
+        payload: unknown;
     }
 
 
@@ -20,6 +21,7 @@ export namespace ModalReducer {
         isModalOpen: false,
         modalComponent: null,
         showSpinner: false,
+        payload: null,
     }
 
 
@@ -31,7 +33,8 @@ export namespace ModalReducer {
             return {
                 ...state,
                 isModalOpen: true,
-                modalComponent: action.modalComponent
+                modalComponent: action.modalComponent,
+                payload: action.payload,
             }
         }),
 

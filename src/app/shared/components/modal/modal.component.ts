@@ -1,8 +1,8 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectorRef, Type } from '@angular/core';
+import { ChangeDetectorRef } from '@angular/core';
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subject } from 'rxjs';
+import { combineLatest, Subject, zip } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ConfirmSignupModalComponent } from 'src/app/modules/user/confirm-signup-modal/confirm-signup-modal.component';
 import { SigninModalComponent } from 'src/app/modules/user/signin-modal/signin-modal.component';
@@ -11,6 +11,7 @@ import { SignupModalComponent } from 'src/app/modules/user/signup-modal/signup-m
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
+import { Modal } from '../abstract/modal/modal';
 
 
 export enum ModalComponents {
@@ -65,11 +66,14 @@ export class ModalComponent implements OnInit, OnDestroy {
 
       }),
       switchMap((_: boolean) => {
-        return this._store.select(ModalSelectors.modalComponent);
+        return combineLatest([
+          this._store.select(ModalSelectors.modalComponent),
+          this._store.select(ModalSelectors.payload),
+        ]);
       }),
       takeUntil(this._unsubsribe),
     )
-      .subscribe((modalComponent: any) => {
+      .subscribe(([modalComponent, payload]: [ModalComponents | null, unknown]) => {
         if (!modalComponent) {
           this.content?.clear();
           return;
@@ -81,7 +85,12 @@ export class ModalComponent implements OnInit, OnDestroy {
         }
 
         const factory = this._componentFactoryResolver.resolveComponentFactory(component);
-        this.content?.createComponent(factory);
+        const modalRef = this.content?.createComponent(factory);
+        if (!modalRef) {
+          return;
+        }
+
+        (modalRef.instance as Modal).payload = payload;
         this._changeDetectorRef.detectChanges();
       });
   }
