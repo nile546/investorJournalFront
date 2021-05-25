@@ -5,8 +5,8 @@
 <div class="modal__content">
     <div class="modal__description">
         <ng-container *ngIf="!result; else resultMessage">
-            <p>Подождите ...</p>
-            <p>Производится активация вашего аккаунта на сервере, это может занять некоторое время.</p>
+            <p class="phrase strong">Подождите ...</p>
+            <p class="phrase">Производится активация вашего аккаунта на сервере, это может занять некоторое время.</p>
         </ng-container>
     </div>
 
@@ -18,15 +18,15 @@
 <tr-spinner [loading]="loading | async"></tr-spinner>
 
 <ng-template #resultMessage>
-    <ng-container [ngSwitch]="result.status">
+    <ng-container [ngSwitch]="result?.status">
         <ng-container *ngSwitchCase="resultStatuses.Ok">
-            <p class="strong">Ваш аккаунт успешно активирован!</p>
-            <p>Для продолжения работы под созданным и активированным аккаунтом войдите в систему.</p>
+            <p class="phrase strong">Ваш аккаунт успешно активирован!</p>
+            <p class="phrase">Для продолжения работы под созданным и активированным аккаунтом войдите в систему.</p>
         </ng-container>
 
         <ng-container *ngSwitchCase="resultStatuses.Error">
-            <p class="strong">Ошибка активации аккаунта.</p>
-            <p>Для устранения ошибки свяжитесь со службой поддержки или повторите регистрацию позже.</p>
+            <p class="phrase strong">Ошибка активации аккаунта.</p>
+            <p class="phrase">Для устранения ошибки свяжитесь со службой поддержки или повторите регистрацию позже.</p>
         </ng-container>
 
     </ng-container>
