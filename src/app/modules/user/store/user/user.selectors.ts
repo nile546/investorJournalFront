@@ -8,4 +8,6 @@ export namespace UserSelectors {
 
     export const signupResult = createSelector(userState, (state: UserReducer.State) => state.signupResult);
     export const confirmSignupResult = createSelector(userState, (state: UserReducer.State) => state.confirmSignupResult);
+
+    export const signinResult = createSelector(userState, (state: UserReducer.State) => state.signinResult);
 }

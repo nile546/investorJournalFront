@@ -2,25 +2,41 @@
     <h2>Вход</h2>
 </div>
 
-<form [formGroup]="signinForm">
-    <div class="modal__content">
-        <input class="control__input"
-            type="text"
-            placeholder="Электронная почта"
-            formControlName="email">
+<div class="modal__content">
+    <ng-container *ngIf="result?.status !== resultStatuses.Error; else error">
+        <form [formGroup]="signinForm">
+            <input class="control__input"
+                type="text"
+                placeholder="Электронная почта"
+                formControlName="email">
 
-        <input class="control__input"
-            placeholder="Пароль"
-            type="password"
-            formControlName="password">
+            <input class="control__input"
+                placeholder="Пароль"
+                type="password"
+                formControlName="password">
+        </form>
 
         <button class="btn__primary"
             (click)="signin()"
             type="button"
             [disabled]="signinForm.invalid">Войти</button>
-    </div>
-</form>
+    </ng-container>
+</div>
+
+<tr-spinner [loading]="loading | async"></tr-spinner>
 
 <div class="modal__footer">
     Забыли пароль? <a>Восстановить</a>
 </div>
+
+
+<ng-template #error>
+    <div class="modal__description">
+        <p class="phrase strong">Ошибка входа!</p>
+        <p class="phrase">Проверьте пожалуйста введённые параметры, электронную почту, пароль и попробуйте повторить
+            входа еще раз.</p>
+    </div>
+    <button class="btn__primary"
+        (click)="close()"
+        type="button">Закрыть</button>
+</ng-template>

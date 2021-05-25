@@ -1,9 +1,14 @@
 import { Component, OnInit, ChangeDetectionStrategy, Injector } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { filter, takeUntil } from 'rxjs/operators';
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Creditials } from 'src/app/shared/models/creditials/creditials.models';
+import { Result } from 'src/app/shared/models/result/result.model';
+import { ModalActions } from 'src/app/store/modal/modal.actions';
+import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
 import { UserActions } from '../store/user/user.actions';
+import { UserSelectors } from '../store/user/user.selectors';
 
 
 @Component({
@@ -23,6 +28,7 @@ export class SigninModalComponent extends Modal implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loading = this.store.select(ModalSelectors.showSpinner);
   }
 
 
@@ -31,10 +37,20 @@ export class SigninModalComponent extends Modal implements OnInit {
       return;
     }
 
-
     const creditials = new Creditials();
     creditials.email = this.signinForm.value.email;
     creditials.password = this.signinForm.value.password;
+
+    this.store.dispatch(ModalActions.showSpinner({ status: true }));
+    this.store.select(UserSelectors.signinResult).pipe(
+      filter(result => !!result),
+      takeUntil(this.unsubscribe),
+    )
+      .subscribe((result: Result | null) => {
+        this.store.dispatch(ModalActions.showSpinner({ status: false }));
+        this.result = result;
+        this.changeDetectorRef.detectChanges();
+      });
 
 
     this.store.dispatch(UserActions.signin({ creditials }));

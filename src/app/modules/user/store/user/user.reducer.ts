@@ -17,6 +17,8 @@ export namespace UserReducer {
         signupResult: Result | null;
         signupToken: string | null;
         confirmSignupResult: Result | null;
+
+        signinResult: Result | null;
     }
 
 
@@ -26,6 +28,8 @@ export namespace UserReducer {
         signupResult: null,
         signupToken: null,
         confirmSignupResult: null,
+
+        signinResult: null,
     }
 
 
@@ -65,6 +69,13 @@ export namespace UserReducer {
             return {
                 ...state,
                 confirmSignupResult: action.result,
+            }
+        }),
+
+        on(UserActions.signinResult, (state: State, action: any): State => {
+            return {
+                ...state,
+                signinResult: action.result,
             }
         }),
     );
