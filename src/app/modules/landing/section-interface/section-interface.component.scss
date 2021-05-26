@@ -71,11 +71,52 @@
         color: white;
     }
 
-    &__feat1{
-       color: white; 
-        transform: translate(-12.4rem,8.7rem);
-        font-size: 1.125rem;
-        text-shadow: 5px -2px 8px rgba(0,0,0,0.5);
+    &__Row_ft{
+        display:flex;
     }
-    
+
+    &__ft4{
+        margin-top: -2rem;
+    }
+
+    &__ft5{
+        margin-top: -5rem;
+    }
+
+    &__col{
+        position: relative;
+        color:$white;
+        text-align: center;
+        font-weight: 500;
+        text-shadow: 1px 1px 2px black;
+    }
+
+    &__ft_title{
+        font-size: 1.1rem;
+        line-height: 2rem;
+    }
+
+    &__ft1_disc{
+        transform: translateY(8.5rem);
+        font-size: 0.875rem;
+    }
+
+    &__ft2_disc{
+        transform: translate(0.1rem, 6.2rem);
+        font-size: 1.1rem;
+    }
+
+    &__ft3_disc{
+        transform: translate(0.3rem, 8.5rem);
+    }
+
+    &__ft4_disc{
+        transform: translate(0.1rem, 4.3rem);
+        font-size: 1.1rem;
+    }
+
+    &__ft5_disc{
+        transform: translate(0.2rem, 5.2rem);
+        font-size: 0.875rem;
+    }
 }
