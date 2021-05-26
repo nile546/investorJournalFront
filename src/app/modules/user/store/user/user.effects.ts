@@ -45,13 +45,7 @@ export class UserEffects {
             exhaustMap(action => {
                 return this._userService.signin(action.creditials).pipe(
                     map((result: Result) => {
-                        if (result.status === ResultStatuses.Ok) {
-                            return UserActions.signinSuccess();
-                        }
-
-                        return UserActions.signinFailure(
-                            { errorMessage: result.errorMessage || COMMON_ERROR_MESSAGE }
-                        );
+                        return UserActions.signinResult({ result });
                     })
                 );
             })

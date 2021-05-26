@@ -12,9 +12,5 @@ export namespace UserActions {
     export const confirmSignupResult = createAction('[Confirm Signup Modal Component] Confirm Sign Up Result', props<{ result: Result }>());
 
     export const signin = createAction('[Singin Modal Component] Sign In', props<{ creditials: Creditials }>());
-    export const signinSuccess = createAction('[Signin Modal Component] Sign In Success');
-    export const signinFailure = createAction(
-        '[Signin Modal Component] Sign In Failure',
-        props<{ errorMessage: string }>()
-    );
+    export const signinResult = createAction('[Signin Modal Component] Sign In Result', props<{ result: Result }>());
 }
