@@ -13,4 +13,8 @@ export namespace UserActions {
 
     export const signin = createAction('[Singin Modal Component] Sign In', props<{ creditials: Creditials }>());
     export const signinResult = createAction('[Signin Modal Component] Sign In Result', props<{ result: Result }>());
+
+    export const setCurrentUser = createAction('[Signin Modal Component] Sign In Set Current User', props<{ currentUser: User }>());
+
+    export const clearCredentials = createAction('[Signin Modal Component] Sign In Clear Credentials');
 }
