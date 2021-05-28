@@ -1,9 +1,18 @@
 <ul class="menu__wrapper">
-    <li class="menu__item"><p class="menu__link">О проекте</p></li>
-    <li class="menu__item"><a href="#features"
-            class="menu__link">Преимущества</a></li>
-    <li class="menu__item"><a href="#interface"
-            class="menu__link">Интерфейс</a></li>
-    <li class="menu__item"><p class="menu__link">Отзывы</p></li>
-    <li class="menu__item"><p class="menu__link">Контакты</p></li>
+        <!-- <li class="menu__item">
+                <p class="menu__link">О проекте</p>
+        </li> -->
+        <li class="menu__item"><a href="#features"
+                        class="menu__link">Преимущества</a></li>
+        <li class="menu__item"><a href="#interface"
+                        class="menu__link">Интерфейс</a></li>
+        <!-- <li class="menu__item">
+                <p class="menu__link">Отзывы</p>
+        </li> -->
+        <!-- <li class="menu__item">
+                <p class="menu__link">Контакты</p>
+        </li> -->
+        <li class="menu__item"
+                *ngIf="(currentUser | async)?.isActive"><a routerLink="/dashboard"
+                        class="menu__link">Журнал</a></li>
 </ul>
