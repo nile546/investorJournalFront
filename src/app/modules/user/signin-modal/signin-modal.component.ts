@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Creditials } from 'src/app/shared/models/creditials/creditials.models';
-import { Result } from 'src/app/shared/models/result/result.model';
+import { Result, ResultStatuses } from 'src/app/shared/models/result/result.model';
+import { User } from 'src/app/shared/models/user/user.model';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
 import { UserActions } from '../store/user/user.actions';
@@ -49,7 +50,14 @@ export class SigninModalComponent extends Modal implements OnInit {
       .subscribe((result: Result | null) => {
         this.store.dispatch(ModalActions.showSpinner({ status: false }));
         this.result = result;
-        this.changeDetectorRef.detectChanges();
+
+        if (result?.status !== ResultStatuses.Ok ) {
+          this.changeDetectorRef.detectChanges();
+          return;
+        }
+
+        this.store.dispatch(UserActions.setCurrentUser({ currentUser: result.payload as User }));
+        this.store.dispatch(ModalActions.close());
       });
 
 

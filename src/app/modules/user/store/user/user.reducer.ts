@@ -8,11 +8,12 @@ import { UserActions } from "./user.actions";
 
 export namespace UserReducer {
 
-    export const CURRENT_USER = 'currentUser';
+    export const USER = 'user';
 
 
     export interface State {
         user: User | null;
+        currentUser: User | null;
         creditials: Creditials | null;
         signupResult: Result | null;
         signupToken: string | null;
@@ -24,6 +25,7 @@ export namespace UserReducer {
 
     const initialState: State = {
         user: null,
+        currentUser: null,
         creditials: null,
         signupResult: null,
         signupToken: null,
@@ -78,5 +80,19 @@ export namespace UserReducer {
                 signinResult: action.result,
             }
         }),
+
+        on(UserActions.setCurrentUser, (state: State, action: any): State => {
+            return {
+                ...state,
+                currentUser: action.currentUser,
+            }
+        }),
+
+        on(UserActions.clearCredentials, (state: State): State => {
+            return {
+                ...state,
+                creditials: null,
+            }
+        })
     );
 }
