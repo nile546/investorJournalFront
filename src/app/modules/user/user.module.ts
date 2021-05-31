@@ -10,6 +10,7 @@ import { UserEffects } from './store/user/user.effects';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
 import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-signup-modal.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { UserGuard } from './shared/guards/user-guard';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
   ],
   providers: [
     UserService,
+    UserGuard,
   ]
 })
 export class UserModule { }
