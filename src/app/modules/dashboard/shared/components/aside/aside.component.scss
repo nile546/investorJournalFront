@@ -1,0 +1,11 @@
+@import 'variables';
+
+.aside {
+    background-color: $darkGray;
+    color: $white;
+    padding: 0.875rem;
+
+    &__logotype {
+        transform: scale(0.8);
+    }
+}
