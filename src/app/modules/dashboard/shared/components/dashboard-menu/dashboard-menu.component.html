@@ -1,1 +1,32 @@
-<p>dashboard-menu works!</p>
+<ul class="dashboard-menu">
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
+            [routerLink]="STATISTICS">
+            <span class="icon-pie-chart dashboard-menu__icon"></span>Статистика
+        </a>
+    </li>
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
+            [routerLink]="STOCKS">
+            <span class="icon-stack dashboard-menu__icon"></span>Акции
+        </a>
+    </li>
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
+            [routerLink]="CRYPTOS">
+            <span class="icon-keyboard dashboard-menu__icon"></span>Криптовалюта
+        </a>
+    </li>
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
+            [routerLink]="DEPOSITS">
+            <span class="icon-briefcase dashboard-menu__icon"></span>Вклады
+        </a>
+    </li>
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
+            [routerLink]="PREDICT">
+            <span class="icon-stats-bars2 dashboard-menu__icon"></span>Прогноз
+        </a>
+    </li>
+</ul>

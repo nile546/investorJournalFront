@@ -1,12 +1,13 @@
 <div class="profile__wrapper">
     <ng-container *ngIf="!(currentUser | async); else user">
         <a (click)="signin()">Вход</a>&nbsp;/&nbsp;<a (click)="signup()">Регистрация</a>
-        <div class="icon-account_circle profile__icon"></div>
+        <div class="profile__icon"><img src="assets/img/profile.svg"
+                alt="Профиль"></div>
     </ng-container>
 </div>
 
 
 <ng-template #user>
     <span>{{ (currentUser | async)?.login }}</span>
-    <span class="profile__icon">{{ (currentUser | async)?.login?.slice(0,1) | uppercase }}</span>
+    <span class="profile__avatar">{{ (currentUser | async)?.login?.slice(0,1) | uppercase }}</span>
 </ng-template>
