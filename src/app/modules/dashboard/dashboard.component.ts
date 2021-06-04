@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { ChangeDetectionStrategy, Component, Inject, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DASHBOARD } from 'src/app/shared/constants/routes';
@@ -14,7 +15,7 @@ import { STATISTICS } from './shared/constants/routes';
 export class DashboardComponent implements OnInit {
 
   constructor(
-    private _router: Router
+    private _router: Router,
   ) { }
 
   ngOnInit(): void {

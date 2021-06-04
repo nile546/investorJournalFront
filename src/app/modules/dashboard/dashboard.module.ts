@@ -4,16 +4,20 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { UserModule } from '../user/user.module';
-import { AsideComponent } from './shared/components/aside/aside.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { ComponentsModule } from './shared/components/components.module';
 
 
 @NgModule({
-  declarations: [DashboardComponent, AsideComponent, StatisticsComponent],
+  declarations: [
+    DashboardComponent,
+    StatisticsComponent,
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     UserModule,
+    ComponentsModule,
   ],
 
 })
