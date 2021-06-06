@@ -19,6 +19,7 @@ export class StocksComponent implements OnInit {
 
     this.settings = {
       tableClass: 'datatable',
+      sortHeaderClass: 'header-link',
       dataNotFoundPhrase: 'Данные не найдены',
     } as TableSettings;
 

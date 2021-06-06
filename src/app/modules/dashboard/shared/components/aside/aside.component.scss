@@ -13,6 +13,8 @@
     padding: 1rem;
     border-bottom-right-radius: $commonBorderRadius;
     border-top-right-radius: $commonBorderRadius;
+    border: 3px solid darken($darkGray, 10%);
+    border-left: none;
 
     &__logotype {}
 
