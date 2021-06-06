@@ -4,8 +4,8 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Result, ResultStatuses } from 'src/app/shared/models/result/result.model';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
-import { UserActions } from '../store/user/user.actions';
-import { UserSelectors } from '../store/user/user.selectors';
+import { AuthActions } from '../store/user/auth.actions';
+import { AuthSelectors } from '../store/user/auth.selectors';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class ConfirmSignupModalComponent extends Modal {
     }
 
     this.store.dispatch(ModalActions.showSpinner({ status: true }));
-    this.store.select(UserSelectors.confirmSignupResult).pipe(
+    this.store.select(AuthSelectors.confirmSignupResult).pipe(
       filter(result => !!result),
       takeUntil(this.unsubscribe),
     )
@@ -40,6 +40,6 @@ export class ConfirmSignupModalComponent extends Modal {
         this.changeDetectorRef.detectChanges();
       });
 
-    this.store.dispatch(UserActions.confirmSignup({ token: this.payload as string }));
+    this.store.dispatch(AuthActions.confirmSignup({ token: this.payload as string }));
   }
 }

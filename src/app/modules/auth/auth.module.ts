@@ -5,12 +5,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 
 import { SignupModalComponent } from './signup-modal/signup-modal.component';
-import { UserService } from './shared/services/user/user.service';
-import { UserEffects } from './store/user/user.effects';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
 import { ConfirmSignupModalComponent } from './confirm-signup-modal/confirm-signup-modal.component';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
 import { UserGuard } from './shared/guards/user-guard';
+import { AuthService } from './shared/services/user/auth.service';
+import { AuthEffects } from './store/user/auth.effects';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { UserGuard } from './shared/guards/user-guard';
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    EffectsModule.forFeature([UserEffects]),
+    EffectsModule.forFeature([AuthEffects]),
     ComponentsModule
   ],
   declarations: [
@@ -27,8 +27,8 @@ import { UserGuard } from './shared/guards/user-guard';
     ConfirmSignupModalComponent,
   ],
   providers: [
-    UserService,
+    AuthService,
     UserGuard,
   ]
 })
-export class UserModule { }
+export class AuthModule { }

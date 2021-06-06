@@ -2,11 +2,11 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ChangeDetectionStrategy, Component, ComponentFactoryResolver, Inject, OnDestroy, OnInit, Renderer2, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { combineLatest, Subject, zip } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
 import { switchMap, takeUntil, tap } from 'rxjs/operators';
-import { ConfirmSignupModalComponent } from 'src/app/modules/user/confirm-signup-modal/confirm-signup-modal.component';
-import { SigninModalComponent } from 'src/app/modules/user/signin-modal/signin-modal.component';
-import { SignupModalComponent } from 'src/app/modules/user/signup-modal/signup-modal.component';
+import { ConfirmSignupModalComponent } from 'src/app/modules/auth/confirm-signup-modal/confirm-signup-modal.component';
+import { SigninModalComponent } from 'src/app/modules/auth/signin-modal/signin-modal.component';
+import { SignupModalComponent } from 'src/app/modules/auth/signup-modal/signup-modal.component';
 
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';

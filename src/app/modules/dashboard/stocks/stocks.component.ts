@@ -20,6 +20,8 @@ export class StocksComponent implements OnInit {
     this.settings = {
       tableClass: 'datatable',
       sortHeaderClass: 'header-link',
+      headerRowClass: 'header-row',
+      rowClass: 'row',
       dataNotFoundPhrase: 'Данные не найдены',
     } as TableSettings;
 
@@ -29,12 +31,31 @@ export class StocksComponent implements OnInit {
         id: 'id',
         title: '№',
         sortable: true,
-      } as Column,
-      {
-        id: '',
+      }, {
+        id: 'stock.name',
         title: 'Тикер',
-        sortable: true,
-      } as Column,
+      }, {
+        id: 'strategy.name',
+        title: 'Стратегия',
+      }, {
+        id: 'strategy.name',
+        title: 'Стратегия',
+      }, {
+        id: 'pattern.name',
+        title: 'Паттерн',
+      }, {
+        id: 'position',
+        title: 'Позиция',
+      }, {
+        id: 'timeFrame',
+        title: 'Таймфрейм',
+      }, {
+        id: 'openDate',
+        title: 'Дата'
+      }, {
+        id: 'price',
+        title: 'ТВХ',
+      }
     ];
 
 

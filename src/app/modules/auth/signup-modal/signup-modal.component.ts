@@ -1,17 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
-import { result } from 'lodash';
-import { Subject } from 'rxjs';
-import { filter, finalize, take, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Result } from 'src/app/shared/models/result/result.model';
 import { User } from 'src/app/shared/models/user/user.model';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
-import { UserActions } from '../store/user/user.actions';
-import { UserSelectors } from '../store/user/user.selectors';
+import { AuthActions } from '../store/user/auth.actions';
+import { AuthSelectors } from '../store/user/auth.selectors';
 
 
 export interface SignupFormValues {
@@ -57,7 +54,7 @@ export class SignupModalComponent extends Modal implements OnInit {
     currentUser.password = formValues.password;
 
     this.store.dispatch(ModalActions.showSpinner({ status: true }));
-    this.store.select(UserSelectors.signupResult).pipe(
+    this.store.select(AuthSelectors.signupResult).pipe(
       filter(result => !!result),
       takeUntil(this.unsubscribe),
     )
@@ -67,7 +64,7 @@ export class SignupModalComponent extends Modal implements OnInit {
         this.changeDetectorRef.detectChanges();
       });
 
-    this.store.dispatch(UserActions.signup({ user: currentUser }));
+    this.store.dispatch(AuthActions.signup({ user: currentUser }));
   }
 
 

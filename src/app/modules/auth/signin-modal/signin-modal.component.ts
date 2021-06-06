@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Injector } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+
 import { filter, takeUntil } from 'rxjs/operators';
 import { Modal } from 'src/app/shared/components/abstract/modal/modal';
 import { Creditials } from 'src/app/shared/models/creditials/creditials.models';
@@ -8,8 +8,8 @@ import { Result, ResultStatuses } from 'src/app/shared/models/result/result.mode
 import { User } from 'src/app/shared/models/user/user.model';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
-import { UserActions } from '../store/user/user.actions';
-import { UserSelectors } from '../store/user/user.selectors';
+import { AuthActions } from '../store/user/auth.actions';
+import { AuthSelectors } from '../store/user/auth.selectors';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class SigninModalComponent extends Modal implements OnInit {
     creditials.password = this.signinForm.value.password;
 
     this.store.dispatch(ModalActions.showSpinner({ status: true }));
-    this.store.select(UserSelectors.signinResult).pipe(
+    this.store.select(AuthSelectors.signinResult).pipe(
       filter(result => !!result),
       takeUntil(this.unsubscribe),
     )
@@ -51,17 +51,17 @@ export class SigninModalComponent extends Modal implements OnInit {
         this.store.dispatch(ModalActions.showSpinner({ status: false }));
         this.result = result;
 
-        if (result?.status !== ResultStatuses.Ok ) {
+        if (result?.status !== ResultStatuses.Ok) {
           this.changeDetectorRef.detectChanges();
           return;
         }
 
-        this.store.dispatch(UserActions.setCurrentUser({ currentUser: result.payload as User }));
+        this.store.dispatch(AuthActions.setCurrentUser({ currentUser: result.payload as User }));
         this.store.dispatch(ModalActions.close());
       });
 
 
-    this.store.dispatch(UserActions.signin({ creditials }));
+    this.store.dispatch(AuthActions.signin({ creditials }));
   }
 
 

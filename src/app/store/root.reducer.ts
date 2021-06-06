@@ -1,16 +1,16 @@
 import { ActionReducerMap } from '@ngrx/store';
+import { AuthReducer } from '../modules/auth/store/user/auth.reducer';
 
-import { UserReducer } from '../modules/user/store/user/user.reducer';
 import { ModalReducer } from './modal/modal.reducer';
 
 
 export interface State {
     [ModalReducer.MODAL]: ModalReducer.State,
-    [UserReducer.USER]: UserReducer.State,
+    [AuthReducer.AUTH]: AuthReducer.State,
 }
 
 
 export const rootReducers: ActionReducerMap<State> = {
     [ModalReducer.MODAL]: ModalReducer.reducer,
-    [UserReducer.USER]: UserReducer.reducer,
+    [AuthReducer.AUTH]: AuthReducer.reducer,
 };

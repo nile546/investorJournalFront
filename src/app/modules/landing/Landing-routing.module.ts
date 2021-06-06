@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { LANDING } from "src/app/shared/constants/routes";
-import { CONFIRM_SIGNUP } from "../user/shared/constants/routes";
+import { CONFIRM_SIGNUP } from "../auth/shared/constants/routes";
 import { ConfirmSignupComponent } from "./confirm-signup/confirm-signup.component";
 import { LandingComponent } from "./landing.component";
 

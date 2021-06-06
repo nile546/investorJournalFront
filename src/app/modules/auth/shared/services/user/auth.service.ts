@@ -8,7 +8,7 @@ import { Creditials } from 'src/app/shared/models/creditials/creditials.models';
 
 
 @Injectable()
-export class UserService {
+export class AuthService {
 
   constructor(
     private _httpClient: HttpClient
@@ -17,7 +17,7 @@ export class UserService {
 
   public signup(user: User): Observable<Result> {
     return this._httpClient.post<Result>(
-      'users/signup',
+      'auth/signup',
       {
         login: user.login,
         email: user.email,
@@ -29,7 +29,7 @@ export class UserService {
 
   public signin(creditials: Creditials): Observable<Result> {
     return this._httpClient.post<Result>(
-      'users/signin',
+      'auth/signin',
       {
         email: creditials.email,
         password: creditials.password,
@@ -40,7 +40,7 @@ export class UserService {
 
   public confirmSignup(token: string): Observable<Result> {
     return this._httpClient.post<Result>(
-      'users/confirm-signup',
+      'auth/confirm-signup',
       { token },
     )
   }

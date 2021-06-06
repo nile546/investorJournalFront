@@ -10,10 +10,10 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { rootReducers } from 'src/app/store/root.reducer';
-import { UserModule } from './modules/user/user.module';
 import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
+import { AuthModule } from './modules/auth/auth.module';
 
 
 
@@ -27,7 +27,7 @@ import { RequestInterceptor } from './shared/interceptors/request.interceptor';
     LandingModule,
     DashboardModule,
     ComponentsModule,
-    UserModule,
+    AuthModule,
     StoreModule.forRoot(
       rootReducers,
       {

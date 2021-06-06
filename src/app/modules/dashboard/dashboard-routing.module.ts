@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
 import { DASHBOARD } from "src/app/shared/constants/routes";
-import { UserGuard } from "../user/shared/guards/user-guard";
+import { UserGuard } from "../auth/shared/guards/user-guard";
 import { CryptosComponent } from "./cryptos/cryptos.component";
 import { DashboardComponent } from "./dashboard.component";
 import { DepositsComponent } from "./deposits/deposits.component";

@@ -3,20 +3,20 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { exhaustMap, map, switchMap } from "rxjs/operators";
 
 import { Result } from "src/app/shared/models/result/result.model";
-import { UserService } from "../../shared/services/user/user.service";
-import { UserActions } from "./user.actions";
+import { AuthService } from "../../shared/services/user/auth.service";
+import { AuthActions } from "./auth.actions";
 
 
 @Injectable()
-export class UserEffects {
+export class AuthEffects {
 
     public signup = createEffect(() => {
         return this._actions.pipe(
-            ofType(UserActions.signup),
+            ofType(AuthActions.signup),
             exhaustMap(action => {
-                return this._userService.signup(action.user).pipe(
+                return this._authService.signup(action.user).pipe(
                     map((result: Result) => {
-                        return UserActions.signupResult({ result });
+                        return AuthActions.signupResult({ result });
                     })
                 );
             })
@@ -26,11 +26,11 @@ export class UserEffects {
 
     public confirmSignup = createEffect(() => {
         return this._actions.pipe(
-            ofType(UserActions.confirmSignup),
+            ofType(AuthActions.confirmSignup),
             exhaustMap(action => {
-                return this._userService.confirmSignup(action.token).pipe(
+                return this._authService.confirmSignup(action.token).pipe(
                     map((result: Result) => {
-                        return UserActions.confirmSignupResult({ result });
+                        return AuthActions.confirmSignupResult({ result });
                     })
                 );
             })
@@ -40,13 +40,13 @@ export class UserEffects {
 
     public signin = createEffect(() => {
         return this._actions.pipe(
-            ofType(UserActions.signin),
+            ofType(AuthActions.signin),
             exhaustMap(action => {
-                return this._userService.signin(action.creditials).pipe(
+                return this._authService.signin(action.creditials).pipe(
                     switchMap((result: Result) => {
                         return [
-                            UserActions.clearCredentials(),
-                            UserActions.signinResult({ result }),
+                            AuthActions.clearCredentials(),
+                            AuthActions.signinResult({ result }),
                         ];
                     })
                 );
@@ -57,6 +57,6 @@ export class UserEffects {
 
     constructor(
         private _actions: Actions,
-        private _userService: UserService
+        private _authService: AuthService
     ) { }
 }

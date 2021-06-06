@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AuthSelectors } from 'src/app/modules/auth/store/user/auth.selectors';
 
-import { UserSelectors } from 'src/app/modules/user/store/user/user.selectors';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { State } from 'src/app/store/root.reducer';
 import { User } from '../../models/user/user.model';
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.currentUser = this._store.select(UserSelectors.currentUser);
+    this.currentUser = this._store.select(AuthSelectors.currentUser);
   }
 
 

@@ -3,12 +3,12 @@ import { createReducer, on } from "@ngrx/store";
 import { Creditials } from "src/app/shared/models/creditials/creditials.models";
 import { Result } from "src/app/shared/models/result/result.model";
 import { User } from "src/app/shared/models/user/user.model";
-import { UserActions } from "./user.actions";
+import { AuthActions } from "./auth.actions";
 
 
-export namespace UserReducer {
+export namespace AuthReducer {
 
-    export const USER = 'user';
+    export const AUTH = 'auth';
 
 
     export interface State {
@@ -39,56 +39,56 @@ export namespace UserReducer {
 
         initialState,
 
-        on(UserActions.signupResult, (state: State, action: any): State => {
+        on(AuthActions.signupResult, (state: State, action: any): State => {
             return {
                 ...state,
                 signupResult: action.result,
             }
         }),
 
-        on(UserActions.confirmSignup, (state: State, action: any): State => {
+        on(AuthActions.confirmSignup, (state: State, action: any): State => {
             return {
                 ...state,
                 signupToken: action.token,
             }
         }),
 
-        on(UserActions.signin, (state: State, action: any): State => {
+        on(AuthActions.signin, (state: State, action: any): State => {
             return {
                 ...state,
                 creditials: action.creditials,
             }
         }),
 
-        on(UserActions.signin, (state: State, action: any): State => {
+        on(AuthActions.signin, (state: State, action: any): State => {
             return {
                 ...state,
                 creditials: action.creditials,
             }
         }),
 
-        on(UserActions.confirmSignupResult, (state: State, action: any): State => {
+        on(AuthActions.confirmSignupResult, (state: State, action: any): State => {
             return {
                 ...state,
                 confirmSignupResult: action.result,
             }
         }),
 
-        on(UserActions.signinResult, (state: State, action: any): State => {
+        on(AuthActions.signinResult, (state: State, action: any): State => {
             return {
                 ...state,
                 signinResult: action.result,
             }
         }),
 
-        on(UserActions.setCurrentUser, (state: State, action: any): State => {
+        on(AuthActions.setCurrentUser, (state: State, action: any): State => {
             return {
                 ...state,
                 currentUser: action.currentUser,
             }
         }),
 
-        on(UserActions.clearCredentials, (state: State): State => {
+        on(AuthActions.clearCredentials, (state: State): State => {
             return {
                 ...state,
                 creditials: null,

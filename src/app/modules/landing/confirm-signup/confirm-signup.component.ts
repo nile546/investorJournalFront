@@ -7,7 +7,6 @@ import { ModalComponents } from 'src/app/shared/components/modal/modal.component
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { ModalSelectors } from 'src/app/store/modal/modal.selectors';
-import { UserActions } from '../../user/store/user/user.actions';
 
 
 @Component({

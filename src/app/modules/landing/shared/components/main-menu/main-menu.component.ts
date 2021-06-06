@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { UserSelectors } from 'src/app/modules/user/store/user/user.selectors';
+import { AuthSelectors } from 'src/app/modules/auth/store/user/auth.selectors';
 import { User } from 'src/app/shared/models/user/user.model';
 
 
@@ -21,6 +21,6 @@ export class MainMenuComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.currentUser = this._store.select(UserSelectors.currentUser);
+    this.currentUser = this._store.select(AuthSelectors.currentUser);
   }
 }

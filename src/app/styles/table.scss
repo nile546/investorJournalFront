@@ -5,7 +5,7 @@
     box-shadow: 0 3px 10px 0 darken($lightGray, 3%);
 
     td {
-        padding: 1rem;
+        padding: 0.5rem 1rem;
     }
 
     &__wrapper {
@@ -13,9 +13,24 @@
     }
 
     .header-link {
+        display: block;
+        padding: 0.5rem 1rem;
         text-decoration: none;
         text-transform: uppercase;
-        color: lighten($primary, 35%);
+        color: lighten($primary, 15%);
+    }
+
+    .header-row {
+        th {
+            border-bottom: 1px solid $lightGray;
+            padding: 0.5rem 1rem;
+            text-transform: uppercase;
+            color: lighten($primary, 40%);
+        }
+    }
+
+    .row {
+        border-top: 2px solid $lightGray;
     }
 }
 
