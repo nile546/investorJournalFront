@@ -1,1 +1,5 @@
-.dashboard {}
+@import 'variables';
+
+.page {
+    padding-left: $dashboardMenuWidth;
+}

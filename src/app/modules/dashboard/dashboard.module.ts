@@ -10,6 +10,7 @@ import { StocksComponent } from './stocks/stocks.component';
 import { CryptosComponent } from './cryptos/cryptos.component';
 import { DepositsComponent } from './deposits/deposits.component';
 import { PredictComponent } from './predict/predict.component';
+import { SillyDatatableModule } from 'silly-datatable';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { PredictComponent } from './predict/predict.component';
     DashboardRoutingModule,
     UserModule,
     ComponentsModule,
+    SillyDatatableModule,
   ],
 
 })

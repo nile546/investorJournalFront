@@ -1,0 +1,36 @@
+.datatable {
+    background-color: $white;
+    border-radius: $commonBorderRadius;
+    box-shadow: 0 3px 6px 2px darken($lightGray, 5%);
+
+    &__wrapper {
+        padding: 1rem
+    }
+}
+
+.asc {
+    &:after {
+        content: "";
+        margin-left: 0.25rem;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid $black;
+    }
+}
+
+
+.desc {
+    &:after {
+        content: "";
+        margin-left: 0.25rem;
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid $black;
+    }
+}

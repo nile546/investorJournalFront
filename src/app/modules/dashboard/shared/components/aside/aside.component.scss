@@ -11,13 +11,15 @@
     background-color: $darkGray;
     color: $white;
     padding: 1rem;
+    border-bottom-right-radius: $commonBorderRadius;
+    border-top-right-radius: $commonBorderRadius;
 
     &__logotype {}
 
     &__profile {
         display: flex;
         justify-content: flex-end;
-        margin: 1rem -1rem 1rem;
+        margin: 2rem -1rem 2rem;
         padding: 0.5rem 1rem;
         background-color: darken($darkGray, 10%);
     }
