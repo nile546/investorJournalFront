@@ -38,9 +38,6 @@ export class StocksComponent implements OnInit {
         id: 'strategy.name',
         title: 'Стратегия',
       }, {
-        id: 'strategy.name',
-        title: 'Стратегия',
-      }, {
         id: 'pattern.name',
         title: 'Паттерн',
       }, {
@@ -48,15 +45,52 @@ export class StocksComponent implements OnInit {
         title: 'Позиция',
       }, {
         id: 'timeFrame',
-        title: 'Таймфрейм',
+        title: 'ТФ',
       }, {
         id: 'openDate',
-        title: 'Дата'
+        title: 'Дата ВХ',
+        headerClass: 'open-deal',
       }, {
         id: 'price',
         title: 'ТВХ',
+        headerClass: 'open-deal',
+      }, {
+        id: 'stop_loss',
+        title: 'Стоп-лосс',
+        headerClass: 'open-deal',
+      }, {
+        id: 'quantity',
+        title: 'Кол-во',
+        headerClass: 'open-deal',
+      }, {
+        id: 'close_date',
+        title: 'Дата ВЫХ',
+        headerClass: 'close-deal',
+      }, {
+        id: 'close',
+        title: 'Выход',
+        headerClass: 'close-deal',
+      }, {
+        id: 'risk_ratio',
+        title: 'Коэф. риска',
+      }, {
+        id: 'result',
+        title: 'Рез.',
+        headerClass: 'result-deal',
+      }, {
+        id: 'result_percent',
+        title: 'Рез. %',
+        headerClass: 'result-deal',
+      }, {
+        id: 'deposit_start',
+        title: 'Деп. до',
+        headerClass: 'result-deal',
+      }, {
+        id: 'deposit_end',
+        title: 'Деп. после',
+        headerClass: 'result-deal',
       }
-    ];
+    ] as Column[];
 
 
     this.tableParams = {} as TableParams;
