@@ -1,5 +1,6 @@
 @import 'variables';
 
 .page {
-    padding-left: $dashboardMenuWidth;
+    margin-left: $dashboardMenuWidth;
+    overflow: auto;
 }

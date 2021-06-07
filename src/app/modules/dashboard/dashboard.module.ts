@@ -9,7 +9,6 @@ import { StocksComponent } from './stocks/stocks.component';
 import { CryptosComponent } from './cryptos/cryptos.component';
 import { DepositsComponent } from './deposits/deposits.component';
 import { PredictComponent } from './predict/predict.component';
-import { SillyDatatableModule } from 'silly-datatable';
 import { AuthModule } from '../auth/auth.module';
 
 
@@ -27,7 +26,6 @@ import { AuthModule } from '../auth/auth.module';
     DashboardRoutingModule,
     AuthModule,
     ComponentsModule,
-    SillyDatatableModule,
   ],
 
 })

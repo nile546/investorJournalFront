@@ -18,7 +18,8 @@
         padding: 0.25rem 0.5rem;
         text-decoration: none;
         text-transform: uppercase;
-        color: lighten($primary, 15%);
+        color: $darkGray;
+        white-space: nowrap;
     }
 
     .header-row {
@@ -27,6 +28,7 @@
             padding: 0.25rem 0.5rem;
             text-transform: uppercase;
             color: lighten($primary, 40%);
+            white-space: nowrap;
         }
     }
 
