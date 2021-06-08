@@ -1,7 +1,11 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { Column, TableParams, TableSettings } from 'silly-datatable';
+import { DashboardActions } from '../../../store/dashboard.actions';
+import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 
 @Component({
@@ -10,11 +14,13 @@ import { Column, TableParams, TableSettings } from 'silly-datatable';
   styleUrls: ['./stocks-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StocksTableComponent implements OnInit {
+export class StocksTableComponent implements OnInit, OnDestroy {
 
   public settings: TableSettings;
   public columns: Column[];
-  public tableParams: TableParams;
+
+  private _tableParams: TableParams = new TableParams();
+  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
 
   constructor(
@@ -96,17 +102,31 @@ export class StocksTableComponent implements OnInit {
         headerClass: 'result-deal',
       }
     ] as Column[];
+  }
 
 
-    this.tableParams = new TableParams();
-    this.tableParams.pagination = {
-      pageNumber: 0,
-      itemsPerPage: 30
-    }
+  public get tableParams(): TableParams {
+    return this._tableParams;
+  }
+
+
+  public set tableParams(value: TableParams) {
+    this._store.dispatch(DashboardActions.getStocksTableParams({ tableParams: value }));
   }
 
 
   ngOnInit(): void {
+    this._store.select(DashboardSelectors.stocksTableParams).pipe(
+      takeUntil(this._unsubscribe)
+    )
+      .subscribe((stocksTableParams: TableParams) => {
+        this._tableParams = stocksTableParams;
+      })
+  }
 
+
+  ngOnDestroy(): void {
+    this._unsubscribe.next(true);
+    this._unsubscribe.unsubscribe();
   }
 }
