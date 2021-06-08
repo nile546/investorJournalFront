@@ -7,9 +7,9 @@ import { CryptosComponent } from "./cryptos/cryptos.component";
 import { DashboardComponent } from "./dashboard.component";
 import { DepositsComponent } from "./deposits/deposits.component";
 import { PredictComponent } from "./predict/predict.component";
-import { CRYPTOS, DEPOSITS, PREDICT, STATISTICS, STOCKS } from "./shared/constants/routes";
+import { CRYPTO_DEALS, DEPOSIT_DEALS, PREDICT, STATISTICS, STOCK_DEALS } from "./shared/constants/routes";
 import { StatisticsComponent } from "./statistics/statistics.component";
-import { StocksComponent } from "./stocks/stocks.component";
+import { StockDealsComponent } from "./stock-deals/stock-deals.component";
 
 
 const routes: Routes = [
@@ -19,9 +19,9 @@ const routes: Routes = [
         canActivate: [UserGuard],
         children: [
             { path: STATISTICS, component: StatisticsComponent },
-            { path: STOCKS, component: StocksComponent },
-            { path: CRYPTOS, component: CryptosComponent },
-            { path: DEPOSITS, component: DepositsComponent },
+            { path: STOCK_DEALS, component: StockDealsComponent },
+            { path: CRYPTO_DEALS, component: CryptosComponent },
+            { path: DEPOSIT_DEALS, component: DepositsComponent },
             { path: PREDICT, component: PredictComponent },
         ]
     }

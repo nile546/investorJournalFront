@@ -2,12 +2,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 
 @Component({
-  selector: 'tr-stocks',
-  templateUrl: './stocks.component.html',
-  styleUrls: ['./stocks.component.scss'],
+  selector: 'tr-stock-deals',
+  templateUrl: './stock-deals.component.html',
+  styleUrls: ['./stock-deals.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StocksComponent implements OnInit {
+export class StockDealsComponent implements OnInit {
 
 
   constructor() { }

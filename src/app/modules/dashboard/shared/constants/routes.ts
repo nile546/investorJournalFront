@@ -1,5 +1,5 @@
 export const STATISTICS = 'statistics',
-    STOCKS = 'stocks',
-    CRYPTOS = 'cryptos',
-    DEPOSITS = 'deposits',
+    STOCK_DEALS = 'stock-deals',
+    CRYPTO_DEALS = 'crypto-deals',
+    DEPOSIT_DEALS = 'deposit-deals',
     PREDICT = 'predict';

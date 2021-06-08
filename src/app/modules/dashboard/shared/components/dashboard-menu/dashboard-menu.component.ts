@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CRYPTOS, DEPOSITS, PREDICT, STATISTICS, STOCKS } from '../../constants/routes';
+import { CRYPTO_DEALS, DEPOSIT_DEALS, PREDICT, STATISTICS, STOCK_DEALS } from '../../constants/routes';
 
 
 @Component({
@@ -11,9 +11,9 @@ import { CRYPTOS, DEPOSITS, PREDICT, STATISTICS, STOCKS } from '../../constants/
 export class DashboardMenuComponent implements OnInit {
 
   public STATISTICS = STATISTICS;
-  public STOCKS = STOCKS;
-  public CRYPTOS = CRYPTOS;
-  public DEPOSITS = DEPOSITS;
+  public STOCK_DEALS = STOCK_DEALS;
+  public CRYPTO_DEALS = CRYPTO_DEALS;
+  public DEPOSIT_DEALS = DEPOSIT_DEALS;
   public PREDICT = PREDICT;
 
   constructor() { }

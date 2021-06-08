@@ -5,18 +5,21 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ComponentsModule } from './shared/components/components.module';
-import { StocksComponent } from './stocks/stocks.component';
 import { CryptosComponent } from './cryptos/cryptos.component';
 import { DepositsComponent } from './deposits/deposits.component';
 import { PredictComponent } from './predict/predict.component';
 import { AuthModule } from '../auth/auth.module';
+import { EffectsModule } from '@ngrx/effects';
+import { DashboardEffects } from './store/dashboard.effects';
+import { StockDealService } from './shared/services/stock/stock-deal.service';
+import { StockDealsComponent } from './stock-deals/stock-deals.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
     StatisticsComponent,
-    StocksComponent,
+    StockDealsComponent,
     CryptosComponent,
     DepositsComponent,
     PredictComponent,
@@ -26,7 +29,11 @@ import { AuthModule } from '../auth/auth.module';
     DashboardRoutingModule,
     AuthModule,
     ComponentsModule,
+    EffectsModule.forFeature([DashboardEffects]),
   ],
+  providers: [
+    StockDealService,
+  ]
 
 })
 export class DashboardModule { }

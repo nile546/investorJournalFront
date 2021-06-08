@@ -4,8 +4,8 @@ import { RouterModule } from "@angular/router";
 import { AsideComponent } from "./aside/aside.component";
 import { DashboardMenuComponent } from "./dashboard-menu/dashboard-menu.component";
 import { ComponentsModule as RootComponentsModule } from 'src/app/shared/components/components.module';
-import { StocksTableComponent } from './stocks-table/stocks-table.component';
 import { SillyDatatableModule } from "silly-datatable";
+import { StockDealsTableComponent } from "./stock-deals-table/stock-deals-table.component";
 
 
 @NgModule({
@@ -17,12 +17,12 @@ import { SillyDatatableModule } from "silly-datatable";
     declarations: [
         AsideComponent,
         DashboardMenuComponent,
-        StocksTableComponent,
+        StockDealsTableComponent,
     ],
     exports: [
         AsideComponent,
         DashboardMenuComponent,
-        StocksTableComponent,
+        StockDealsTableComponent,
     ]
 })
 export class ComponentsModule {

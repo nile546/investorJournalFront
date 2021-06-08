@@ -1,20 +1,21 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, take, takeUntil } from 'rxjs/operators';
 
 import { Column, TableParams, TableSettings } from 'silly-datatable';
+import { Result } from 'src/app/shared/models/result/result.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 
 @Component({
-  selector: 'tr-stocks-table',
-  templateUrl: './stocks-table.component.html',
-  styleUrls: ['./stocks-table.component.scss'],
+  selector: 'tr-stock-deals-table',
+  templateUrl: './stock-deals-table.component.html',
+  styleUrls: ['./stock-deals-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StocksTableComponent implements OnInit, OnDestroy {
+export class StockDealsTableComponent implements OnInit, OnDestroy {
 
   public settings: TableSettings;
   public columns: Column[];
@@ -111,16 +112,30 @@ export class StocksTableComponent implements OnInit, OnDestroy {
 
 
   public set tableParams(value: TableParams) {
-    this._store.dispatch(DashboardActions.getStocksTableParams({ tableParams: value }));
+    this._store.dispatch(DashboardActions.getAllStockDeals({ tableParams: value }));
   }
 
 
   ngOnInit(): void {
-    this._store.select(DashboardSelectors.stocksTableParams).pipe(
-      takeUntil(this._unsubscribe)
+
+
+    // Init table params
+    this._store.select(DashboardSelectors.stockDealsTableParams).pipe(
+      take(1),
+      takeUntil(this._unsubscribe),
     )
       .subscribe((stocksTableParams: TableParams) => {
         this._tableParams = stocksTableParams;
+      });
+
+
+    // Update table params after fetch data from backend
+    this._store.select(DashboardSelectors.getAllStockDealsResult).pipe(
+      filter(data => !!data),
+      takeUntil(this._unsubscribe),
+    )
+      .subscribe((result: Result | null) => {
+        console.log('zzzzzzzzzzzzzzzzzzzzzzzz', result);
       })
   }
 
