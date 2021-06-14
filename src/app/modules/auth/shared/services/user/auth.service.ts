@@ -44,4 +44,12 @@ export class AuthService {
       { token },
     )
   }
+
+
+  public refresh(): Observable<Result> {
+    return this._httpClient.post<Result>(
+      'auth/refresh',
+      {},
+    )
+  }
 }

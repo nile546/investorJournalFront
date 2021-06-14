@@ -14,6 +14,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
+import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized/unauthorized.interceptor';
 
 
 
@@ -43,6 +44,7 @@ import { AuthModule } from './modules/auth/auth.module';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
