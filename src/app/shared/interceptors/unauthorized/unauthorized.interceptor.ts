@@ -1,10 +1,14 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 import { EMPTY, Observable } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
 
 import { AuthService } from "src/app/modules/auth/shared/services/user/auth.service";
-import { Result } from "../../models/result/result.model";
+import { AuthActions } from "src/app/modules/auth/store/user/auth.actions";
+import { ModalActions } from "src/app/store/modal/modal.actions";
+import { Result, ResultStatuses } from "../../models/result/result.model";
 
 
 @Injectable()
@@ -19,7 +23,13 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
                      */
                     if (error.status === 401) {
                         return this._authService.refresh().pipe(
-                            switchMap((_: Result) => {
+                            switchMap((result: Result) => {
+                                if (result.status !== ResultStatuses.Ok) {
+                                    this._store.dispatch(AuthActions.clearCurrentUser())
+                                    this._router.navigate(["/"]);
+                                    return EMPTY;
+                                }
+
                                 return next.handle(req);
                             })
                         )
@@ -34,6 +44,8 @@ export class UnauthorizedInterceptor implements HttpInterceptor {
 
     constructor(
         private _authService: AuthService,
+        private _router: Router,
+        private _store: Store,
     ) { }
 
 }

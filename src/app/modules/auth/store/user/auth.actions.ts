@@ -15,6 +15,7 @@ export namespace AuthActions {
     export const signinResult = createAction('[Signin Modal Component] Sign In Result', props<{ result: Result }>());
 
     export const setCurrentUser = createAction('[Signin Modal Component] Sign In Set Current User', props<{ currentUser: User }>());
+    export const clearCurrentUser = createAction('[Unauthorized Interceptor] Clear Current User');
 
     export const clearCredentials = createAction('[Signin Modal Component] Sign In Clear Credentials');
 }

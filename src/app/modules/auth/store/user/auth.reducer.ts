@@ -93,6 +93,13 @@ export namespace AuthReducer {
                 ...state,
                 creditials: null,
             }
+        }),
+
+        on(AuthActions.clearCurrentUser, (state: State): State => {
+            return {
+                ...state,
+                currentUser: null,
+            }
         })
     );
 }
