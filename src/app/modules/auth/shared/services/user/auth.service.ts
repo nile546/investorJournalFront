@@ -52,4 +52,12 @@ export class AuthService {
       {},
     )
   }
+
+
+  public signout(): Observable<Result> {
+    return this._httpClient.post<Result>(
+      'auth/signout',
+      {},
+    )
+  }
 }

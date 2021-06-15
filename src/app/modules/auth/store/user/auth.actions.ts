@@ -18,4 +18,5 @@ export namespace AuthActions {
     export const clearCurrentUser = createAction('[Unauthorized Interceptor] Clear Current User');
 
     export const clearCredentials = createAction('[Signin Modal Component] Sign In Clear Credentials');
+    export const signout = createAction('[Profile Component] Sing Out');
 }

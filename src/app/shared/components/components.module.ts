@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
   ],
   exports: [
     ProfileComponent,

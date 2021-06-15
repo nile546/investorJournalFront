@@ -55,6 +55,20 @@ export class AuthEffects {
     })
 
 
+    public signout = createEffect(() => {
+        return this._actions.pipe(
+            ofType(AuthActions.signout),
+            exhaustMap(_ => {
+                return this._authService.signout().pipe(
+                    map((_: Result) => {
+                        return AuthActions.clearCurrentUser();
+                    })
+                );
+            })
+        )
+    })
+
+
     constructor(
         private _actions: Actions,
         private _authService: AuthService

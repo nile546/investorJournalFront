@@ -11,7 +11,9 @@
     <span>{{ (currentUser | async)?.login }}</span>
     <span class="profile__avatar">{{ (currentUser | async)?.login?.slice(0,1) | uppercase }}</span>
     <div class="dropdown__content">
-        <a class="dropdown__link">Журнал</a>
-        <a class="dropdown__link">Выход</a>
+        <a class="dropdown__link"
+            routerLink="/dashboard">Журнал</a>
+        <a class="dropdown__link"
+            (click)="signout()">Выход</a>
     </div>
 </ng-template>

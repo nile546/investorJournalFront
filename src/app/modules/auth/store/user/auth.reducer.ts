@@ -100,6 +100,13 @@ export namespace AuthReducer {
                 ...state,
                 currentUser: null,
             }
+        }),
+
+        on(AuthActions.signout, (state: State): State => {
+            return {
+                ...state,
+                currentUser: null,
+            }
         })
     );
 }
