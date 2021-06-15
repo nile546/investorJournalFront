@@ -1,4 +1,4 @@
-<div class="profile__wrapper">
+<div class="profile__wrapper dropdown">
     <ng-container *ngIf="!(currentUser | async); else user">
         <a (click)="signin()">Вход</a>&nbsp;/&nbsp;<a (click)="signup()">Регистрация</a>
         <div class="profile__icon"><img src="assets/img/profile.svg"
@@ -10,4 +10,8 @@
 <ng-template #user>
     <span>{{ (currentUser | async)?.login }}</span>
     <span class="profile__avatar">{{ (currentUser | async)?.login?.slice(0,1) | uppercase }}</span>
+    <div class="dropdown__content">
+        <a class="dropdown__link">Журнал</a>
+        <a class="dropdown__link">Выход</a>
+    </div>
 </ng-template>
