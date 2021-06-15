@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { LANDING } from 'src/app/shared/constants/routes';
 import { CRYPTO_DEALS, DEPOSIT_DEALS, PREDICT, STATISTICS, STOCK_DEALS } from '../../constants/routes';
 
 
@@ -10,6 +11,7 @@ import { CRYPTO_DEALS, DEPOSIT_DEALS, PREDICT, STATISTICS, STOCK_DEALS } from '.
 })
 export class DashboardMenuComponent implements OnInit {
 
+  public LANDING = LANDING
   public STATISTICS = STATISTICS;
   public STOCK_DEALS = STOCK_DEALS;
   public CRYPTO_DEALS = CRYPTO_DEALS;

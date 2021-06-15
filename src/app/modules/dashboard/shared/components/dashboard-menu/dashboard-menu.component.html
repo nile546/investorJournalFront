@@ -1,6 +1,12 @@
 <ul class="dashboard-menu">
     <li class="dashboard-menu__item">
         <a class="dashboard-menu__link"
+            [routerLink]="['/', LANDING]">
+            <span class="icon-map dashboard-menu__icon"></span>Главная
+        </a>
+    </li>
+    <li class="dashboard-menu__item">
+        <a class="dashboard-menu__link"
             [routerLink]="STATISTICS">
             <span class="icon-pie-chart dashboard-menu__icon"></span>Статистика
         </a>
