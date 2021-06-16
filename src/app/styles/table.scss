@@ -2,7 +2,7 @@
     width: 100%;
     background-color: $white;
     border-radius: $commonBorderRadius;
-    box-shadow: 0 3px 10px 0 darken($lightGray, 3%);
+    box-shadow: 0 3px 10px 0 darken($lightGray, 7%);
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -18,7 +18,8 @@
     }
 
     td {
-        padding: 0.25rem 0.5rem;
+        padding: 0.875rem 1rem;
+        white-space: nowrap;
     }
 
     &__wrapper {
@@ -36,7 +37,7 @@
 
     .header-row {
         th {
-            border-bottom: 1px solid $lightGray;
+            border-bottom: 1px solid darken($lightGray, 5%);
             padding: 0.25rem 0.5rem;
             text-transform: uppercase;
             color: lighten($primary, 30%);
@@ -45,7 +46,15 @@
     }
 
     .row {
-        border-top: 2px solid $lightGray;
+        border-bottom: 1px solid darken($lightGray, 5%);
+
+        &:nth-child(odd) {
+            background-color: $lightGray;
+        }
+
+        &:hover {
+            background-color: lighten($primary, 50%);
+        }
     }
 }
 

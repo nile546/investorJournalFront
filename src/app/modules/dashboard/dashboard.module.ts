@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
 
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
@@ -33,6 +33,9 @@ import { StockDealsComponent } from './stock-deals/stock-deals.component';
   ],
   providers: [
     StockDealService,
+    DatePipe,
+    CurrencyPipe,
+    PercentPipe,
   ]
 
 })
