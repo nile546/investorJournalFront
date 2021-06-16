@@ -4,6 +4,7 @@ import { Pagination, TableParams } from "silly-datatable";
 import { Result } from "src/app/shared/models/result/result.model";
 import { environment } from "src/environments/environment";
 import { DashboardActions } from "./dashboard.actions";
+import { DashboardSelectors } from "./dashboard.selectors";
 
 
 export namespace DashboardReducer {
@@ -13,6 +14,7 @@ export namespace DashboardReducer {
     export interface State {
         stockDealsTableParams: TableParams;
         getAllStockDealsResult: Result | null;
+        rowDetailsComponent: unknown | null;
     }
 
 
@@ -27,6 +29,7 @@ export namespace DashboardReducer {
         } as TableParams,
 
         getAllStockDealsResult: null,
+        rowDetailsComponent: null,
     }
 
 
@@ -46,7 +49,14 @@ export namespace DashboardReducer {
                 ...state,
                 getAllStockDealsResult: action.result,
             }
-        })
+        }),
+
+        on(DashboardActions.rowDetails, (state: State, action: { component: unknown | null }) => {
+            return {
+                ...state,
+                rowDetailsComponent: action.component,
+            }
+        }),
     )
 }
 

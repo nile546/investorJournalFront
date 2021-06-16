@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 import { AsideComponent } from "./aside/aside.component";
 import { DashboardMenuComponent } from "./dashboard-menu/dashboard-menu.component";
@@ -14,6 +15,7 @@ import { RowDetailsComponent } from './row-details/row-details.component';
         RootComponentsModule,
         RouterModule,
         SillyDatatableModule,
+        CommonModule,
     ],
     declarations: [
         AsideComponent,
@@ -25,6 +27,7 @@ import { RowDetailsComponent } from './row-details/row-details.component';
         AsideComponent,
         DashboardMenuComponent,
         StockDealsTableComponent,
+        RowDetailsComponent,
     ]
 })
 export class ComponentsModule {

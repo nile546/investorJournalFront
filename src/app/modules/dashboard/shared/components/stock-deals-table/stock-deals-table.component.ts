@@ -84,6 +84,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'enterDatetime',
         title: 'Дата ВХ',
         headerClass: 'open-deal',
+        cellClass: 'border-left',
         prepareCellFunction: ((date: Date) => {
           if (!date) {
             return ''
@@ -95,6 +96,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'enterPoint',
         title: 'ТВХ',
         headerClass: 'open-deal',
+        cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);
         }),
@@ -102,6 +104,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'stopLoss',
         title: 'Стоп-лосс',
         headerClass: 'open-deal',
+        cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           if (!price) {
             return ''
@@ -113,10 +116,12 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'quantity',
         title: 'Кол-во',
         headerClass: 'open-deal',
+        cellClass: 'center',
       }, {
         id: 'exitDatetime',
         title: 'Дата ВЫХ',
         headerClass: 'close-deal',
+        cellClass: 'border-left',
         prepareCellFunction: ((date: Date) => {
           if (!date) {
             return ''
@@ -128,6 +133,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'exitPoint',
         title: 'Выход',
         headerClass: 'close-deal',
+        cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           if (!price) {
             return ''
@@ -138,6 +144,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
       }, {
         id: 'riskRatio',
         title: 'Коэф. риска',
+        cellClass: 'border-left center',
         prepareCellFunction: ((percent: number) => {
           if (!percent) {
             return ''
@@ -149,6 +156,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'result',
         title: 'Рез.',
         headerClass: 'result-deal',
+        cellClass: 'border-left right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);
         }),
@@ -156,6 +164,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'resultInPercent',
         title: 'Рез. %',
         headerClass: 'result-deal',
+        cellClass: 'center',
         prepareCellFunction: ((percent: number) => {
           return this._percentPipe.transform(percent);
         }),
@@ -163,6 +172,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'startDeposit',
         title: 'Деп. до',
         headerClass: 'result-deal',
+        cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);
         }),
@@ -170,6 +180,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         id: 'endDeposit',
         title: 'Деп. после',
         headerClass: 'result-deal',
+        cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);
         }),
@@ -219,7 +230,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
 
 
   public create(): void {
-    console.log('fffffffffffffffffffffff create');
+    this._store.dispatch(DashboardActions.rowDetails({ component: 1 }));
   }
 
 

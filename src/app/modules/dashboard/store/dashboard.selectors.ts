@@ -6,5 +6,7 @@ export namespace DashboardSelectors {
     export const dashboardState = createFeatureSelector<DashboardReducer.State>(DashboardReducer.DASHBOARD),
 
         stockDealsTableParams = createSelector(dashboardState, (state: DashboardReducer.State) => state.stockDealsTableParams),
-        getAllStockDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllStockDealsResult);
+        getAllStockDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllStockDealsResult),
+
+        rowDetailsComponent = createSelector(dashboardState, (state: DashboardReducer.State) => state.rowDetailsComponent);
 }

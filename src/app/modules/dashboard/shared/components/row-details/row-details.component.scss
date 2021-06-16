@@ -1,0 +1,25 @@
+@import 'variables';
+
+.row-details {
+    &__backdrop {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba($black, 0.6);
+        z-index: 2;
+    }
+
+    &__content {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        background-color: $white;
+        border-top-left-radius: $commonBorderRadius;
+        border-bottom-left-radius: $commonBorderRadius;
+        z-index: 3;
+    }
+}
