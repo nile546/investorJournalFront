@@ -1,7 +1,14 @@
 <div class="datatable__wrapper">
+    <div class="datatable__controls">
+        <button class="btn__primary"
+            (click)="create()"
+            type="button">Добавить</button>
+    </div>
+
     <ngx-silly-datatable id="stocks"
         [settings]="settings"
         [columns]="columns"
-        [(tableParams)]="tableParams">
+        [(tableParams)]="tableParams"
+        (rowClicked)="edit($event)">
     </ngx-silly-datatable>
 </div>

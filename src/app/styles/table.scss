@@ -1,9 +1,21 @@
-.datatable {
+@mixin sheet {
     width: 100%;
     background-color: $white;
     border-radius: $commonBorderRadius;
     box-shadow: 0 3px 10px 0 darken($lightGray, 3%);
     overflow: hidden;
+    box-sizing: border-box;
+}
+
+.datatable {
+    @include sheet;
+
+    &__controls {
+        @include sheet;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        text-align: right;
+    }
 
     td {
         padding: 0.25rem 0.5rem;

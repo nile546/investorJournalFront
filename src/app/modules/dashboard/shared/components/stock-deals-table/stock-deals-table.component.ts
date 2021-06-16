@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -26,6 +26,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
 
   constructor(
     private _store: Store,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) {
 
     this.settings = {
@@ -135,8 +136,15 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
       takeUntil(this._unsubscribe),
     )
       .subscribe((result: Result | null) => {
-        console.log('zzzzzzzzzzzzzzzzzzzzzzzz', result);
+        this._tableParams = result?.payload as TableParams;
+        console.log('zzzzzzzzzzzzzzzzzzzzzz', result?.payload);
+        this._changeDetectorRef.detectChanges();
       })
+  }
+
+
+  public edit(entity: any): void {
+    console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', entity);
   }
 
 
