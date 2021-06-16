@@ -1,10 +1,14 @@
+import { CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Store } from '@ngrx/store';
+import startCase from 'lodash-es/startCase';
 import { Subject } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
 
 import { Column, TableParams, TableSettings } from 'silly-datatable';
+import { Positions } from 'src/app/shared/models/positions/positions.model';
 import { Result } from 'src/app/shared/models/result/result.model';
+import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
@@ -27,6 +31,9 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
   constructor(
     private _store: Store,
     private _changeDetectorRef: ChangeDetectorRef,
+    private _datePipe: DatePipe,
+    private _currencyPipe: CurrencyPipe,
+    private _percentPipe: PercentPipe,
   ) {
 
     this.settings = {
@@ -45,7 +52,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
         title: '№',
         sortable: true,
       }, {
-        id: 'stock.name',
+        id: 'stock.ticker',
         title: 'Тикер',
       }, {
         id: 'strategy.name',
@@ -56,52 +63,116 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
       }, {
         id: 'position',
         title: 'Позиция',
+        prepareCellFunction: ((key: Positions) => {
+          if (!key) {
+            return '';
+          }
+
+          return startCase(Positions[key]);
+        })
       }, {
         id: 'timeFrame',
         title: 'ТФ',
+        prepareCellFunction: ((key: TimeFrames) => {
+          if (!key) {
+            return '';
+          }
+
+          return startCase(TimeFrames[key]);
+        })
       }, {
-        id: 'openDate',
+        id: 'enterDatetime',
         title: 'Дата ВХ',
         headerClass: 'open-deal',
+        prepareCellFunction: ((date: Date) => {
+          if (!date) {
+            return ''
+          }
+
+          return this._datePipe.transform(date, 'short');
+        }),
       }, {
-        id: 'price',
+        id: 'enterPoint',
         title: 'ТВХ',
         headerClass: 'open-deal',
+        prepareCellFunction: ((price: number) => {
+          return this._currencyPipe.transform(price);
+        }),
       }, {
-        id: 'stop_loss',
+        id: 'stopLoss',
         title: 'Стоп-лосс',
         headerClass: 'open-deal',
+        prepareCellFunction: ((price: number) => {
+          if (!price) {
+            return ''
+          }
+
+          return this._currencyPipe.transform(price);
+        }),
       }, {
         id: 'quantity',
         title: 'Кол-во',
         headerClass: 'open-deal',
       }, {
-        id: 'close_date',
+        id: 'exitDatetime',
         title: 'Дата ВЫХ',
         headerClass: 'close-deal',
+        prepareCellFunction: ((date: Date) => {
+          if (!date) {
+            return ''
+          }
+
+          return this._datePipe.transform(date, 'short');
+        }),
       }, {
-        id: 'close',
+        id: 'exitPoint',
         title: 'Выход',
         headerClass: 'close-deal',
+        prepareCellFunction: ((price: number) => {
+          if (!price) {
+            return ''
+          }
+
+          return this._currencyPipe.transform(price);
+        }),
       }, {
-        id: 'risk_ratio',
+        id: 'riskRatio',
         title: 'Коэф. риска',
+        prepareCellFunction: ((percent: number) => {
+          if (!percent) {
+            return ''
+          }
+
+          return this._percentPipe.transform(percent);
+        }),
       }, {
         id: 'result',
         title: 'Рез.',
         headerClass: 'result-deal',
+        prepareCellFunction: ((price: number) => {
+          return this._currencyPipe.transform(price);
+        }),
       }, {
-        id: 'result_percent',
+        id: 'resultInPercent',
         title: 'Рез. %',
         headerClass: 'result-deal',
+        prepareCellFunction: ((percent: number) => {
+          return this._percentPipe.transform(percent);
+        }),
       }, {
-        id: 'deposit_start',
+        id: 'startDeposit',
         title: 'Деп. до',
         headerClass: 'result-deal',
+        prepareCellFunction: ((price: number) => {
+          return this._currencyPipe.transform(price);
+        }),
       }, {
-        id: 'deposit_end',
+        id: 'endDeposit',
         title: 'Деп. после',
         headerClass: 'result-deal',
+        prepareCellFunction: ((price: number) => {
+          return this._currencyPipe.transform(price);
+        }),
       }
     ] as Column[];
   }
@@ -137,7 +208,6 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
     )
       .subscribe((result: Result | null) => {
         this._tableParams = result?.payload as TableParams;
-        console.log('zzzzzzzzzzzzzzzzzzzzzz', result?.payload);
         this._changeDetectorRef.detectChanges();
       })
   }
