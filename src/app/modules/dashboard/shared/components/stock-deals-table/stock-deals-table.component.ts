@@ -148,6 +148,11 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
   }
 
 
+  public create(): void {
+    console.log('fffffffffffffffffffffff create');
+  }
+
+
   ngOnDestroy(): void {
     this._unsubscribe.next(true);
     this._unsubscribe.unsubscribe();

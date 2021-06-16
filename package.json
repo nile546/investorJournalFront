@@ -27,7 +27,7 @@
     "@types/lodash-es": "^4.17.4",
     "lodash-es": "^4.17.21",
     "rxjs": "~6.6.0",
-    "silly-datatable": "^3.5.2",
+    "silly-datatable": "^3.5.3",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
