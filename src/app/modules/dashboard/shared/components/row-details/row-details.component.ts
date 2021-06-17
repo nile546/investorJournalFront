@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 
@@ -32,4 +33,8 @@ export class RowDetailsComponent implements OnInit {
       })
   }
 
+
+  public close(): void {
+    this._store.dispatch(DashboardActions.rowDetails({ component: null }));
+  }
 }

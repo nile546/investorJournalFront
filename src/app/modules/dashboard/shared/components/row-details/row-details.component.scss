@@ -22,6 +22,17 @@
         z-index: 3;
         animation: slidein 0.5s forwards;
     }
+
+    &__btn-close {
+        position: absolute;
+        top: 2rem;
+        left: -1.25rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: none;
+        box-shadow: 1px 3px 4px 0px rgba($black, 0.3);
+    }
 }
 
 @keyframes slidein {
