@@ -1,10 +1,11 @@
+import { Type } from "@angular/core";
 import { createReducer, on } from "@ngrx/store";
 
 import { Pagination, TableParams } from "silly-datatable";
 import { Result } from "src/app/shared/models/result/result.model";
 import { environment } from "src/environments/environment";
+import { DetailsComponents } from "../shared/components/row-details/row-details.component";
 import { DashboardActions } from "./dashboard.actions";
-import { DashboardSelectors } from "./dashboard.selectors";
 
 
 export namespace DashboardReducer {
@@ -14,7 +15,8 @@ export namespace DashboardReducer {
     export interface State {
         stockDealsTableParams: TableParams;
         getAllStockDealsResult: Result | null;
-        rowDetailsComponent: unknown | null;
+        rowDetailsComponent: DetailsComponents | null;
+        rowDetailsPayload: unknown | null;
     }
 
 
@@ -30,6 +32,7 @@ export namespace DashboardReducer {
 
         getAllStockDealsResult: null,
         rowDetailsComponent: null,
+        rowDetailsPayload: null,
     }
 
 
@@ -51,10 +54,11 @@ export namespace DashboardReducer {
             }
         }),
 
-        on(DashboardActions.rowDetails, (state: State, action: { component: unknown | null }) => {
+        on(DashboardActions.rowDetails, (state: State, action: { component: DetailsComponents | null, payload: unknown | null }) => {
             return {
                 ...state,
                 rowDetailsComponent: action.component,
+                rowDetailsPayload: action.payload,
             }
         }),
     )

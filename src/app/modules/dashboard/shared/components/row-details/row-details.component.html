@@ -1,6 +1,7 @@
 <div class="row-details__backdrop"
-    *ngIf="rowDetailsComponent">
+    *ngIf="show">
     <div class="row-details__content">
+        <div #content></div>
         <button class="row-details__btn-close"
             (click)="close()"><img src="assets/img/close.svg"></button>
     </div>

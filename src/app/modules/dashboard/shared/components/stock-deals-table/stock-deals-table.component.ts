@@ -11,6 +11,7 @@ import { Result } from 'src/app/shared/models/result/result.model';
 import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
+import { DetailsComponents } from '../row-details/row-details.component';
 
 
 @Component({
@@ -230,7 +231,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
 
 
   public create(): void {
-    this._store.dispatch(DashboardActions.rowDetails({ component: 1 }));
+    this._store.dispatch(DashboardActions.rowDetails({ component: DetailsComponents.StockDealDetails, payload: null }));
   }
 
 

@@ -8,6 +8,7 @@ import { ComponentsModule as RootComponentsModule } from 'src/app/shared/compone
 import { SillyDatatableModule } from "silly-datatable";
 import { StockDealsTableComponent } from "./stock-deals-table/stock-deals-table.component";
 import { RowDetailsComponent } from './row-details/row-details.component';
+import { StockDealDetailsComponent } from './stock-deal-details/stock-deal-details.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RowDetailsComponent } from './row-details/row-details.component';
         DashboardMenuComponent,
         StockDealsTableComponent,
         RowDetailsComponent,
+        StockDealDetailsComponent,
     ],
     exports: [
         AsideComponent,

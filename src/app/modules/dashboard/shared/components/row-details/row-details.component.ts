@@ -1,9 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ComponentFactoryResolver, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
+import { StockDealDetailsComponent } from '../stock-deal-details/stock-deal-details.component';
+
+
+export enum DetailsComponents {
+  StockDealDetails = 1,
+}
+
+
+const allowedDetailsComponents = new Map<DetailsComponents, any>([
+  [DetailsComponents.StockDealDetails, StockDealDetailsComponent],
+])
 
 
 @Component({
@@ -14,27 +26,44 @@ import { DashboardSelectors } from '../../../store/dashboard.selectors';
 })
 export class RowDetailsComponent implements OnInit {
 
-  public rowDetailsComponent: unknown | null = null;
+  @ViewChild('content', { read: ViewContainerRef }) public content: ViewContainerRef | undefined;
+
+  public show = false;
 
   private _unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   constructor(
     private _store: Store,
     private _changeDetectorRef: ChangeDetectorRef,
+    private _componentFactoryResolver: ComponentFactoryResolver,
   ) { }
 
   ngOnInit(): void {
-    this._store.select(DashboardSelectors.rowDetailsComponent).pipe(
+
+    combineLatest([
+      this._store.select(DashboardSelectors.rowDetailsComponent),
+      this._store.select(DashboardSelectors.rowDetailsPayload)
+    ]).pipe(
       takeUntil(this._unsubscribe),
     )
-      .subscribe((component: unknown | null) => {
-        this.rowDetailsComponent = component;
+      .subscribe(([detailsComponent, payload]: [DetailsComponents | null, unknown | null]) => {
+        this.show = !!detailsComponent;
         this._changeDetectorRef.detectChanges();
-      })
+
+        if (this.show) {
+          const component = allowedDetailsComponents.get(detailsComponent as DetailsComponents);
+          const factory = this._componentFactoryResolver.resolveComponentFactory(component);
+          const details = this.content?.createComponent(factory);
+        } else {
+          this.content?.clear();
+        }
+
+        this._changeDetectorRef.detectChanges();
+      });
   }
 
 
   public close(): void {
-    this._store.dispatch(DashboardActions.rowDetails({ component: null }));
+    this._store.dispatch(DashboardActions.rowDetails({ component: null, payload: null }));
   }
 }
