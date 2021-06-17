@@ -102,18 +102,6 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
           return this._currencyPipe.transform(price);
         }),
       }, {
-        id: 'stopLoss',
-        title: 'Стоп-лосс',
-        headerClass: 'open-deal',
-        cellClass: 'right',
-        prepareCellFunction: ((price: number) => {
-          if (!price) {
-            return ''
-          }
-
-          return this._currencyPipe.transform(price);
-        }),
-      }, {
         id: 'quantity',
         title: 'Кол-во',
         headerClass: 'open-deal',
@@ -129,6 +117,18 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
           }
 
           return this._datePipe.transform(date, 'short');
+        }),
+      }, {
+        id: 'stopLoss',
+        title: 'Стоп-лосс',
+        headerClass: 'close-deal',
+        cellClass: 'right',
+        prepareCellFunction: ((price: number) => {
+          if (!price) {
+            return ''
+          }
+
+          return this._currencyPipe.transform(price);
         }),
       }, {
         id: 'exitPoint',

@@ -1,8 +1,11 @@
+import { ThisReceiver } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { result } from "lodash-es";
 import { exhaustMap, map, switchMap } from "rxjs/operators";
 
 import { Result } from "src/app/shared/models/result/result.model";
+import { User } from "src/app/shared/models/user/user.model";
 import { AuthService } from "../../shared/services/user/auth.service";
 import { AuthActions } from "./auth.actions";
 
@@ -64,6 +67,20 @@ export class AuthEffects {
                         return AuthActions.clearCurrentUser();
                     })
                 );
+            })
+        )
+    })
+
+
+    public getCurrentUser = createEffect(() => {
+        return this._actions.pipe(
+            ofType(AuthActions.getCurrentUser),
+            exhaustMap(action => {
+                return this._authService.getCurrentUser().pipe(
+                    map((result: Result) => {
+                        return AuthActions.setCurrentUser({ currentUser: result.payload as User })
+                    })
+                )
             })
         )
     })

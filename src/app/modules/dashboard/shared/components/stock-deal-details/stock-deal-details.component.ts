@@ -13,4 +13,13 @@ export class StockDealDetailsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  public create(): void {
+    console.log('zzzzzzzzzzzzzzzzzzzzz');
+  }
+
+  public cancel(): void {
+    console.log('ffffffffffffffffffff');
+  }
+
 }

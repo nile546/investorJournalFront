@@ -20,4 +20,15 @@
         color: darken($lightGray, 50%);
         text-align: center;
     }
+
+    &__label {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+
+    &__sm {
+        padding: 0.5rem !important;
+    }
 }

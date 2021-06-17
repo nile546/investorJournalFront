@@ -1,8 +1,126 @@
 <div class="details__wrapper">
     <div class="details__header">
-        <h2>Добавить сделку</h2>
+        <h2>Добавить акционную сделку</h2>
     </div>
-    <form>
-        zzzzzzzzzzz
+    <form novalidate>
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="ticker">Тикер</label>
+                <input class="control__input"
+                    id="ticker"
+                    type="text"
+                    formControlName="ticker">
+            </div>
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="strategy">Стратегия</label>
+                <input class="control__input"
+                    id="strategy"
+                    type="text"
+                    formControlName="strategy">
+            </div>
+
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="pattern">Паттерн</label>
+                <input class="control__input"
+                    id="pattern"
+                    type="text"
+                    formControlName="pattern">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="position">Позиция</label>
+                <input class="control__input"
+                    id="position"
+                    type="text"
+                    formControlName="position">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="timeFrame">Таймфрейм</label>
+                <input class="control__input"
+                    id="timeFrame"
+                    type="text"
+                    formControlName="timeFrame">
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="enterDatetime">Дата входа</label>
+                <input class="control__input"
+                    id="enterDatetime"
+                    type="text"
+                    formControlName="enterDatetime">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="enterPoint">Точка входа</label>
+                <input class="control__input"
+                    id="enterPoint"
+                    type="text"
+                    formControlName="enterPoint">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="quantity">Количество</label>
+                <input class="control__input"
+                    id="quantity"
+                    type="text"
+                    formControlName="quantity">
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="exitDatetime">Дата выхода</label>
+                <input class="control__input"
+                    id="exitDatetime"
+                    type="text"
+                    formControlName="exitDatetime">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="stopLoss">Стоп-лосс</label>
+                <input class="control__input"
+                    id="stopLoss"
+                    type="text"
+                    formControlName="stopLoss">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="exitPoint">Точка выхода</label>
+                <input class="control__input"
+                    id="exitPoint"
+                    type="text"
+                    formControlName="exitPoint">
+            </div>
+        </div>
     </form>
+
+    <div class="details__row">
+        <div class="details__col">
+            <button class="btn__primary"
+                (click)="create()"
+                type="button">Cохранить</button>
+        </div>
+        <div class="details__col">
+            <button class="btn__primary"
+                (click)="cancel()"
+                type="button">Отмена</button>
+        </div>
+    </div>
 </div>

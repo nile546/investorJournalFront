@@ -29,6 +29,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this._store.select(AuthSelectors.currentUser);
+    this._store.dispatch(AuthActions.getCurrentUser());
   }
 
 

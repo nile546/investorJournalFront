@@ -1,5 +1,63 @@
+@mixin color-row {
+    display: flex;
+    padding: 1rem 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+}
+
+@mixin col {
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
 .details {
     &__wrapper {
         padding: 2rem;
+    }
+
+    &__header {
+        margin-bottom: 2rem;
+        margin-left: 1rem;
+    }
+
+    &__row {
+        display: flex;
+    }
+
+    &__row-primary-light {
+        @include color-row();
+        color: $white !important;
+        background-color: lighten($primary, 25%);
+    }
+
+    &__row-primary {
+        @include color-row();
+        color: $white !important;
+        background-color: $primary;
+
+    }
+
+    &__col {
+        @include col();
+    }
+
+    &__col-1 {
+        @include col();
+        width: 50%;
+    }
+
+    &__col-2 {
+        @include col();
+        width: 40%;
+    }
+
+    &__col-3 {
+        @include col();
+        width: 25%;
+    }
+
+    &__col-4 {
+        @include col();
+        width: 20%;
     }
 }

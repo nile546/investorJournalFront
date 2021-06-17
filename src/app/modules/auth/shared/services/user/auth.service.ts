@@ -60,4 +60,12 @@ export class AuthService {
       {},
     )
   }
+
+
+  public getCurrentUser() {
+    return this._httpClient.post<Result>(
+      'auth/get-current-user',
+      {},
+    )
+  }
 }
