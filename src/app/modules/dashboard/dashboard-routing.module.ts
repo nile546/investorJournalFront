@@ -3,7 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { DASHBOARD } from "src/app/shared/constants/routes";
 import { UserGuard } from "../auth/shared/guards/user-guard";
-import { CryptosComponent } from "./cryptos/cryptos.component";
+import { CryptoDealsComponent } from "./crypto-deals/crypto-deals.component";
 import { DashboardComponent } from "./dashboard.component";
 import { DepositsComponent } from "./deposits/deposits.component";
 import { PredictComponent } from "./predict/predict.component";
@@ -20,7 +20,7 @@ const routes: Routes = [
         children: [
             { path: STATISTICS, component: StatisticsComponent },
             { path: STOCK_DEALS, component: StockDealsComponent },
-            { path: CRYPTO_DEALS, component: CryptosComponent },
+            { path: CRYPTO_DEALS, component: CryptoDealsComponent },
             { path: DEPOSIT_DEALS, component: DepositsComponent },
             { path: PREDICT, component: PredictComponent },
         ]

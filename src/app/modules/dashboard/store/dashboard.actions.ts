@@ -12,5 +12,8 @@ export namespace DashboardActions {
         rowDetails = createAction('[Table Component] Show Row Details', props<{ component: DetailsComponents | null, payload: unknown | null }>()),
 
         getAllStocks = createAction('[Stock Table Component] Get All Stocks', props<{ tableParams: TableParams }>()),
-        getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>());
+        getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>()),
+
+        getAllCryptoDeals = createAction('[Crypto Deals Table Component] Get All Crypto Deals', props<{tableParams: TableParams}>()),
+        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{result: Result}>());
 }
