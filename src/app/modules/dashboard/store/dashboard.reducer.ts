@@ -13,8 +13,10 @@ export namespace DashboardReducer {
 
 
     export interface State {
-        stockDealsTableParams: TableParams;
+
         getAllStockDealsResult: Result | null;
+        getAllStocksResult: Result | null;
+
         rowDetailsComponent: DetailsComponents | null;
         rowDetailsPayload: unknown | null;
     }
@@ -22,15 +24,9 @@ export namespace DashboardReducer {
 
     const initialState: State = {
 
-        stockDealsTableParams: {
-            pagination: {
-                pageNumber: 0,
-                itemsPerPage: environment.itemsPerPageList[0]
-            } as Pagination,
-            source: [],
-        } as TableParams,
-
         getAllStockDealsResult: null,
+        getAllStocksResult: null,
+
         rowDetailsComponent: null,
         rowDetailsPayload: null,
     }
@@ -59,6 +55,20 @@ export namespace DashboardReducer {
                 ...state,
                 rowDetailsComponent: action.component,
                 rowDetailsPayload: action.payload,
+            }
+        }),
+
+        on(DashboardActions.getAllStocks, (state: State, action: { tableParams: TableParams }) => {
+            return {
+                ...state,
+                stocksTableParams: action.tableParams,
+            }
+        }),
+
+        on(DashboardActions.getAllStocksResult, (state: State, action: { result: Result }) => {
+            return {
+                ...state,
+                getAllStocksResult: action.result,
             }
         }),
     )

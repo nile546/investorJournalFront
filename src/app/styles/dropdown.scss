@@ -15,7 +15,41 @@
         box-shadow: 0 3px 10px 0 rgba($darkGray, 0.2);
     }
 
+    &__content-table {
+        display: none;
+        position: absolute;
+        right: 1rem;
+        left: 1rem;
+        top: 4.5rem;
+        min-height: 10rem;
+        max-height: 20vw;
+        background-color: $white;
+        overflow: auto;
+        border: 1px solid darken($lightGray, 10%);
+        border-radius: $controlRadius;
+        box-shadow: 0 3px 10px 0 rgba($darkGray, 0.2);
+    }
+
+    &__table {
+        width: 100%;
+    }
+
+    &__cell {
+        display: block;
+        padding: 0.25rem 1rem;
+        width: 100%;
+        box-sizing: border-box;
+
+        &:hover {
+            background-color: darken($lightGray, 10%);
+        }
+    }
+
     &:hover .dropdown__content {
+        display: block;
+    }
+
+    &:hover .dropdown__content-table {
         display: block;
     }
 

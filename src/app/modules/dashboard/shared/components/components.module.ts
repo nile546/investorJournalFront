@@ -9,6 +9,8 @@ import { SillyDatatableModule } from "silly-datatable";
 import { StockDealsTableComponent } from "./stock-deals-table/stock-deals-table.component";
 import { RowDetailsComponent } from './row-details/row-details.component';
 import { StockDealDetailsComponent } from './stock-deal-details/stock-deal-details.component';
+import { StockTableComponent } from './stock-table/stock-table.component';
+import { ReactiveFormsModule } from "@angular/forms";
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import { StockDealDetailsComponent } from './stock-deal-details/stock-deal-detai
         RouterModule,
         SillyDatatableModule,
         CommonModule,
+        //ReactiveFormsModule,
     ],
     declarations: [
         AsideComponent,
@@ -24,12 +27,14 @@ import { StockDealDetailsComponent } from './stock-deal-details/stock-deal-detai
         StockDealsTableComponent,
         RowDetailsComponent,
         StockDealDetailsComponent,
+        StockTableComponent,
     ],
     exports: [
         AsideComponent,
         DashboardMenuComponent,
         StockDealsTableComponent,
         RowDetailsComponent,
+        StockTableComponent,
     ]
 })
 export class ComponentsModule {

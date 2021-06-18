@@ -1,16 +1,25 @@
+@mixin input {
+    display: block;
+    margin-bottom: 1rem;
+    background-color: $white;
+    border: 1px solid darken($lightGray, 10%);
+    border-radius: $controlRadius;
+    padding: 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 300;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .control {
     &__input {
-        display: block;
-        margin-bottom: 1rem;
-        background-color: $white;
-        border: 1px solid darken($lightGray, 10%);
-        border-radius: $controlRadius;
-        padding: 0.875rem;
-        font-size: 0.875rem;
-        font-weight: 300;
-        outline: none;
-        box-sizing: border-box;
-        width: 100%;
+        @include input();
+    }
+
+    &__select {
+        @include input();
+        background: url(../../assets/img/arrow-down.svg) no-repeat scroll 95%;
     }
 
     &__description {

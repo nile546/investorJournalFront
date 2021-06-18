@@ -1,14 +1,14 @@
 import { CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Injector } from '@angular/core';
 import startCase from 'lodash-es/startCase';
-import { Subject } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
 
-import { Column, TableParams, TableSettings } from 'silly-datatable';
+import { Column, Pagination, TableParams, TableSettings } from 'silly-datatable';
+import { Table } from 'src/app/shared/components/abstract/table/table';
 import { Positions } from 'src/app/shared/models/positions/positions.model';
 import { Result } from 'src/app/shared/models/result/result.model';
 import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model';
+import { environment } from 'src/environments/environment';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
 import { DetailsComponents } from '../row-details/row-details.component';
@@ -20,22 +20,17 @@ import { DetailsComponents } from '../row-details/row-details.component';
   styleUrls: ['./stock-deals-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StockDealsTableComponent implements OnInit, OnDestroy {
-
-  public settings: TableSettings;
-  public columns: Column[];
-
-  private _tableParams: TableParams = new TableParams();
-  private _unsubscribe: Subject<boolean> = new Subject<boolean>();
+export class StockDealsTableComponent extends Table implements OnInit, OnDestroy {
 
 
   constructor(
-    private _store: Store,
-    private _changeDetectorRef: ChangeDetectorRef,
+    _injector: Injector,
     private _datePipe: DatePipe,
     private _currencyPipe: CurrencyPipe,
     private _percentPipe: PercentPipe,
   ) {
+
+    super(_injector)
 
     this.settings = {
       tableClass: 'datatable',
@@ -43,7 +38,7 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
       headerRowClass: 'header-row',
       rowClass: 'row',
       dataNotFoundPhrase: 'Данные не найдены',
-      itemsPerPageList: [30, 50, 100],
+      itemsPerPageList: environment.itemsPerPageList,
     } as TableSettings;
 
 
@@ -202,18 +197,14 @@ export class StockDealsTableComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-
-    // Init table params
-    this._store.select(DashboardSelectors.stockDealsTableParams).pipe(
-      take(1),
-      takeUntil(this._unsubscribe),
-    )
-      .subscribe((stocksTableParams: TableParams) => {
-        this._tableParams = stocksTableParams;
-      });
+    this._tableParams = {
+      pagination: {
+        pageNumber: 0,
+        itemsPerPage: environment.itemsPerPageList[0]
+      } as Pagination
+    }
 
 
-    // Update table params after fetch data from backend
     this._store.select(DashboardSelectors.getAllStockDealsResult).pipe(
       filter(data => !!data),
       takeUntil(this._unsubscribe),

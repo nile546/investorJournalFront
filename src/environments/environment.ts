@@ -7,7 +7,8 @@ export const environment = {
   sliderDuration: 10000,
   apiServerPath: 'http://localhost:4001/api/',
 
-  itemsPerPageList: [30, 50, 100]
+  itemsPerPageList: [30, 50, 100],
+  itemsPerPageLookup: 50,
 };
 
 /*

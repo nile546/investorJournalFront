@@ -9,5 +9,8 @@ export namespace DashboardActions {
     export const getAllStockDeals = createAction('[Stock Deals Table Component] Get All Stock Deals', props<{ tableParams: TableParams }>()),
         getAllStockDealsResult = createAction('[Stock Deals Table Component] Get All Stock Deals Result', props<{ result: Result }>()),
 
-        rowDetails = createAction('[Table Component] Show Row Details', props<{ component: DetailsComponents | null, payload: unknown | null }>());
+        rowDetails = createAction('[Table Component] Show Row Details', props<{ component: DetailsComponents | null, payload: unknown | null }>()),
+
+        getAllStocks = createAction('[Stock Table Component] Get All Stocks', props<{ tableParams: TableParams }>()),
+        getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>());
 }

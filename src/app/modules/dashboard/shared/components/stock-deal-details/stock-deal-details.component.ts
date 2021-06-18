@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'tr-stock-deal-details',
@@ -7,6 +8,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StockDealDetailsComponent implements OnInit {
+
+  public form: FormGroup = new FormGroup({
+
+  });
 
   constructor() { }
 

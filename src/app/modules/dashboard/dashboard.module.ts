@@ -11,8 +11,9 @@ import { PredictComponent } from './predict/predict.component';
 import { AuthModule } from '../auth/auth.module';
 import { EffectsModule } from '@ngrx/effects';
 import { DashboardEffects } from './store/dashboard.effects';
-import { StockDealService } from './shared/services/stock/stock-deal.service';
 import { StockDealsComponent } from './stock-deals/stock-deals.component';
+import { StockService } from './shared/services/stock/stock.service';
+import { StockDealService } from './shared/services/stock-deal/stock-deal.service';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { StockDealsComponent } from './stock-deals/stock-deals.component';
     DatePipe,
     CurrencyPipe,
     PercentPipe,
+    StockService,
   ]
 
 })

@@ -5,9 +5,10 @@ import { DashboardReducer } from "./dashboard.reducer";
 export namespace DashboardSelectors {
     export const dashboardState = createFeatureSelector<DashboardReducer.State>(DashboardReducer.DASHBOARD),
 
-        stockDealsTableParams = createSelector(dashboardState, (state: DashboardReducer.State) => state.stockDealsTableParams),
         getAllStockDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllStockDealsResult),
 
         rowDetailsComponent = createSelector(dashboardState, (state: DashboardReducer.State) => state.rowDetailsComponent),
-        rowDetailsPayload = createSelector(dashboardState, (state: DashboardReducer.State) => state.rowDetailsPayload);
+        rowDetailsPayload = createSelector(dashboardState, (state: DashboardReducer.State) => state.rowDetailsPayload),
+
+        getAllStocksResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllStocksResult);
 }
