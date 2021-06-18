@@ -1,10 +1,11 @@
-import { ChangeDetectorRef, Injector } from "@angular/core";
+import { ChangeDetectorRef, Directive, Injector, OnDestroy } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 import { Column, TableParams, TableSettings } from "silly-datatable";
 
 
-export abstract class Table {
+@Directive()
+export abstract class Table implements OnDestroy {
 
     public settings: TableSettings = {};
     public columns: Column[] = [];
@@ -19,5 +20,11 @@ export abstract class Table {
     ) {
         this._store = this._injector.get(Store);
         this._changeDetectorRef = this._injector.get(ChangeDetectorRef);
+    }
+
+
+    ngOnDestroy(): void {
+        this._unsubscribe.next(true);
+        this._unsubscribe.unsubscribe();
     }
 }

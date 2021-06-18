@@ -15,6 +15,9 @@ export namespace DashboardReducer {
     export interface State {
 
         getAllStockDealsResult: Result | null;
+        getAllDepositDealsResult: Result | null;
+        getAllCryptoDealsResult: Result | null;
+
         getAllStocksResult: Result | null;
 
         rowDetailsComponent: DetailsComponents | null;
@@ -25,6 +28,9 @@ export namespace DashboardReducer {
     const initialState: State = {
 
         getAllStockDealsResult: null,
+        getAllDepositDealsResult: null,
+        getAllCryptoDealsResult: null,
+
         getAllStocksResult: null,
 
         rowDetailsComponent: null,

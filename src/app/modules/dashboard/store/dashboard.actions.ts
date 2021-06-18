@@ -15,5 +15,7 @@ export namespace DashboardActions {
         getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>()),
 
         getAllCryptoDeals = createAction('[Crypto Deals Table Component] Get All Crypto Deals', props<{tableParams: TableParams}>()),
-        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{result: Result}>());
+        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{result: Result}>()),
+
+        getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{tableParams: TableParams}>());
 }
