@@ -1,8 +1,13 @@
+<ngx-silly-datatable-search #searchComponent
+    [dataFromExternalControl]="searchWord"
+    [usedExternalControl]="true"></ngx-silly-datatable-search>
+
 <div class="dropdown__table-wrapper"
     (scroll)="scroll($event)">
     <ngx-silly-datatable id="stocks"
         [settings]="settings"
         [columns]="columns"
+        [searchComponent]="searchComponent"
         [(tableParams)]="tableParams"
         (rowClicked)="select($event)">
     </ngx-silly-datatable>

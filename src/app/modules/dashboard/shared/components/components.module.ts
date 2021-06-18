@@ -19,7 +19,7 @@ import { ReactiveFormsModule } from "@angular/forms";
         RouterModule,
         SillyDatatableModule,
         CommonModule,
-        //ReactiveFormsModule,
+        ReactiveFormsModule,
     ],
     declarations: [
         AsideComponent,

@@ -1,4 +1,4 @@
-export class StockInstrument {
+export class Stock {
     public id: number | null | undefined;
     public title: string | null | undefined;
     public ticker: string | null | undefined;

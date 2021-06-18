@@ -1,14 +1,14 @@
 import { Currencies } from "../currencies/currencies.model";
 import { Pattern } from "../pattern/pattern.model";
 import { Positions } from "../positions/positions.model";
-import { StockInstrument } from "../stock-instrument/stock-instrument.model";
+import { Stock } from "../stock-instrument/stock-instrument.model";
 import { Strategy } from "../strategy/strategy.model";
 import { TimeFrames } from "../time-frames/time-frames.model";
 
 
 export class StockDeal {
     public id: number | null | undefined;
-    public stock: StockInstrument | null | undefined;
+    public stock: Stock | null | undefined;
     public currency: Currencies | null | undefined;
     public strategy: Strategy | null | undefined;
     public pattern: Pattern | null | undefined;

@@ -2,18 +2,21 @@
     <div class="details__header">
         <h2>Добавить акционную сделку</h2>
     </div>
-    <!-- [formGroup]="form" -->
-    <form novalidate>
+
+    <form novalidate
+        autocomplete="off"
+        [formGroup]="form">
         <div class="details__row">
             <div class="details__col-1 dropdown">
                 <label class="control__label"
                     for="ticker">Тикер</label>
-                <input class="control__select "
+                <input class="control__select uppercase"
                     id="ticker"
                     type="text"
                     formControlName="ticker">
                 <div class="dropdown__content-table">
-                    <tr-stock-table></tr-stock-table>
+                    <tr-stock-table [searchWord]="form.controls.ticker.value?.toUpperCase()"
+                        (stock)="setStock($event)"></tr-stock-table>
                 </div>
             </div>
             <div class="details__col-1">

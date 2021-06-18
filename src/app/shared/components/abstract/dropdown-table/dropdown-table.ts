@@ -1,8 +1,9 @@
-import { ChangeDetectorRef, Injector } from "@angular/core";
+import { ChangeDetectorRef, Injector, Input } from "@angular/core";
+import { FormControl } from "@angular/forms";
 import { Store } from "@ngrx/store";
 import { Subject } from "rxjs";
 
-import { Column, TableParams, TableSettings } from "silly-datatable";
+import { Column, Pagination, TableParams, TableSettings } from "silly-datatable";
 
 
 export abstract class DropdownTable {
@@ -40,14 +41,13 @@ export abstract class DropdownTable {
         }
 
         if (event.srcElement.offsetHeight + event.srcElement.scrollTop >= event.srcElement.scrollHeight) {
-            const pagination = Object.assign(
-                {},
-                this._tableParams.pagination,
-                { pageNumber: this._tableParams.pagination.pageNumber + 1 }
-            );
+            const pagination = {
+                pageNumber: this._tableParams.pagination.pageNumber,
+                itemsPerPage: this._tableParams.pagination.itemsPerPage,
+                pageCount: this._tableParams.pagination.pageCount,
+            } as Pagination;
 
-            const tableParams = Object.assign({}, this._tableParams, { pagination });
-            this.tableParams = tableParams;
+            this.tableParams = Object.assign({}, this._tableParams, { pagination })
         }
     }
 }

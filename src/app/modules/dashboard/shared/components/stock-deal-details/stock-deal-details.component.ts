@@ -1,5 +1,11 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+
+import { StockDeal } from 'src/app/shared/models/stock-deal/stock-deal.model';
+import { Stock } from 'src/app/shared/models/stock-instrument/stock-instrument.model';
+import { DashboardActions } from '../../../store/dashboard.actions';
+
 
 @Component({
   selector: 'tr-stock-deal-details',
@@ -9,11 +15,26 @@ import { FormGroup } from '@angular/forms';
 })
 export class StockDealDetailsComponent implements OnInit {
 
-  public form: FormGroup = new FormGroup({
+  public stockDeal: StockDeal = new StockDeal();
 
+  public form: FormGroup = new FormGroup({
+    ticker: new FormControl(),
+    strategy: new FormControl(),
+    pattern: new FormControl(),
+    position: new FormControl(),
+    timeFrame: new FormControl(),
+    enterDatetime: new FormControl(),
+    enterPoint: new FormControl(),
+    quantity: new FormControl(),
+    exitDatetime: new FormControl(),
+    stopLoss: new FormControl(),
+    exitPoint: new FormControl(),
   });
 
-  constructor() { }
+  constructor(
+    private _store: Store,
+  ) { }
+
 
   ngOnInit(): void {
   }
@@ -23,7 +44,14 @@ export class StockDealDetailsComponent implements OnInit {
     console.log('zzzzzzzzzzzzzzzzzzzzz');
   }
 
+
   public cancel(): void {
-    console.log('ffffffffffffffffffff');
+    this._store.dispatch(DashboardActions.rowDetails({ component: null, payload: null }));
+  }
+
+
+  public setStock(value: Stock) {
+    this.stockDeal.stock = value;
+    this.form.controls.ticker.setValue(value.ticker, { emitEvent: false });
   }
 }
