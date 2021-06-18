@@ -1,6 +1,9 @@
-<ngx-silly-datatable id="stocks"
-    [settings]="settings"
-    [columns]="columns"
-    [(tableParams)]="tableParams"
-    (rowClicked)="select($event)">
-</ngx-silly-datatable>
+<div class="dropdown__table-wrapper"
+    (scroll)="scroll($event)">
+    <ngx-silly-datatable id="stocks"
+        [settings]="settings"
+        [columns]="columns"
+        [(tableParams)]="tableParams"
+        (rowClicked)="select($event)">
+    </ngx-silly-datatable>
+</div>
