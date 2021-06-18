@@ -1,7 +1,7 @@
 import { PercentPipe } from '@angular/common';
 import { CurrencyPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
-import { Injector } from '@angular/core';
+import { ChangeDetectionStrategy, Injector } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { startCase } from 'lodash-es';
@@ -14,18 +14,22 @@ import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model'
 import { environment } from 'src/environments/environment';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
+import { DetailsComponents } from '../row-details/row-details.component';
 
 @Component({
   selector: 'tr-crypto-deals-table',
   templateUrl: './crypto-deals-table.component.html',
-  styleUrls: ['./crypto-deals-table.component.scss']
+  styleUrls: ['./crypto-deals-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CryptoDealsTableComponent extends Table implements OnInit, OnDestroy {
 
-  constructor(_injector: Injector,
+  constructor(
+    _injector: Injector,
     private _datePipe: DatePipe,
     private _currencyPipe: CurrencyPipe,
-    private _percentPipe: PercentPipe,) {
+    private _percentPipe: PercentPipe,
+  ) {
 
     super(_injector)
 
@@ -198,7 +202,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
     }
 
 
-    this._store.select(DashboardSelectors.getAllStockDealsResult).pipe(
+    this._store.select(DashboardSelectors.getAllCryptoDealsResult).pipe(
       filter(data => !!data),
       takeUntil(this._unsubscribe),
     )
@@ -208,9 +212,13 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
       })
   }
 
-  ngOnDestroy(): void {
-    this._unsubscribe.next(true);
-    this._unsubscribe.unsubscribe();
+
+  public edit(entity: any): void {
+    console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', entity);
   }
 
+
+  public create(): void {
+    this._store.dispatch(DashboardActions.rowDetails({ component: DetailsComponents.CryptoDealDetails, payload: null }));
+  }
 }

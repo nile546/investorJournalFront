@@ -5,16 +5,22 @@ import { takeUntil } from 'rxjs/operators';
 
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
+import { CryptoDealDetailsComponent } from '../crypto-deal-details/crypto-deal-details.component';
+import { DepositDealDetailsComponent } from '../deposit-deal-details/deposit-deal-details.component';
 import { StockDealDetailsComponent } from '../stock-deal-details/stock-deal-details.component';
 
 
 export enum DetailsComponents {
   StockDealDetails = 1,
+  CryptoDealDetails,
+  DepositDealDetails,
 }
 
 
 const allowedDetailsComponents = new Map<DetailsComponents, any>([
   [DetailsComponents.StockDealDetails, StockDealDetailsComponent],
+  [DetailsComponents.CryptoDealDetails, CryptoDealDetailsComponent],
+  [DetailsComponents.DepositDealDetails, DepositDealDetailsComponent],
 ])
 
 

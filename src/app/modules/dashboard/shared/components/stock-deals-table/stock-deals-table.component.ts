@@ -224,10 +224,4 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
   public create(): void {
     this._store.dispatch(DashboardActions.rowDetails({ component: DetailsComponents.StockDealDetails, payload: null }));
   }
-
-
-  ngOnDestroy(): void {
-    this._unsubscribe.next(true);
-    this._unsubscribe.unsubscribe();
-  }
 }

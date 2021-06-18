@@ -13,6 +13,8 @@ import { StockTableComponent } from './stock-table/stock-table.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { CryptoDealsTableComponent } from './crypto-deals-table/crypto-deals-table.component';
 import { DepositDealsTableComponent } from './deposit-deals-table/deposit-deals-table.component';
+import { CryptoDealDetailsComponent } from './crypto-deal-details/crypto-deal-details.component';
+import { DepositDealDetailsComponent } from './deposit-deal-details/deposit-deal-details.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { DepositDealsTableComponent } from './deposit-deals-table/deposit-deals-
         StockTableComponent,
         CryptoDealsTableComponent,
         DepositDealsTableComponent,
+        CryptoDealDetailsComponent,
+        DepositDealDetailsComponent,
     ],
     exports: [
         AsideComponent,
