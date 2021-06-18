@@ -20,5 +20,4 @@ export abstract class Table {
         this._store = this._injector.get(Store);
         this._changeDetectorRef = this._injector.get(ChangeDetectorRef);
     }
-
 }

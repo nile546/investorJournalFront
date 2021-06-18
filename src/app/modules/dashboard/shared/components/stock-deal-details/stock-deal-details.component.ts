@@ -26,5 +26,4 @@ export class StockDealDetailsComponent implements OnInit {
   public cancel(): void {
     console.log('ffffffffffffffffffff');
   }
-
 }
