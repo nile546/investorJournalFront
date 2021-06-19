@@ -48,7 +48,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       }, {
         id: 'enterDatetime',
         title: 'Открытие депозита',
-        headerClass: 'open-deposit',
+        headerClass: 'open-deal',
         cellClass: 'border-left',
         prepareCellFunction: ((date: Date) => {
           if (!date) {
@@ -60,7 +60,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       }, {
         id: 'enterPoint',
         title: 'Сумма депозита',
-        headerClass: 'count-deposit',
+        headerClass: 'open-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);
@@ -68,13 +68,12 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       }, {
         id: 'percent',
         title: 'Процент',
-        headerClass: 'percent-deposit',
-        cellClass: 'center',
+        headerClass: 'close-deal',
       }, {
         id: 'exitDatetime',
         title: 'Дата закрытия депозита',
-        headerClass: 'close-deposit',
-        cellClass: 'border-left',
+        headerClass: 'close-deal',
+        cellClass: 'right',
         prepareCellFunction: ((date: Date) => {
           if (!date) {
             return ''
@@ -85,8 +84,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       }, {
         id: 'exitPoint',
         title: 'Конечный депозит',
-        headerClass: 'close-deposit',
-        cellClass: 'right',
+        headerClass: 'result-deal',
         prepareCellFunction: ((price: number) => {
           if (!price) {
             return ''
@@ -97,7 +95,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       }, {
         id: 'result',
         title: 'Результат',
-        headerClass: 'result-deposit',
+        headerClass: 'result-deal',
         cellClass: 'border-left right',
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price);

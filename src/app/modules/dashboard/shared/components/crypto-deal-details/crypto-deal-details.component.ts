@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CryptoDealDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _store: Store,
+  ) { }
 
   ngOnInit(): void {
   }
