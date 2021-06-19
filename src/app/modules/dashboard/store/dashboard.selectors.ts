@@ -14,5 +14,9 @@ export namespace DashboardSelectors {
 
         getAllDepositDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllDepositDealsResult),
 
-        getAllCryptoDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllCryptoDealsResult);
+        getAllCryptoDealsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllCryptoDealsResult),
+
+        getAllStrategiesResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllStrategiesResult),
+
+        getAllPatternsResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllPatternsResult);
 }

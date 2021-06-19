@@ -15,7 +15,7 @@
                     type="text"
                     formControlName="ticker">
                 <div class="dropdown__content-table">
-                    <tr-stock-table [searchWord]="form.controls.ticker.value?.toUpperCase()"
+                    <tr-stock-table [searchText]="form.controls.ticker.value?.toUpperCase()"
                         (stock)="setStock($event)"></tr-stock-table>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                     type="text"
                     formControlName="strategy">
                 <div class="dropdown__content-table">
-                    <tr-strategy-table [searchWord]="form.controls.strategy.value"
-                        (stock)="setStock($event)"></tr-strategy-table>
+                    <tr-strategy-table [searchText]="form.controls.strategy.value"
+                        (strategy)="setStrategy($event)"></tr-strategy-table>
                 </div>
             </div>
 
@@ -43,8 +43,8 @@
                     type="text"
                     formControlName="pattern">
                 <div class="dropdown__content-table">
-                    <tr-pattern-table [searchWord]="form.controls.pattern.value"
-                        (stock)="setStock($event)"></tr-pattern-table>
+                    <tr-pattern-table [searchText]="form.controls.pattern.value"
+                        (pattern)="setPattern($event)"></tr-pattern-table>
                 </div>
             </div>
 

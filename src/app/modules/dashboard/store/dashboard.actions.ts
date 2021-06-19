@@ -14,8 +14,12 @@ export namespace DashboardActions {
         getAllStocks = createAction('[Stock Table Component] Get All Stocks', props<{ tableParams: TableParams }>()),
         getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>()),
 
-        getAllCryptoDeals = createAction('[Crypto Deals Table Component] Get All Crypto Deals', props<{tableParams: TableParams}>()),
-        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{result: Result}>()),
+        getAllCryptoDeals = createAction('[Crypto Deals Table Component] Get All Crypto Deals', props<{ tableParams: TableParams }>()),
+        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{ result: Result }>()),
 
-        getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{tableParams: TableParams}>());
+        getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{ tableParams: TableParams }>()),
+
+        getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),
+
+        getAllPatterns = createAction('[Patterns Table Component] Get All Patterns', props<{ tableParams: TableParams }>());
 }

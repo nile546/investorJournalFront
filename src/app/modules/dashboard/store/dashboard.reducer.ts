@@ -17,6 +17,8 @@ export namespace DashboardReducer {
         getAllStockDealsResult: Result | null;
         getAllDepositDealsResult: Result | null;
         getAllCryptoDealsResult: Result | null;
+        getAllStrategiesResult: Result | null;
+        getAllPatternsResult: Result | null;
 
         getAllStocksResult: Result | null;
 
@@ -30,6 +32,8 @@ export namespace DashboardReducer {
         getAllStockDealsResult: null,
         getAllDepositDealsResult: null,
         getAllCryptoDealsResult: null,
+        getAllStrategiesResult: null,
+        getAllPatternsResult: null,
 
         getAllStocksResult: null,
 

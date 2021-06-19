@@ -1,26 +1,26 @@
 import { Component, OnInit, ChangeDetectionStrategy, Injector, Input, Output, EventEmitter } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Pagination, TableParams, TableSettings } from 'silly-datatable';
-import { DropdownTable } from 'src/app/shared/components/abstract/dropdown-table/dropdown-table';
 
+import { DropdownTable } from 'src/app/shared/components/abstract/dropdown-table/dropdown-table';
 import { Result } from 'src/app/shared/models/result/result.model';
-import { Stock } from 'src/app/shared/models/stock-instrument/stock-instrument.model';
+import { Strategy } from 'src/app/shared/models/strategy/strategy.model';
 import { environment } from 'src/environments/environment';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 
 @Component({
-  selector: 'tr-stock-table',
-  templateUrl: './stock-table.component.html',
-  styleUrls: ['./stock-table.component.scss'],
+  selector: 'tr-strategy-table',
+  templateUrl: './strategy-table.component.html',
+  styleUrls: ['./strategy-table.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StockTableComponent extends DropdownTable implements OnInit {
+export class StrategyTableComponent extends DropdownTable implements OnInit {
 
   @Input() public searchText = '';
 
-  @Output() public stock: EventEmitter<Stock> = new EventEmitter<Stock>();
+  @Output() public strategy: EventEmitter<Strategy> = new EventEmitter<Strategy>();
 
   constructor(
     _injector: Injector,
@@ -37,7 +37,7 @@ export class StockTableComponent extends DropdownTable implements OnInit {
 
     this.columns = [
       {
-        id: 'ticker',
+        id: 'name',
         cellClass: 'dropdown__cell'
       }
     ];
@@ -53,7 +53,7 @@ export class StockTableComponent extends DropdownTable implements OnInit {
     }
 
 
-    this._store.select(DashboardSelectors.getAllStocksResult).pipe(
+    this._store.select(DashboardSelectors.getAllStrategiesResult).pipe(
       filter(data => !!data),
       takeUntil(this._unsubscribe),
     )
@@ -78,15 +78,15 @@ export class StockTableComponent extends DropdownTable implements OnInit {
 
   public set tableParams(value: TableParams) {
     const tableParams = Object.assign({}, value, { source: [] })
-    this._store.dispatch(DashboardActions.getAllStocks({ tableParams }));
+    this._store.dispatch(DashboardActions.getAllStrategies({ tableParams }));
   }
 
 
-  public select(stock: Stock) {
-    if (!stock) {
+  public select(entity: Strategy) {
+    if (!entity) {
       return;
     }
 
-    this.stock.emit(stock);
+    this.strategy.emit(entity);
   }
 }
