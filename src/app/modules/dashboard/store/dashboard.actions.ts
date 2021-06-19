@@ -20,6 +20,8 @@ export namespace DashboardActions {
         getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{ tableParams: TableParams }>()),
 
         getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),
+        getAllStrategiesResult = createAction('[Strategies Table Component] Get All Strategies Result', props<{ result: Result }>()),
 
-        getAllPatterns = createAction('[Patterns Table Component] Get All Patterns', props<{ tableParams: TableParams }>());
+        getAllPatterns = createAction('[Patterns Table Component] Get All Patterns', props<{ tableParams: TableParams }>()),
+        getAllPatternsResult = createAction('[Patterns Table Component] Get All Patters Result', props<{ result: Result }>());
 }

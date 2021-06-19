@@ -8,7 +8,7 @@ export const environment = {
   apiServerPath: 'http://localhost:4001/api/',
 
   itemsPerPageList: [30, 50, 100],
-  itemsPerPageLookup: 50,
+  itemsPerPageLookup: 10,
 };
 
 /*

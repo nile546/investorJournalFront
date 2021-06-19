@@ -1,9 +1,7 @@
-import { Type } from "@angular/core";
 import { createReducer, on } from "@ngrx/store";
 
-import { Pagination, TableParams } from "silly-datatable";
+import { TableParams } from "silly-datatable";
 import { Result } from "src/app/shared/models/result/result.model";
-import { environment } from "src/environments/environment";
 import { DetailsComponents } from "../shared/components/row-details/row-details.component";
 import { DashboardActions } from "./dashboard.actions";
 
@@ -46,21 +44,21 @@ export namespace DashboardReducer {
 
         initialState,
 
-        on(DashboardActions.getAllStockDeals, (state: State, action: { tableParams: TableParams }) => {
-            return {
-                ...state,
-                stockDealsTableParams: action.tableParams,
-            }
-        }),
+        // on(DashboardActions.getAllStockDeals, (state: State, action: { tableParams: TableParams }) => {
+        //     return {
+        //         ...state,
+        //         stockDealsTableParams: action.tableParams,
+        //     }
+        // }),
 
-        on(DashboardActions.getAllStockDealsResult, (state: State, action: { result: Result }) => {
+        on(DashboardActions.getAllStockDealsResult, (state: State, action: { result: Result }): State => {
             return {
                 ...state,
                 getAllStockDealsResult: action.result,
             }
         }),
 
-        on(DashboardActions.rowDetails, (state: State, action: { component: DetailsComponents | null, payload: unknown | null }) => {
+        on(DashboardActions.rowDetails, (state: State, action: { component: DetailsComponents | null, payload: unknown | null }): State => {
             return {
                 ...state,
                 rowDetailsComponent: action.component,
@@ -68,17 +66,31 @@ export namespace DashboardReducer {
             }
         }),
 
-        on(DashboardActions.getAllStocks, (state: State, action: { tableParams: TableParams }) => {
-            return {
-                ...state,
-                stocksTableParams: action.tableParams,
-            }
-        }),
+        // on(DashboardActions.getAllStocks, (state: State, action: { tableParams: TableParams }) => {
+        //     return {
+        //         ...state,
+        //         stocksTableParams: action.tableParams,
+        //     }
+        // }),
 
-        on(DashboardActions.getAllStocksResult, (state: State, action: { result: Result }) => {
+        on(DashboardActions.getAllStocksResult, (state: State, action: { result: Result }): State => {
             return {
                 ...state,
                 getAllStocksResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.getAllStrategiesResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                getAllStrategiesResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.getAllPatternsResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                getAllPatternsResult: action.result,
             }
         }),
     )

@@ -36,13 +36,13 @@ export abstract class DropdownTable {
             return;
         }
 
-        if (this._tableParams.pagination.pageCount < this._tableParams.pagination.pageNumber) {
+        if ((this._tableParams.pagination.pageCount - 1) <= this._tableParams.pagination.pageNumber) {
             return;
         }
 
         if (event.srcElement.offsetHeight + event.srcElement.scrollTop >= event.srcElement.scrollHeight) {
             const pagination = {
-                pageNumber: this._tableParams.pagination.pageNumber,
+                pageNumber: this._tableParams.pagination.pageNumber + 1,
                 itemsPerPage: this._tableParams.pagination.itemsPerPage,
                 pageCount: this._tableParams.pagination.pageCount,
             } as Pagination;
