@@ -19,25 +19,33 @@
                         (stock)="setStock($event)"></tr-stock-table>
                 </div>
             </div>
-            <div class="details__col-1">
+            <div class="details__col-1 dropdown">
                 <label class="control__label"
                     for="strategy">Стратегия</label>
-                <input class="control__input"
+                <input class="control__select"
                     id="strategy"
                     type="text"
                     formControlName="strategy">
+                <div class="dropdown__content-table">
+                    <tr-strategy-table [searchWord]="form.controls.strategy.value"
+                        (stock)="setStock($event)"></tr-strategy-table>
+                </div>
             </div>
 
         </div>
 
         <div class="details__row">
-            <div class="details__col-1">
+            <div class="details__col-1 dropdown">
                 <label class="control__label"
                     for="pattern">Паттерн</label>
-                <input class="control__input"
+                <input class="control__select"
                     id="pattern"
                     type="text"
                     formControlName="pattern">
+                <div class="dropdown__content-table">
+                    <tr-pattern-table [searchWord]="form.controls.pattern.value"
+                        (stock)="setStock($event)"></tr-pattern-table>
+                </div>
             </div>
 
             <div class="details__col-3">
@@ -65,7 +73,7 @@
                     for="enterDatetime">Дата входа</label>
                 <input class="control__input"
                     id="enterDatetime"
-                    type="text"
+                    type="datetime-local"
                     formControlName="enterDatetime">
             </div>
 
@@ -94,7 +102,7 @@
                     for="exitDatetime">Дата выхода</label>
                 <input class="control__input"
                     id="exitDatetime"
-                    type="text"
+                    type="datetime-local"
                     formControlName="exitDatetime">
             </div>
 
