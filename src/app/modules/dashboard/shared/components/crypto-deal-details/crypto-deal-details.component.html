@@ -1,1 +1,150 @@
-<p>crypto-deal-details works!</p>
+<div class="details__wrapper">
+    <div class="details__header">
+        <h2>Добавить криптовалютную сделку</h2>
+    </div>
+
+    <form novalidate
+        autocomplete="off"
+        [formGroup]="form">
+        <div class="details__row">
+            <div class="details__col-1 dropdown">
+                <label class="control__label"
+                    for="ticker">Тикер *</label>
+                <input class="control__select uppercase"
+                    id="ticker"
+                    type="text"
+                    formControlName="ticker">
+                <div class="dropdown__content-table">
+                    <tr-stock-table [searchText]="form.controls.ticker.value?.toUpperCase()"
+                        (stock)="setCrypto($event)"></tr-stock-table>
+                </div>
+            </div>
+            <div class="details__col-1 dropdown">
+                <label class="control__label"
+                    for="strategy">Стратегия</label>
+                <input class="control__select"
+                    id="strategy"
+                    type="text"
+                    formControlName="strategy">
+                <div class="dropdown__content-table">
+                    <tr-strategy-table [searchText]="form.controls.strategy.value"
+                        (strategy)="setStrategy($event)"></tr-strategy-table>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1 dropdown">
+                <label class="control__label"
+                    for="pattern">Паттерн</label>
+                <input class="control__select"
+                    id="pattern"
+                    type="text"
+                    formControlName="pattern">
+                <div class="dropdown__content-table">
+                    <tr-pattern-table [searchText]="form.controls.pattern.value"
+                        (pattern)="setPattern($event)"></tr-pattern-table>
+                </div>
+            </div>
+
+            <div class="details__col-3 dropdown">
+                <label class="control__label"
+                    for="position">Позиция</label>
+                <input class="control__select"
+                    id="position"
+                    type="text"
+                    formControlName="position">
+                <div class="dropdown__content-table">
+                    <tr-enum-table [enumValue]="positionsEnum"
+                        (selected)="setPosition($event)"></tr-enum-table>
+                </div>
+            </div>
+
+            <div class="details__col-3 dropdown">
+                <label class="control__label"
+                    for="timeFrame">Таймфрейм</label>
+                <input class="control__select"
+                    id="timeFrame"
+                    type="text"
+                    formControlName="timeFrame">
+                <div class="dropdown__content-table">
+                    <tr-enum-table [enumValue]="timeFramesEnum"
+                        (selected)="setTimeFrame($event)"></tr-enum-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="enterDatetime">Дата входа</label>
+                <input class="control__input"
+                    id="enterDatetime"
+                    type="datetime-local"
+                    formControlName="enterDatetime">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="enterPoint">Точка входа</label>
+                <input class="control__input"
+                    id="enterPoint"
+                    type="number"
+                    formControlName="enterPoint">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="quantity">Количество</label>
+                <input class="control__input"
+                    id="quantity"
+                    type="number"
+                    formControlName="quantity">
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="exitDatetime">Дата выхода</label>
+                <input class="control__input"
+                    id="exitDatetime"
+                    type="datetime-local"
+                    formControlName="exitDatetime">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="stopLoss">Стоп-лосс</label>
+                <input class="control__input"
+                    id="stopLoss"
+                    type="number"
+                    formControlName="stopLoss">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="exitPoint">Точка выхода</label>
+                <input class="control__input"
+                    id="exitPoint"
+                    type="number"
+                    formControlName="exitPoint">
+            </div>
+        </div>
+    </form>
+
+    <div class="details__row">
+        <div class="details__col">
+            <button class="btn__primary"
+                (click)="submit()"
+                [disabled]="form.invalid"
+                type="button">Cохранить</button>
+        </div>
+        <div class="details__col">
+            <button class="btn__primary"
+                (click)="cancel()"
+                type="button">Отмена</button>
+        </div>
+    </div>
+</div>

@@ -47,7 +47,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         id: 'id',
         title: '№',
       }, {
-        id: 'crypto.ticker',
+        id: 'stock.ticker',
         title: 'Тикер',
       }, {
         id: 'strategy.name',
@@ -93,7 +93,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         headerClass: 'open-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'quantity',
@@ -122,7 +122,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
             return ''
           }
 
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'exitPoint',
@@ -134,26 +134,26 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
             return ''
           }
 
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'riskRatio',
         title: 'Коэф. риска',
         cellClass: 'border-left center',
-        prepareCellFunction: ((percent: number) => {
-          if (!percent) {
+        prepareCellFunction: ((value: number) => {
+          if (!value) {
             return ''
           }
 
-          return this._percentPipe.transform(percent);
-        }),
+          return value.toFixed(2)
+        })
       }, {
         id: 'result',
         title: 'Рез.',
         headerClass: 'result-deal',
         cellClass: 'border-left right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'resultInPercent',
@@ -169,7 +169,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         headerClass: 'result-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'endDeposit',
@@ -177,7 +177,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         headerClass: 'result-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }
     ] as Column[];

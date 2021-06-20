@@ -140,6 +140,13 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         id: 'riskRatio',
         title: 'Коэф. риска',
         cellClass: 'border-left center',
+        prepareCellFunction: ((value: number) => {
+          if (!value) {
+            return ''
+          }
+
+          return value.toFixed(2)
+        })
       }, {
         id: 'result',
         title: 'Рез.',

@@ -1,6 +1,7 @@
 import { createAction, props } from "@ngrx/store";
 
 import { TableParams } from "silly-datatable";
+import { CryptoDeal } from "src/app/shared/models/crypto-deal/crypto-deal.model";
 import { Result } from "src/app/shared/models/result/result.model";
 import { StockDeal } from "src/app/shared/models/stock-deal/stock-deal.model";
 import { DetailsComponents } from "../shared/components/row-details/row-details.component";
@@ -33,8 +34,18 @@ export namespace DashboardActions {
         getAllStocks = createAction('[Stock Table Component] Get All Stocks', props<{ tableParams: TableParams }>()),
         getAllStocksResult = createAction('[Stock Table Component] Get All Stocks Result', props<{ result: Result }>()),
 
-        getAllCryptoDeals = createAction('[Crypto Deals Table Component] Get All Crypto Deals', props<{ tableParams: TableParams }>()),
-        getAllCryptoDealsResult = createAction('[Crypto Deals Table Component] Get All Crypto Deals Result', props<{ result: Result }>()),
+        getAllCryptoDeals = createAction(
+            '[Crypto Deals Table Component] Get All Crypto Deals',
+            props<{ tableParams: TableParams }>(),
+        ),
+        getAllCryptoDealsResult = createAction(
+            '[Crypto Deals Table Component] Get All Crypto Deals Result',
+            props<{ result: Result }>(),
+        ),
+        createCryptoDeal = createAction(
+            '[Crypto Deal Details Component] Create Crypto Deal',
+            props<{ cryptoDeal: CryptoDeal }>(),
+        ),
 
         getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{ tableParams: TableParams }>()),
 
