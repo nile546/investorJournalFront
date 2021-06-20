@@ -46,7 +46,6 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
       {
         id: 'id',
         title: '№',
-        sortable: true,
       }, {
         id: 'stock.ticker',
         title: 'Тикер',

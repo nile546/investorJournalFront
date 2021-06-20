@@ -46,7 +46,6 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
       {
         id: 'id',
         title: '№',
-        sortable: true,
       }, {
         id: 'crypto.ticker',
         title: 'Тикер',

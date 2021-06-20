@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { Currencies } from 'src/app/shared/models/currencies/currencies.model';
 
 import { Pattern } from 'src/app/shared/models/pattern/pattern.model';
 import { Positions } from 'src/app/shared/models/positions/positions.model';
@@ -24,7 +25,7 @@ export class StockDealDetailsComponent implements OnInit {
   public timeFramesEnum = TimeFrames;
 
   public form: FormGroup = new FormGroup({
-    ticker: new FormControl(),
+    ticker: new FormControl('', [Validators.required]),
     strategy: new FormControl(),
     pattern: new FormControl(),
     position: new FormControl(),
@@ -85,12 +86,13 @@ export class StockDealDetailsComponent implements OnInit {
       return;
     }
 
-    this.stockDeal.enterDatetime = this.form.value.enterDatetime;
-    this.stockDeal.enterPoint = this.form.value.enterPoint;
-    this.stockDeal.quantity = this.form.value.quantity;
-    this.stockDeal.exitDatetime = this.form.value.exitDatetime;
-    this.stockDeal.stopLoss = this.form.value.stopLoss;
-    this.stockDeal.exitPoint = this.form.value.exitPoint;
+    this.stockDeal.enterDatetime = new Date(this.form.value.enterDatetime);
+    this.stockDeal.enterPoint = +this.form.value.enterPoint;
+    this.stockDeal.quantity = +this.form.value.quantity;
+    this.stockDeal.exitDatetime = new Date(this.form.value.exitDatetime);
+    this.stockDeal.stopLoss = +this.form.value.stopLoss;
+    this.stockDeal.exitPoint = +this.form.value.exitPoint;
+    this.stockDeal.currency = Currencies.Usd;
 
     this._store.dispatch(DashboardActions.createStockDeal({ stockDeal: this.stockDeal }));
   }

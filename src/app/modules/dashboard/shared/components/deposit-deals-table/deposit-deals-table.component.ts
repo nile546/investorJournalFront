@@ -41,7 +41,6 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
       {
         id: 'id',
         title: '№',
-        sortable: true,
       }, {
         id: 'banks_insruments.name',
         title: 'Банк',

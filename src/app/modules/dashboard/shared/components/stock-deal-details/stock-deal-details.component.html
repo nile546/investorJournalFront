@@ -9,7 +9,7 @@
         <div class="details__row">
             <div class="details__col-1 dropdown">
                 <label class="control__label"
-                    for="ticker">Тикер</label>
+                    for="ticker">Тикер *</label>
                 <input class="control__select uppercase"
                     id="ticker"
                     type="text"
@@ -90,7 +90,7 @@
                     for="enterPoint">Точка входа</label>
                 <input class="control__input"
                     id="enterPoint"
-                    type="text"
+                    type="number"
                     formControlName="enterPoint">
             </div>
 
@@ -99,7 +99,7 @@
                     for="quantity">Количество</label>
                 <input class="control__input"
                     id="quantity"
-                    type="text"
+                    type="number"
                     formControlName="quantity">
             </div>
         </div>
@@ -119,7 +119,7 @@
                     for="stopLoss">Стоп-лосс</label>
                 <input class="control__input"
                     id="stopLoss"
-                    type="text"
+                    type="number"
                     formControlName="stopLoss">
             </div>
 
@@ -128,7 +128,7 @@
                     for="exitPoint">Точка выхода</label>
                 <input class="control__input"
                     id="exitPoint"
-                    type="text"
+                    type="number"
                     formControlName="exitPoint">
             </div>
         </div>
@@ -138,6 +138,7 @@
         <div class="details__col">
             <button class="btn__primary"
                 (click)="submit()"
+                [disabled]="form.invalid"
                 type="button">Cохранить</button>
         </div>
         <div class="details__col">
