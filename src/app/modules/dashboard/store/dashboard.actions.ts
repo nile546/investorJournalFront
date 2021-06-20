@@ -46,6 +46,10 @@ export namespace DashboardActions {
             '[Crypto Deal Details Component] Create Crypto Deal',
             props<{ cryptoDeal: CryptoDeal }>(),
         ),
+        createCryptoDealResult = createAction(
+            '[Crypto Deals Details Component] Create Crypto Deal Result',
+            props<{ result: Result }>(),
+        ),
 
         getAllCryptos = createAction('[Crypto Table Component] Get All Cryptos', props<{ tableParams: TableParams }>()),
         getAllCryptosResult = createAction('[Cryptos Table Component] Get All Cryptos', props<{ result: Result }>()),

@@ -58,6 +58,13 @@ export namespace DashboardReducer {
             }
         }),
 
+        on(DashboardActions.getAllCryptoDealsResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                getAllCryptoDealsResult: action.result,
+            }
+        }),
+
         on(DashboardActions.rowDetails, (state: State, action: { component: DetailsComponents | null, payload: unknown | null }): State => {
             return {
                 ...state,

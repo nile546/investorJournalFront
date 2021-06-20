@@ -4,6 +4,7 @@ import { exhaustMap, map } from "rxjs/operators";
 
 import { Result } from "src/app/shared/models/result/result.model";
 import { CryptoDealService } from "../shared/services/crypto-deal/crypto-deal.service";
+import { CryptoService } from "../shared/services/crypto/crypto.service";
 import { PatternService } from "../shared/services/pattern/pattern.service";
 import { StockDealService } from "../shared/services/stock-deal/stock-deal.service";
 import { StockService } from "../shared/services/stock/stock.service";
@@ -86,6 +87,30 @@ export class DashboardEffects {
     ));
 
 
+    public createCryptoDeal = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.createCryptoDeal),
+        exhaustMap(action => {
+            return this._cryptoDealService.create(action.cryptoDeal).pipe(
+                map((result: Result) => {
+                    return DashboardActions.createCryptoDealResult({ result });
+                })
+            )
+        })
+    ));
+
+
+    public getAllCryptos = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.getAllCryptos),
+        exhaustMap(action => {
+            return this._cryptoService.getAll(action.tableParams).pipe(
+                map((result: Result) => {
+                    return DashboardActions.getAllCryptosResult({ result });
+                })
+            )
+        })
+    ));
+
+
     constructor(
         private _actions: Actions,
         private _stockDealService: StockDealService,
@@ -93,6 +118,7 @@ export class DashboardEffects {
         private _strategyService: StrategyService,
         private _patternService: PatternService,
         private _cryptoDealService: CryptoDealService,
+        private _cryptoService: CryptoService,
     ) { }
 
 }

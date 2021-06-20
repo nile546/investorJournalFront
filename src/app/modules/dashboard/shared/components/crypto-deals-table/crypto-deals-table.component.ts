@@ -47,7 +47,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         id: 'id',
         title: '№',
       }, {
-        id: 'stock.ticker',
+        id: 'crypto.ticker',
         title: 'Тикер',
       }, {
         id: 'strategy.name',
@@ -155,31 +155,32 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price / 100);
         }),
-      }, {
-        id: 'resultInPercent',
-        title: 'Рез. %',
-        headerClass: 'result-deal',
-        cellClass: 'center',
-        prepareCellFunction: ((percent: number) => {
-          return this._percentPipe.transform(percent);
-        }),
-      }, {
-        id: 'startDeposit',
-        title: 'Деп. до',
-        headerClass: 'result-deal',
-        cellClass: 'right',
-        prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price / 100);
-        }),
-      }, {
-        id: 'endDeposit',
-        title: 'Деп. после',
-        headerClass: 'result-deal',
-        cellClass: 'right',
-        prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price / 100);
-        }),
-      }
+      }, 
+      // {
+      //   id: 'resultInPercent',
+      //   title: 'Рез. %',
+      //   headerClass: 'result-deal',
+      //   cellClass: 'center',
+      //   prepareCellFunction: ((percent: number) => {
+      //     return this._percentPipe.transform(percent);
+      //   }),
+      // }, {
+      //   id: 'startDeposit',
+      //   title: 'Деп. до',
+      //   headerClass: 'result-deal',
+      //   cellClass: 'right',
+      //   prepareCellFunction: ((price: number) => {
+      //     return this._currencyPipe.transform(price / 100);
+      //   }),
+      // }, {
+      //   id: 'endDeposit',
+      //   title: 'Деп. после',
+      //   headerClass: 'result-deal',
+      //   cellClass: 'right',
+      //   prepareCellFunction: ((price: number) => {
+      //     return this._currencyPipe.transform(price / 100);
+      //   }),
+      // }
     ] as Column[];
   }
 
