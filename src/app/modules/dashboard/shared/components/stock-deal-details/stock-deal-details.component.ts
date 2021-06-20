@@ -87,11 +87,11 @@ export class StockDealDetailsComponent implements OnInit {
     }
 
     this.stockDeal.enterDatetime = new Date(this.form.value.enterDatetime);
-    this.stockDeal.enterPoint = +this.form.value.enterPoint;
+    this.stockDeal.enterPoint = +this.form.value.enterPoint * 100;
     this.stockDeal.quantity = +this.form.value.quantity;
     this.stockDeal.exitDatetime = new Date(this.form.value.exitDatetime);
-    this.stockDeal.stopLoss = +this.form.value.stopLoss;
-    this.stockDeal.exitPoint = +this.form.value.exitPoint;
+    this.stockDeal.stopLoss = +this.form.value.stopLoss * 100;
+    this.stockDeal.exitPoint = +this.form.value.exitPoint * 100;
     this.stockDeal.currency = Currencies.Usd;
 
     this._store.dispatch(DashboardActions.createStockDeal({ stockDeal: this.stockDeal }));

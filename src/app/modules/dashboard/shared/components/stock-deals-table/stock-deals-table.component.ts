@@ -1,7 +1,7 @@
 import { CurrencyPipe, DatePipe, PercentPipe } from '@angular/common';
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Injector } from '@angular/core';
 import startCase from 'lodash-es/startCase';
-import { filter, take, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 
 import { Column, Pagination, TableParams, TableSettings } from 'silly-datatable';
 import { Table } from 'src/app/shared/components/abstract/table/table';
@@ -93,7 +93,7 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         headerClass: 'open-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'quantity',
@@ -122,7 +122,7 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
             return ''
           }
 
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'exitPoint',
@@ -134,26 +134,19 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
             return ''
           }
 
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'riskRatio',
         title: 'Коэф. риска',
         cellClass: 'border-left center',
-        prepareCellFunction: ((percent: number) => {
-          if (!percent) {
-            return ''
-          }
-
-          return this._percentPipe.transform(percent);
-        }),
       }, {
         id: 'result',
         title: 'Рез.',
         headerClass: 'result-deal',
         cellClass: 'border-left right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'resultInPercent',
@@ -169,7 +162,7 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         headerClass: 'result-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'endDeposit',
@@ -177,7 +170,7 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         headerClass: 'result-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }
     ] as Column[];
