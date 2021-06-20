@@ -17,7 +17,7 @@ export namespace DashboardReducer {
         getAllCryptoDealsResult: Result | null;
         getAllStrategiesResult: Result | null;
         getAllPatternsResult: Result | null;
-
+        getAllCryptosResult: Result | null;
         getAllStocksResult: Result | null;
 
         rowDetailsComponent: DetailsComponents | null;
@@ -32,7 +32,7 @@ export namespace DashboardReducer {
         getAllCryptoDealsResult: null,
         getAllStrategiesResult: null,
         getAllPatternsResult: null,
-
+        getAllCryptosResult: null,
         getAllStocksResult: null,
 
         rowDetailsComponent: null,
@@ -91,6 +91,13 @@ export namespace DashboardReducer {
             return {
                 ...state,
                 getAllPatternsResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.getAllCryptosResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                getAllCryptosResult: action.result,
             }
         }),
     )

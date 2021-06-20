@@ -47,6 +47,9 @@ export namespace DashboardActions {
             props<{ cryptoDeal: CryptoDeal }>(),
         ),
 
+        getAllCryptos = createAction('[Crypto Table Component] Get All Cryptos', props<{ tableParams: TableParams }>()),
+        getAllCryptosResult = createAction('[Cryptos Table Component] Get All Cryptos', props<{ result: Result }>()),
+
         getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{ tableParams: TableParams }>()),
 
         getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),

@@ -15,8 +15,8 @@
                     type="text"
                     formControlName="ticker">
                 <div class="dropdown__content-table">
-                    <tr-stock-table [searchText]="form.controls.ticker.value?.toUpperCase()"
-                        (stock)="setCrypto($event)"></tr-stock-table>
+                    <tr-crypto-table [searchText]="form.controls.ticker.value?.toUpperCase()"
+                        (crypto)="setCrypto($event)"></tr-crypto-table>
                 </div>
             </div>
             <div class="details__col-1 dropdown">
