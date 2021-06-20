@@ -2,7 +2,8 @@
     <tr>
         <ng-container *ngIf="values?.length; else notFound">
             <td class="dropdown__cell"
-                *ngFor="let value of values">
+                *ngFor="let value of values"
+                (click)="setSelected(value.id)">
                 {{ value.name }}
             </td>
         </ng-container>

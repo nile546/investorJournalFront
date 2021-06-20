@@ -25,6 +25,18 @@ export class DashboardEffects {
     ));
 
 
+    public createStockDeal = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.createStockDeal),
+        exhaustMap(action => {
+            return this._stockDealService.create(action.stockDeal).pipe(
+                map((result: Result) => {
+                    return DashboardActions.createStockDealResult({ result });
+                })
+            )
+        })
+    ));
+
+
     public getAllStocks = createEffect(() => this._actions.pipe(
         ofType(DashboardActions.getAllStocks),
         exhaustMap(action => {

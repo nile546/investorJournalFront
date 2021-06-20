@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -13,18 +14,24 @@ export class EnumTableComponent implements OnInit {
 
   public values: { id: number, name: string }[] | undefined;
 
+  @Output() public selected: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
     this.values = Object.keys(this.enumValue)
-      //.filter((key) => typeof key === 'number')
+      .filter(k => !isNaN(Number(k)))
       .map(key => {
-        console.log('zzzzzzzzzzzzzz', typeof key)
         var id = Number(key);
         return {
           id,
           name: this.enumValue[id] as string,
         }
       });
+  }
+
+
+  public setSelected(id: number): void {
+    this.selected.emit(id);
   }
 }
