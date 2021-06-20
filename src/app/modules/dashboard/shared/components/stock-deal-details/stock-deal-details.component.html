@@ -48,13 +48,16 @@
                 </div>
             </div>
 
-            <div class="details__col-3">
+            <div class="details__col-3 dropdown">
                 <label class="control__label"
                     for="position">Позиция</label>
-                <input class="control__input"
+                <input class="control__select"
                     id="position"
                     type="text"
                     formControlName="position">
+                <div class="dropdown__content-table">
+                    <tr-enum-table [enumValue]="positionsEnum"></tr-enum-table>
+                </div>
             </div>
 
             <div class="details__col-3">

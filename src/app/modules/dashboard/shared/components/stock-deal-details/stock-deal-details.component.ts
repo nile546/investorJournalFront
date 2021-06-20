@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Pattern } from 'src/app/shared/models/pattern/pattern.model';
 
+import { Pattern } from 'src/app/shared/models/pattern/pattern.model';
+import { Positions } from 'src/app/shared/models/positions/positions.model';
 import { StockDeal } from 'src/app/shared/models/stock-deal/stock-deal.model';
 import { Stock } from 'src/app/shared/models/stock-instrument/stock-instrument.model';
 import { Strategy } from 'src/app/shared/models/strategy/strategy.model';
@@ -18,6 +19,7 @@ import { DashboardActions } from '../../../store/dashboard.actions';
 export class StockDealDetailsComponent implements OnInit {
 
   public stockDeal: StockDeal = new StockDeal();
+  public positionsEnum = Positions;
 
   public form: FormGroup = new FormGroup({
     ticker: new FormControl(),

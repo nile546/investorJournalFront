@@ -1,0 +1,14 @@
+<table class="dropdown__table">
+    <tr>
+        <ng-container *ngIf="values?.length; else notFound">
+            <td class="dropdown__cell"
+                *ngFor="let value of values">
+                {{ value.name }}
+            </td>
+        </ng-container>
+    </tr>
+</table>
+
+<ng-template #notFound>
+    <td>Данные не найдены</td>
+</ng-template>

@@ -5,6 +5,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ModalComponent } from './modal/modal.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { RouterModule } from '@angular/router';
+import { EnumTableComponent } from './enum-table/enum-table.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     ProfileComponent,
     ModalComponent,
     SpinnerComponent,
+    EnumTableComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
     ProfileComponent,
     ModalComponent,
     SpinnerComponent,
+    EnumTableComponent,
   ]
 
 })
