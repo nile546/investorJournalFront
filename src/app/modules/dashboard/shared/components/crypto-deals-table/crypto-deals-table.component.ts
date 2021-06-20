@@ -189,7 +189,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
 
 
   public set tableParams(value: TableParams) {
-    this._store.dispatch(DashboardActions.getAllStockDeals({ tableParams: value }));
+    this._store.dispatch(DashboardActions.getAllCryptoDeals({ tableParams: value }));
   }
 
   ngOnInit(): void {

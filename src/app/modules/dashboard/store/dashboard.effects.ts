@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { exhaustMap, map } from "rxjs/operators";
 
 import { Result } from "src/app/shared/models/result/result.model";
+import { CryptoDealService } from "../shared/services/crypto-deal/crypto-deal.service";
 import { PatternService } from "../shared/services/pattern/pattern.service";
 import { StockDealService } from "../shared/services/stock-deal/stock-deal.service";
 import { StockService } from "../shared/services/stock/stock.service";
@@ -73,12 +74,25 @@ export class DashboardEffects {
     ));
 
 
+    public getAllCryptoDeals = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.getAllCryptoDeals),
+        exhaustMap(action => {
+            return this._cryptoDealService.getAll(action.tableParams).pipe(
+                map((result: Result) => {
+                    return DashboardActions.getAllCryptoDealsResult({ result });
+                })
+            )
+        })
+    ));
+
+
     constructor(
         private _actions: Actions,
         private _stockDealService: StockDealService,
         private _stockService: StockService,
         private _strategyService: StrategyService,
         private _patternService: PatternService,
+        private _cryptoDealService: CryptoDealService,
     ) { }
 
 }
