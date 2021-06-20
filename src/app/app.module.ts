@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +15,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestInterceptor } from './shared/interceptors/request.interceptor';
 import { AuthModule } from './modules/auth/auth.module';
 import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized/unauthorized.interceptor';
+import localeRu from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeRu);
 
 
 
@@ -44,7 +48,8 @@ import { UnauthorizedInterceptor } from './shared/interceptors/unauthorized/unau
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: UnauthorizedInterceptor, multi: true },
+    { provide: LOCALE_ID, useValue: "ru-RU" },
   ],
   bootstrap: [AppComponent]
 })
