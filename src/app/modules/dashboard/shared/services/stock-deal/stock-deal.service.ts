@@ -31,7 +31,7 @@ export class StockDealService {
 
   public loadBrokerData(token: string): Observable<Result> {
     return this._httpClient.post<Result>(
-      '/stock-deals/get-brocker-deals',
+      'stock-deals/get-brocker-deals',
       { token },
     )
   }
