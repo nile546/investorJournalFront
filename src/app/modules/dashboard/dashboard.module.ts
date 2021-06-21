@@ -17,6 +17,9 @@ import { CryptoDealsComponent } from './crypto-deals/crypto-deals.component';
 import { StrategyService } from './shared/services/strategy/strategy.service';
 import { PatternService } from './shared/services/pattern/pattern.service';
 import { CurrencyRateService } from './shared/services/currency-rate/currency-rate.service';
+import { TinkoffUpdateModalComponent } from './shared/modals/tinkoff-update-modal/tinkoff-update-modal.component';
+import { ComponentsModule as RootComponentsModule } from 'src/app/shared/components/components.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,13 +31,16 @@ import { CurrencyRateService } from './shared/services/currency-rate/currency-ra
     DepositsComponent,
     PredictComponent,
     CryptoDealsComponent,
+    TinkoffUpdateModalComponent,
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     AuthModule,
     ComponentsModule,
+    RootComponentsModule,
     EffectsModule.forFeature([DashboardEffects]),
+    ReactiveFormsModule
   ],
   providers: [
     StockDealService,

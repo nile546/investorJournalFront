@@ -5,9 +5,11 @@ import { filter, takeUntil } from 'rxjs/operators';
 
 import { Column, Pagination, TableParams, TableSettings } from 'silly-datatable';
 import { Table } from 'src/app/shared/components/abstract/table/table';
+import { ModalComponents } from 'src/app/shared/components/modal/modal.component';
 import { Positions } from 'src/app/shared/models/positions/positions.model';
 import { Result } from 'src/app/shared/models/result/result.model';
 import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model';
+import { ModalActions } from 'src/app/store/modal/modal.actions';
 import { environment } from 'src/environments/environment';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
@@ -236,5 +238,10 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
 
   public create(): void {
     this._store.dispatch(DashboardActions.rowDetails({ component: DetailsComponents.StockDealDetails, payload: null }));
+  }
+
+
+  public updateTinkoff(): void {
+    this._store.dispatch(ModalActions.open({ modalComponent: ModalComponents.TinkoffUpdate }));
   }
 }

@@ -7,6 +7,7 @@ import { switchMap, takeUntil, tap } from 'rxjs/operators';
 import { ConfirmSignupModalComponent } from 'src/app/modules/auth/confirm-signup-modal/confirm-signup-modal.component';
 import { SigninModalComponent } from 'src/app/modules/auth/signin-modal/signin-modal.component';
 import { SignupModalComponent } from 'src/app/modules/auth/signup-modal/signup-modal.component';
+import { TinkoffUpdateModalComponent } from 'src/app/modules/dashboard/shared/modals/tinkoff-update-modal/tinkoff-update-modal.component';
 
 
 import { ModalActions } from 'src/app/store/modal/modal.actions';
@@ -18,6 +19,7 @@ export enum ModalComponents {
   Signup = 1,
   Signin,
   ConfirmSignup,
+  TinkoffUpdate,
 }
 
 
@@ -25,6 +27,7 @@ const allowedModalComponents = new Map<ModalComponents, any>([
   [ModalComponents.Signup, SignupModalComponent],
   [ModalComponents.Signin, SigninModalComponent],
   [ModalComponents.ConfirmSignup, ConfirmSignupModalComponent],
+  [ModalComponents.TinkoffUpdate, TinkoffUpdateModalComponent],
 ])
 
 

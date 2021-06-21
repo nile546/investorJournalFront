@@ -1,0 +1,34 @@
+<div class="modal__header">
+    <h2>Загрузка данных с брокерского счета Тинькофф</h2>
+</div>
+
+<div class="modal__content">
+    <ng-container *ngIf="result?.status !== resultStatusesEnum.Error; else error">
+        <input class="control__input"
+            type="text"
+            placeholder="Токен Open API"
+            [formControl]="token">
+
+        <button class="btn__primary"
+            (click)="load()"
+            type="button">Загрузить</button>
+    </ng-container>
+</div>
+
+<!-- <tr-spinner [loading]="loading | async"></tr-spinner> -->
+
+<!-- <div class="modal__footer">
+    Забыли пароль? <a>Восстановить</a>
+</div> -->
+
+
+<ng-template #error>
+    <div class="modal__description">
+        <p class="phrase strong">Ошибка загрузки!</p>
+        <p class="phrase">Проверьте пожалуйста введённые параметры и попробуйте повторить
+            входа еще раз.</p>
+    </div>
+    <button class="btn__primary"
+        (click)="close()"
+        type="button">Закрыть</button>
+</ng-template>

@@ -1,6 +1,9 @@
 <div class="datatable__wrapper">
     <div class="datatable__controls">
         <button class="btn__primary btn__sm"
+            (click)="updateTinkoff()"
+            type="button">Загрузить данные со счёта брокера<span class="icon-equalizer btn__icon"></span></button>&nbsp;&nbsp;
+        <button class="btn__primary btn__sm"
             (click)="create()"
             type="button">Добавить<span class="icon-plus btn__icon"></span></button>
     </div>
