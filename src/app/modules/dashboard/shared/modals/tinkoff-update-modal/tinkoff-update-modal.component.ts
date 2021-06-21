@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Result, ResultStatuses } from 'src/app/shared/models/result/result.model';
@@ -20,6 +20,7 @@ export class TinkoffUpdateModalComponent implements OnInit {
 
   constructor(
     private _store: Store,
+    private _changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit(): void {
@@ -36,6 +37,7 @@ export class TinkoffUpdateModalComponent implements OnInit {
     )
       .subscribe((result: Result | null) => {
         this.result = result;
+        this._changeDetectorRef.detectChanges();
       });
 
     this._store.dispatch(DashboardActions.loadBrokerData({ token: this.token.value }));
