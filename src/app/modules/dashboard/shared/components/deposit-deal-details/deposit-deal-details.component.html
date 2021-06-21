@@ -1,1 +1,79 @@
-<p>deposit-deal-details works!</p>
+<div class="details__wrapper">
+    <div class="details__header">
+        <h2>Добавить банковский вклад</h2>
+    </div>
+
+    <form novalidate
+        autocomplete="off"
+        [formGroup]="form">
+        <div class="details__row">
+            <div class="details__col dropdown">
+                <label class="control__label"
+                    for="bank">Банк *</label>
+                <input class="control__select uppercase"
+                    id="bank"
+                    type="text"
+                    formControlName="bank">
+                <div class="dropdown__content-table">
+                    <tr-bank-table [searchText]="form.controls.bank.value"
+                        (bank)="setBank($event)">
+                    </tr-bank-table>
+                </div>
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="enterDatetime">Дата открытия</label>
+                <input class="control__input"
+                    id="enterDatetime"
+                    type="datetime-local"
+                    formControlName="enterDatetime">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="startDeposit">Сумма депозита</label>
+                <input class="control__input"
+                    id="startDeposit"
+                    type="number"
+                    formControlName="startDeposit">
+            </div>
+
+            <div class="details__col-3">
+                <label class="control__label"
+                    for="percent">Процент</label>
+                <input class="control__input"
+                    id="percent"
+                    type="number"
+                    formControlName="percent">
+            </div>
+        </div>
+
+        <div class="details__row">
+            <div class="details__col-1">
+                <label class="control__label"
+                    for="exitDatetime">Дата закрытия депозита</label>
+                <input class="control__input"
+                    id="exitDatetime"
+                    type="datetime-local"
+                    formControlName="exitDatetime">
+            </div>
+        </div>
+    </form>
+
+    <div class="details__row">
+        <div class="details__col-1">
+            <button class="btn__primary"
+                (click)="submit()"
+                [disabled]="form.invalid"
+                type="button">Cохранить</button>
+        </div>
+        <div class="details__col-1">
+            <button class="btn__primary"
+                (click)="cancel()"
+                type="button">Отмена</button>
+        </div>
+    </div>
+</div>

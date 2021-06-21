@@ -18,6 +18,7 @@ import { DepositDealDetailsComponent } from './deposit-deal-details/deposit-deal
 import { StrategyTableComponent } from './strategy-table/strategy-table.component';
 import { PatternTableComponent } from './pattern-table/pattern-table.component';
 import { CryptoTableComponent } from './crypto-table/crypto-table.component';
+import { BankTableComponent } from './bank-table/bank-table.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { CryptoTableComponent } from './crypto-table/crypto-table.component';
         StrategyTableComponent,
         PatternTableComponent,
         CryptoTableComponent,
+        BankTableComponent,
     ],
     exports: [
         AsideComponent,

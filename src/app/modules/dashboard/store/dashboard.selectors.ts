@@ -22,5 +22,7 @@ export namespace DashboardSelectors {
 
         getAllCryptosResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllCryptosResult),
 
-        getCurrencyRatesResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getCurrencyRatesResult);
+        getCurrencyRatesResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getCurrencyRatesResult),
+
+        getAllBanksResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.getAllBanksResult);
 }

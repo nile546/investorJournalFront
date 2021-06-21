@@ -39,6 +39,7 @@
 
     &__col {
         @include col();
+        width: 100%
     }
 
     &__col-1 {

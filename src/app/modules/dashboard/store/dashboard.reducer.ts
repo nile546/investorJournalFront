@@ -20,6 +20,7 @@ export namespace DashboardReducer {
         getAllCryptosResult: Result | null;
         getAllStocksResult: Result | null;
         getCurrencyRatesResult: Result | null;
+        getAllBanksResult: Result | null;
 
         rowDetailsComponent: DetailsComponents | null;
         rowDetailsPayload: unknown | null;
@@ -36,6 +37,7 @@ export namespace DashboardReducer {
         getAllCryptosResult: null,
         getAllStocksResult: null,
         getCurrencyRatesResult: null,
+        getAllBanksResult: null,
 
         rowDetailsComponent: null,
         rowDetailsPayload: null,

@@ -2,6 +2,7 @@ import { createAction, props } from "@ngrx/store";
 
 import { TableParams } from "silly-datatable";
 import { CryptoDeal } from "src/app/shared/models/crypto-deal/crypto-deal.model";
+import { DepositDeal } from "src/app/shared/models/deposit-deal/deposit-deal.model";
 import { Result } from "src/app/shared/models/result/result.model";
 import { StockDeal } from "src/app/shared/models/stock-deal/stock-deal.model";
 import { DetailsComponents } from "../shared/components/row-details/row-details.component";
@@ -59,6 +60,10 @@ export namespace DashboardActions {
             '[Deposit Deals Table Component] Get All Deposit Deals Result',
             props<{ result: Result }>(),
         ),
+        createDepositDeal = createAction(
+            '[Deposit Deal Details Component] Create Deposit Deal',
+            props<{ depositDeal: DepositDeal }>(),
+        ),
 
         getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),
         getAllStrategiesResult = createAction('[Strategies Table Component] Get All Strategies Result', props<{ result: Result }>()),
@@ -67,5 +72,7 @@ export namespace DashboardActions {
         getAllPatternsResult = createAction('[Patterns Table Component] Get All Patters Result', props<{ result: Result }>()),
 
         getCurrencyRates = createAction('[Statistics Component] Get Currency Rates'),
-        getCurrencyRatesResult = createAction('[Statistics Component] Get Currency Rates', props<{ result: Result }>());
+        getCurrencyRatesResult = createAction('[Statistics Component] Get Currency Rates', props<{ result: Result }>()),
+        
+        getAllBanks = createAction('[Banks Table Component] Get All Banks', props<{ tableParams: TableParams }>());
 }
