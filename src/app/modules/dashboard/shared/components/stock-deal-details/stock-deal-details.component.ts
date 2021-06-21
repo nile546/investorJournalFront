@@ -31,7 +31,7 @@ export class StockDealDetailsComponent implements OnInit {
     ticker: new FormControl('', [Validators.required]),
     strategy: new FormControl(),
     pattern: new FormControl(),
-    position: new FormControl(),
+    position: new FormControl('', [Validators.required]),
     timeFrame: new FormControl(),
     enterDatetime: new FormControl('', [Validators.required]),
     enterPoint: new FormControl('', [Validators.required]),
