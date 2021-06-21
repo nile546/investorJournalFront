@@ -11,7 +11,8 @@
 
         <button class="btn__primary"
             (click)="load()"
-            type="button">Загрузить</button>
+            type="button"
+            [disabled]="token.invalid">Загрузить</button>
     </ng-container>
 </div>
 

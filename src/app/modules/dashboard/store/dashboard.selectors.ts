@@ -28,5 +28,6 @@ export namespace DashboardSelectors {
 
         createStockDealResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.createStockDealResult),
         createCryptoDealResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.createCryptoDealResult),
-        createDepositDealResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.createDepositDealResult);
+        createDepositDealResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.createDepositDealResult),
+        loadBrokerDataResult = createSelector(dashboardState, (state: DashboardReducer.State) => state.loadBrokerDataResult);
 }

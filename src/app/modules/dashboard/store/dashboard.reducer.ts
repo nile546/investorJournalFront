@@ -20,6 +20,7 @@ export namespace DashboardReducer {
         getAllStocksResult: Result | null;
         getCurrencyRatesResult: Result | null;
         getAllBanksResult: Result | null;
+        loadBrokerDataResult: Result | null;
 
         createStockDealResult: Result | null;
         createCryptoDealResult: Result | null;
@@ -41,6 +42,7 @@ export namespace DashboardReducer {
         getAllStocksResult: null,
         getCurrencyRatesResult: null,
         getAllBanksResult: null,
+        loadBrokerDataResult: null,
 
         createStockDealResult: null,
         createCryptoDealResult: null,
@@ -164,6 +166,13 @@ export namespace DashboardReducer {
             return {
                 ...state,
                 getAllCryptosResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.loadBrokerDataResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                loadBrokerDataResult: action.result,
             }
         }),
     )

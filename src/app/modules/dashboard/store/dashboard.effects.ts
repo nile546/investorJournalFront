@@ -137,6 +137,18 @@ export class DashboardEffects {
     ));
 
 
+    public loadBrokerData = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.loadBrokerData),
+        exhaustMap(action => {
+            return this._stockDealService.loadBrokerData(action.token).pipe(
+                map((result: Result) => {
+                    return DashboardActions.loadBrokerDataResult({ result });
+                })
+            )
+        })
+    ));
+
+
     constructor(
         private _actions: Actions,
         private _stockDealService: StockDealService,

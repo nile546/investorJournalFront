@@ -228,6 +228,19 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         const tableParams = Object.assign({}, this._tableParams, { source: [] });
         this._store.dispatch(DashboardActions.getAllStockDeals({ tableParams }));
       })
+
+
+    this._store.select(DashboardSelectors.loadBrokerDataResult).pipe(
+      takeUntil(this._unsubscribe)
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+
+        const tableParams = Object.assign({}, this._tableParams, { source: [] });
+        this._store.dispatch(DashboardActions.getAllStockDeals({ tableParams }));
+      })
   }
 
 

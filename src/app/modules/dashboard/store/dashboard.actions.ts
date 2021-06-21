@@ -78,5 +78,8 @@ export namespace DashboardActions {
 
         getAllBanks = createAction('[Banks Table Component] Get All Banks', props<{ tableParams: TableParams }>()),
 
-        clearCreateResults = createAction('Clear All Create Results');
+        clearCreateResults = createAction('Clear All Create Results'),
+
+        loadBrokerData = createAction('', props<{ token: string }>()),
+        loadBrokerDataResult = createAction('', props<{ result: Result }>());
 }

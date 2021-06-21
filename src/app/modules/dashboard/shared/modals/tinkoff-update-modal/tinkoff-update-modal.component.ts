@@ -1,8 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Result, ResultStatuses } from 'src/app/shared/models/result/result.model';
 import { ModalActions } from 'src/app/store/modal/modal.actions';
+import { DashboardActions } from '../../../store/dashboard.actions';
+import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 @Component({
   selector: 'tr-tinkoff-update-modal',
@@ -12,8 +14,8 @@ import { ModalActions } from 'src/app/store/modal/modal.actions';
 })
 export class TinkoffUpdateModalComponent implements OnInit {
 
-  public token: FormControl = new FormControl('');
-  public result: Result | undefined;
+  public token: FormControl = new FormControl('', [Validators.required]);
+  public result: Result | null = null;
   public resultStatusesEnum = ResultStatuses
 
   constructor(
@@ -21,17 +23,22 @@ export class TinkoffUpdateModalComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.token.valueChanges.pipe(
-
-    )
-      .subscribe((value) => {
-        console.log('zzzzzzzzzzzzzzzzzzzzzzzzzz', value);
-      })
 
   }
 
   public load(): void {
-    console.log('zzzzzzzzzzzzzzzz')
+    if (this.token.invalid) {
+      return;
+    }
+
+    this._store.select(DashboardSelectors.loadBrokerDataResult).pipe(
+
+    )
+      .subscribe((result: Result | null) => {
+        this.result = result;
+      });
+
+    this._store.dispatch(DashboardActions.loadBrokerData({ token: this.token.value }));
   }
 
 
