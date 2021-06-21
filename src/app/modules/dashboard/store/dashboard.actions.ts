@@ -55,6 +55,10 @@ export namespace DashboardActions {
         getAllCryptosResult = createAction('[Cryptos Table Component] Get All Cryptos', props<{ result: Result }>()),
 
         getAllDepositDeals = createAction('[Deposit Deals Table Component] Get All Deposit Deals', props<{ tableParams: TableParams }>()),
+        getAllDepositDealsResult = createAction(
+            '[Deposit Deals Table Component] Get All Deposit Deals Result',
+            props<{ result: Result }>(),
+        ),
 
         getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),
         getAllStrategiesResult = createAction('[Strategies Table Component] Get All Strategies Result', props<{ result: Result }>()),

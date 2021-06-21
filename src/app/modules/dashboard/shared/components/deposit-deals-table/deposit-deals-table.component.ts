@@ -1,5 +1,4 @@
 import { CurrencyPipe } from '@angular/common';
-import { PercentPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Injector, OnDestroy, OnInit } from '@angular/core';
 import { filter, takeUntil } from 'rxjs/operators';
@@ -23,7 +22,6 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
     _injector: Injector,
     private _datePipe: DatePipe,
     private _currencyPipe: CurrencyPipe,
-    private _percentPipe: PercentPipe,
   ) {
 
     super(_injector)
@@ -62,7 +60,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
         headerClass: 'open-deal',
         cellClass: 'right',
         prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }, {
         id: 'percent',
@@ -81,6 +79,14 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
           return this._datePipe.transform(date, 'short');
         }),
       }, {
+        id: 'result',
+        title: 'Результат',
+        headerClass: 'result-deal',
+        cellClass: 'border-left right',
+        prepareCellFunction: ((price: number) => {
+          return this._currencyPipe.transform(price / 100);
+        }),
+      }, {
         id: 'exitPoint',
         title: 'Конечный депозит',
         headerClass: 'result-deal',
@@ -89,15 +95,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
             return ''
           }
 
-          return this._currencyPipe.transform(price);
-        }),
-      }, {
-        id: 'result',
-        title: 'Результат',
-        headerClass: 'result-deal',
-        cellClass: 'border-left right',
-        prepareCellFunction: ((price: number) => {
-          return this._currencyPipe.transform(price);
+          return this._currencyPipe.transform(price / 100);
         }),
       }
     ] as Column[];
@@ -132,7 +130,7 @@ export class DepositDealsTableComponent extends Table implements OnInit, OnDestr
         this._changeDetectorRef.detectChanges();
       })
   }
-  
+
 
   public edit(entity: any): void {
     console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhh', entity);
