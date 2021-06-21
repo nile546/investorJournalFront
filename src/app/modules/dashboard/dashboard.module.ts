@@ -16,6 +16,7 @@ import { StockDealService } from './shared/services/stock-deal/stock-deal.servic
 import { CryptoDealsComponent } from './crypto-deals/crypto-deals.component';
 import { StrategyService } from './shared/services/strategy/strategy.service';
 import { PatternService } from './shared/services/pattern/pattern.service';
+import { CurrencyRateService } from './shared/services/currency-rate/currency-rate.service';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { PatternService } from './shared/services/pattern/pattern.service';
     StockService,
     StrategyService,
     PatternService,
+    CurrencyRateService,
   ]
 
 })

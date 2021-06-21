@@ -64,5 +64,8 @@ export namespace DashboardActions {
         getAllStrategiesResult = createAction('[Strategies Table Component] Get All Strategies Result', props<{ result: Result }>()),
 
         getAllPatterns = createAction('[Patterns Table Component] Get All Patterns', props<{ tableParams: TableParams }>()),
-        getAllPatternsResult = createAction('[Patterns Table Component] Get All Patters Result', props<{ result: Result }>());
+        getAllPatternsResult = createAction('[Patterns Table Component] Get All Patters Result', props<{ result: Result }>()),
+
+        getCurrencyRates = createAction('[Statistics Component] Get Currency Rates'),
+        getCurrencyRatesResult = createAction('[Statistics Component] Get Currency Rates', props<{ result: Result }>());
 }

@@ -1,1 +1,13 @@
-<p>statistics works!</p>
+<div class="statistics__wrapper">
+    <ng-container *ngIf="rates?.length">
+        <div class="currency__box"
+            *ngFor="let rate of rates">
+            <h2 class="currency__header">
+                {{ (rate.first_currency !== undefined ? currencyEnum[rate.first_currency] : '') | uppercase }} -
+                {{ (rate.second_currency !== undefined ? currencyEnum[rate.second_currency] : '') | uppercase }}
+            </h2>
+            <h1 class="currency__rate">{{ rate.ratio }}</h1>
+            <span class="currency__description">Курс центробанка на {{ today | date:'shortDate'}}</span>
+        </div>
+    </ng-container>
+</div>
