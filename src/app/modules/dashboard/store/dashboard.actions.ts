@@ -65,6 +65,8 @@ export namespace DashboardActions {
             props<{ depositDeal: DepositDeal }>(),
         ),
 
+        createDepositDealResult = createAction('[Deposit Deal Table Component] Create Deposit Deal Result', props<{ result: Result }>()),
+
         getAllStrategies = createAction('[Strategies Table Component] Get All Strategies', props<{ tableParams: TableParams }>()),
         getAllStrategiesResult = createAction('[Strategies Table Component] Get All Strategies Result', props<{ result: Result }>()),
 
@@ -73,6 +75,8 @@ export namespace DashboardActions {
 
         getCurrencyRates = createAction('[Statistics Component] Get Currency Rates'),
         getCurrencyRatesResult = createAction('[Statistics Component] Get Currency Rates', props<{ result: Result }>()),
-        
-        getAllBanks = createAction('[Banks Table Component] Get All Banks', props<{ tableParams: TableParams }>());
+
+        getAllBanks = createAction('[Banks Table Component] Get All Banks', props<{ tableParams: TableParams }>()),
+
+        clearCreateResults = createAction('Clear All Create Results');
 }

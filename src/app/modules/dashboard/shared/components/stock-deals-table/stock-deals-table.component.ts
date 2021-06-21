@@ -155,7 +155,7 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price / 100);
         }),
-      }, 
+      },
       // {
       //   id: 'resultInPercent',
       //   title: 'Рез. %',
@@ -212,6 +212,19 @@ export class StockDealsTableComponent extends Table implements OnInit, OnDestroy
       .subscribe((result: Result | null) => {
         this._tableParams = result?.payload as TableParams;
         this._changeDetectorRef.detectChanges();
+      })
+
+
+    this._store.select(DashboardSelectors.createStockDealResult).pipe(
+      takeUntil(this._unsubscribe),
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+
+        const tableParams = Object.assign({}, this._tableParams, { source: [] });
+        this._store.dispatch(DashboardActions.getAllStockDeals({ tableParams }));
       })
   }
 

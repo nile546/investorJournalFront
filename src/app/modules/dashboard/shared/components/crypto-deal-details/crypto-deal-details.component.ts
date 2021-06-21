@@ -9,6 +9,8 @@ import { Crypto } from 'src/app/shared/models/crypto/crypto.model';
 import { Strategy } from 'src/app/shared/models/strategy/strategy.model';
 import { Pattern } from 'src/app/shared/models/pattern/pattern.model';
 import { Currencies } from 'src/app/shared/models/currencies/currencies.model';
+import { DashboardSelectors } from '../../../store/dashboard.selectors';
+import { Result } from 'src/app/shared/models/result/result.model';
 
 
 @Component({
@@ -43,6 +45,16 @@ export class CryptoDealDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this._store.select(DashboardSelectors.createCryptoDealResult).pipe(
+
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+        this._store.dispatch(DashboardActions.clearCreateResults());
+        this._store.dispatch(DashboardActions.rowDetails({ component: null, payload: null }));
+      })
   }
 
 

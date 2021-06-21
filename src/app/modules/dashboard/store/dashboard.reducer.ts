@@ -1,6 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
 
-import { TableParams } from "silly-datatable";
 import { Result } from "src/app/shared/models/result/result.model";
 import { DetailsComponents } from "../shared/components/row-details/row-details.component";
 import { DashboardActions } from "./dashboard.actions";
@@ -22,6 +21,10 @@ export namespace DashboardReducer {
         getCurrencyRatesResult: Result | null;
         getAllBanksResult: Result | null;
 
+        createStockDealResult: Result | null;
+        createCryptoDealResult: Result | null;
+        createDepositDealResult: Result | null;
+
         rowDetailsComponent: DetailsComponents | null;
         rowDetailsPayload: unknown | null;
     }
@@ -38,6 +41,10 @@ export namespace DashboardReducer {
         getAllStocksResult: null,
         getCurrencyRatesResult: null,
         getAllBanksResult: null,
+
+        createStockDealResult: null,
+        createCryptoDealResult: null,
+        createDepositDealResult: null,
 
         rowDetailsComponent: null,
         rowDetailsPayload: null,
@@ -82,6 +89,40 @@ export namespace DashboardReducer {
                 getCurrencyRatesResult: action.result,
             }
         }),
+
+
+        on(DashboardActions.createStockDealResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                createStockDealResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.createCryptoDealResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                createCryptoDealResult: action.result,
+            }
+        }),
+
+        on(DashboardActions.createDepositDealResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                createDepositDealResult: action.result,
+            }
+        }),
+
+
+        on(DashboardActions.clearCreateResults, (state: State): State => {
+            return {
+                ...state,
+                createStockDealResult: null,
+                createCryptoDealResult: null,
+                createDepositDealResult: null,
+            }
+        }),
+
+
 
         on(DashboardActions.rowDetails, (state: State, action: { component: DetailsComponents | null, payload: unknown | null }): State => {
             return {

@@ -1,15 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
+import { takeUntil } from 'rxjs/operators';
 import { Currencies } from 'src/app/shared/models/currencies/currencies.model';
 
 import { Pattern } from 'src/app/shared/models/pattern/pattern.model';
 import { Positions } from 'src/app/shared/models/positions/positions.model';
+import { Result } from 'src/app/shared/models/result/result.model';
 import { StockDeal } from 'src/app/shared/models/stock-deal/stock-deal.model';
 import { Stock } from 'src/app/shared/models/stock-instrument/stock-instrument.model';
 import { Strategy } from 'src/app/shared/models/strategy/strategy.model';
 import { TimeFrames } from 'src/app/shared/models/time-frames/time-frames.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
+import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 
 @Component({
@@ -44,6 +47,16 @@ export class StockDealDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this._store.select(DashboardSelectors.createStockDealResult).pipe(
+
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+        this._store.dispatch(DashboardActions.clearCreateResults());
+        this._store.dispatch(DashboardActions.rowDetails({ component: null, payload: null }));
+      })
   }
 
 

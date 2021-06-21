@@ -3,7 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Bank } from 'src/app/shared/models/bank/bank.model';
 import { DepositDeal } from 'src/app/shared/models/deposit-deal/deposit-deal.model';
+import { Result } from 'src/app/shared/models/result/result.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
+import { DashboardSelectors } from '../../../store/dashboard.selectors';
 
 @Component({
   selector: 'tr-deposit-deal-details',
@@ -29,6 +31,16 @@ export class DepositDealDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this._store.select(DashboardSelectors.createDepositDealResult).pipe(
+
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+        this._store.dispatch(DashboardActions.clearCreateResults());
+        this._store.dispatch(DashboardActions.rowDetails({ component: null, payload: null }));
+      })
   }
 
 

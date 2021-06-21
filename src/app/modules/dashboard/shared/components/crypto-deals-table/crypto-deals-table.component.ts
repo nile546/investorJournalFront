@@ -4,7 +4,7 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Injector } from '@angular/core';
 import { OnDestroy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
-import { startCase } from 'lodash-es';
+import startCase from 'lodash-es/startCase';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Column, Pagination, TableParams, TableSettings } from 'silly-datatable';
 import { Table } from 'src/app/shared/components/abstract/table/table';
@@ -155,7 +155,7 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
         prepareCellFunction: ((price: number) => {
           return this._currencyPipe.transform(price / 100);
         }),
-      }, 
+      },
       // {
       //   id: 'resultInPercent',
       //   title: 'Рез. %',
@@ -209,6 +209,19 @@ export class CryptoDealsTableComponent extends Table implements OnInit, OnDestro
       .subscribe((result: Result | null) => {
         this._tableParams = result?.payload as TableParams;
         this._changeDetectorRef.detectChanges();
+      })
+
+
+    this._store.select(DashboardSelectors.createCryptoDealResult).pipe(
+      takeUntil(this._unsubscribe),
+    )
+      .subscribe((result: Result | null) => {
+        if (!result) {
+          return;
+        }
+
+        const tableParams = Object.assign({}, this._tableParams, { source: [] });
+        this._store.dispatch(DashboardActions.getAllCryptoDeals({ tableParams }));
       })
   }
 
