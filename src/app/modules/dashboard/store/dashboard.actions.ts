@@ -77,6 +77,7 @@ export namespace DashboardActions {
         getCurrencyRatesResult = createAction('[Statistics Component] Get Currency Rates', props<{ result: Result }>()),
 
         getAllBanks = createAction('[Banks Table Component] Get All Banks', props<{ tableParams: TableParams }>()),
+        getAllBanksResult = createAction('[Banks Table Component] Get All Banks', props<{ result: Result }>()),
 
         clearCreateResults = createAction('Clear All Create Results'),
 

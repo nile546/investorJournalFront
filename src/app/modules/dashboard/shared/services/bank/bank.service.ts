@@ -15,7 +15,7 @@ export class BankService {
 
   public getAll(tableParams: TableParams): Observable<Result> {
     return this._httpClient.post<Result>(
-      'stock-instruments/getAll',
+      'bank-instruments/getAll',
       { tableParams }
     )
   }

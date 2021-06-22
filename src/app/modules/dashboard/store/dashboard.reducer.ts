@@ -169,6 +169,13 @@ export namespace DashboardReducer {
             }
         }),
 
+        on(DashboardActions.getAllBanksResult, (state: State, action: { result: Result }): State => {
+            return {
+                ...state,
+                getAllBanksResult: action.result,
+            }
+        }),
+
         on(DashboardActions.loadBrokerDataResult, (state: State, action: { result: Result }): State => {
             return {
                 ...state,
