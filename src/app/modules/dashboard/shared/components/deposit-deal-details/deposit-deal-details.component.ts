@@ -1,11 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 import { Store } from '@ngrx/store';
 import { Bank } from 'src/app/shared/models/bank/bank.model';
 import { DepositDeal } from 'src/app/shared/models/deposit-deal/deposit-deal.model';
 import { Result } from 'src/app/shared/models/result/result.model';
 import { DashboardActions } from '../../../store/dashboard.actions';
 import { DashboardSelectors } from '../../../store/dashboard.selectors';
+
 
 @Component({
   selector: 'tr-deposit-deal-details',
@@ -19,9 +21,9 @@ export class DepositDealDetailsComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({
     bank: new FormControl('', [Validators.required]),
-    enterDatetime: new FormControl(),
-    startDeposit: new FormControl(),
-    percent: new FormControl(),
+    enterDatetime: new FormControl('', [Validators.required]),
+    startDeposit: new FormControl('', [Validators.required]),
+    percent: new FormControl('', [Validators.required]),
     exitDatetime: new FormControl(),
   });
 

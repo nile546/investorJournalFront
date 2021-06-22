@@ -161,6 +161,18 @@ export class DashboardEffects {
     ));
 
 
+    public createDepositDeal = createEffect(() => this._actions.pipe(
+        ofType(DashboardActions.createDepositDeal),
+        exhaustMap(action => {
+            return this._depositDealService.create(action.depositDeal).pipe(
+                map((result: Result) => {
+                    return DashboardActions.createDepositDealResult({ result });
+                })
+            )
+        })
+    ));
+
+
     constructor(
         private _actions: Actions,
         private _stockDealService: StockDealService,
